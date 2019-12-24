@@ -1,0 +1,11 @@
+package messages.error;
+syntax = "proto3";
+
+message Error {
+  enum Code {
+    UNKNOWN = 0;
+  }
+
+  Code code = 1;
+  string message = 2;
+}
