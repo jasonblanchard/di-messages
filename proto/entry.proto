@@ -20,6 +20,7 @@ message GetEntryResponse {
   message Payload {
     string id = 1;
     string text = 2;
+    string creatorId = 3;
   }
 
   Payload payload = 1;
