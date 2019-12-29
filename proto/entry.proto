@@ -62,6 +62,28 @@ message CreateEntryResponse {
   string traceId = 3;
 }
 
+message UpdateEntryRequest {
+  message Payload {
+    string id = 1;
+    string text = 2;
+  }
+
+  RequestContext context = 1;
+  Payload payload = 2;
+}
+
+message UpdateEntryResponse {
+  message Payload {
+    string id = 1;
+    string text = 2;
+    string creatorId = 3;
+  }
+
+  Payload payload = 1;
+  Error error = 2;
+  string trace_id = 3;
+}
+
 message ListEntriesRequest {
   message Payload {
     int32 first = 1;
@@ -88,8 +110,22 @@ message ListEntriesResponse {
 
   repeated Entity payload = 1;
   Error error = 2;
-  string traceId = 3;
+  string traceId = 3; // TODO: Change to trace_id
   PageInfo page_info = 4;
+}
+
+message DeleteEntryRequest {
+  message Payload {
+    string id = 1;
+  }
+
+  RequestContext context = 1;
+  Payload payload = 2;
+}
+
+message DeleteEntryResponse {
+  Error error = 1;
+  string trace_id = 2;
 }
 
 message InfoEntry {
