@@ -62,8 +62,7 @@ message CreateEntryResponse {
   string traceId = 3;
 }
 
-// TODO: Change to ListEntriesRequest
-message GetEntriesRequest {
+message ListEntriesRequest {
   message Payload {
     int32 first = 1;
     string after = 2;
@@ -73,8 +72,7 @@ message GetEntriesRequest {
   Payload payload = 2;
 }
 
-// TODO: Change to ListEntriesResponse
-message GetEntriesResponse {
+message ListEntriesResponse {
     message PageInfo {
     int32 total_count = 1;
     bool has_next_page = 2;
