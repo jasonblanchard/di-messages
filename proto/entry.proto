@@ -1,6 +1,8 @@
 package messages.entry;
 syntax = "proto3";
 
+import "google/protobuf/timestamp.proto";
+
 message Error {
   enum Code {
     UNKNOWN = 0;
@@ -12,9 +14,19 @@ message Error {
   string message = 2;
 }
 
+message Principal {
+  enum Type {
+    USER = 1;
+  }
+
+  Type type = 1;
+  string id = 2;
+}
+
 message RequestContext {
-  string userId = 1;
+  string userId = 1 [deprecated=true];
   string trace_id = 2;
+  Principal principal = 3;
 }
 
 message GetEntryRequest {
@@ -30,7 +42,9 @@ message GetEntryResponse {
   message Payload {
     string id = 1;
     string text = 2;
-    string creatorId = 3;
+    string creator_id = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
   }
 
   Payload payload = 1;
@@ -41,6 +55,9 @@ message GetEntryResponse {
 message CreateEntryRequest {
   message Payload {
     string text = 1;
+    string creator_id = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
   }
 
   RequestContext context = 4;
@@ -68,10 +85,14 @@ message UpdateEntryRequest {
 }
 
 message UpdateEntryResponse {
+  // TODO: Consider just returning id or ok and letting client re-request
+  // i.e. separate commands and queries
   message Payload {
     string id = 1;
     string text = 2;
-    string creatorId = 3;
+    string creator_id = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
   }
 
   Payload payload = 1;
@@ -90,7 +111,7 @@ message ListEntriesRequest {
 }
 
 message ListEntriesResponse {
-    message PageInfo {
+  message PageInfo {
     int32 total_count = 1;
     bool has_next_page = 2;
     string startCursor = 3;
@@ -100,7 +121,9 @@ message ListEntriesResponse {
   message Entity {
     string id = 1;
     string text = 2;
-    string creatorId = 3;
+    string creator_id = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
   }
 
   repeated Entity payload = 1;
