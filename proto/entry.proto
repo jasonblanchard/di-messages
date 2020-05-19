@@ -24,7 +24,6 @@ message Principal {
 }
 
 message RequestContext {
-  string userId = 1 [deprecated=true];
   string trace_id = 2;
   Principal principal = 3;
 }
@@ -104,6 +103,7 @@ message ListEntriesRequest {
   message Payload {
     int32 first = 1;
     string after = 2;
+    string creator_id = 3;
   }
 
   RequestContext context = 1;
@@ -114,8 +114,8 @@ message ListEntriesResponse {
   message PageInfo {
     int32 total_count = 1;
     bool has_next_page = 2;
-    string startCursor = 3;
-    string endCursor = 4;
+    string start_cursor = 3;
+    string end_cursor = 4;
   }
 
   message Entity {
