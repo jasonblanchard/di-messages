@@ -1,5 +1,6 @@
-package messages.error;
 syntax = "proto3";
+package messages.error;
+option go_package = "di_messages/error";
 
 message Error {
   enum Code {

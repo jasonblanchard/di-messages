@@ -1,5 +1,6 @@
-package messages.entry;
 syntax = "proto3";
+package messages.entry;
+option go_package = "di_messages/entry";
 
 import "google/protobuf/timestamp.proto";
 
@@ -16,7 +17,7 @@ message Error {
 
 message Principal {
   enum Type {
-    USER = 1;
+    USER = 0;
   }
 
   Type type = 1;
