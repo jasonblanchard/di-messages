@@ -519,6 +519,7 @@ func (x *CreateEntryResponse) GetTraceId() string {
 	return ""
 }
 
+// TODO: Create a new event here that is more domain event-specific. di-entry can translate between that and this generic store update.
 type UpdateEntryRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -873,17 +874,16 @@ func (x *DeleteEntryResponse) GetTraceId() string {
 	return ""
 }
 
-type InfoEntry struct {
+type InfoEntryCreated struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Payload *InfoEntry_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
-	TraceId string             `protobuf:"bytes,3,opt,name=trace_id,json=traceId,proto3" json:"trace_id,omitempty"`
+	Payload *InfoEntryCreated_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 }
 
-func (x *InfoEntry) Reset() {
-	*x = InfoEntry{}
+func (x *InfoEntryCreated) Reset() {
+	*x = InfoEntryCreated{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_entry_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -891,13 +891,13 @@ func (x *InfoEntry) Reset() {
 	}
 }
 
-func (x *InfoEntry) String() string {
+func (x *InfoEntryCreated) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*InfoEntry) ProtoMessage() {}
+func (*InfoEntryCreated) ProtoMessage() {}
 
-func (x *InfoEntry) ProtoReflect() protoreflect.Message {
+func (x *InfoEntryCreated) ProtoReflect() protoreflect.Message {
 	mi := &file_entry_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -909,23 +909,110 @@ func (x *InfoEntry) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use InfoEntry.ProtoReflect.Descriptor instead.
-func (*InfoEntry) Descriptor() ([]byte, []int) {
+// Deprecated: Use InfoEntryCreated.ProtoReflect.Descriptor instead.
+func (*InfoEntryCreated) Descriptor() ([]byte, []int) {
 	return file_entry_proto_rawDescGZIP(), []int{13}
 }
 
-func (x *InfoEntry) GetPayload() *InfoEntry_Payload {
+func (x *InfoEntryCreated) GetPayload() *InfoEntryCreated_Payload {
 	if x != nil {
 		return x.Payload
 	}
 	return nil
 }
 
-func (x *InfoEntry) GetTraceId() string {
-	if x != nil {
-		return x.TraceId
+type InfoEntryUpdated struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Payload *InfoEntryUpdated_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
+}
+
+func (x *InfoEntryUpdated) Reset() {
+	*x = InfoEntryUpdated{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entry_proto_msgTypes[14]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
 	}
-	return ""
+}
+
+func (x *InfoEntryUpdated) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoEntryUpdated) ProtoMessage() {}
+
+func (x *InfoEntryUpdated) ProtoReflect() protoreflect.Message {
+	mi := &file_entry_proto_msgTypes[14]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoEntryUpdated.ProtoReflect.Descriptor instead.
+func (*InfoEntryUpdated) Descriptor() ([]byte, []int) {
+	return file_entry_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *InfoEntryUpdated) GetPayload() *InfoEntryUpdated_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
+}
+
+type InfoEntryDeleted struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Payload *InfoEntryDeleted_Payload `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
+}
+
+func (x *InfoEntryDeleted) Reset() {
+	*x = InfoEntryDeleted{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entry_proto_msgTypes[15]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InfoEntryDeleted) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoEntryDeleted) ProtoMessage() {}
+
+func (x *InfoEntryDeleted) ProtoReflect() protoreflect.Message {
+	mi := &file_entry_proto_msgTypes[15]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoEntryDeleted.ProtoReflect.Descriptor instead.
+func (*InfoEntryDeleted) Descriptor() ([]byte, []int) {
+	return file_entry_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *InfoEntryDeleted) GetPayload() *InfoEntryDeleted_Payload {
+	if x != nil {
+		return x.Payload
+	}
+	return nil
 }
 
 type GetEntryRequest_Payload struct {
@@ -939,7 +1026,7 @@ type GetEntryRequest_Payload struct {
 func (x *GetEntryRequest_Payload) Reset() {
 	*x = GetEntryRequest_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[14]
+		mi := &file_entry_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -952,7 +1039,7 @@ func (x *GetEntryRequest_Payload) String() string {
 func (*GetEntryRequest_Payload) ProtoMessage() {}
 
 func (x *GetEntryRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[14]
+	mi := &file_entry_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -990,7 +1077,7 @@ type GetEntryResponse_Payload struct {
 func (x *GetEntryResponse_Payload) Reset() {
 	*x = GetEntryResponse_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[15]
+		mi := &file_entry_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1003,7 +1090,7 @@ func (x *GetEntryResponse_Payload) String() string {
 func (*GetEntryResponse_Payload) ProtoMessage() {}
 
 func (x *GetEntryResponse_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[15]
+	mi := &file_entry_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1068,7 +1155,7 @@ type CreateEntryRequest_Payload struct {
 func (x *CreateEntryRequest_Payload) Reset() {
 	*x = CreateEntryRequest_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[16]
+		mi := &file_entry_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1081,7 +1168,7 @@ func (x *CreateEntryRequest_Payload) String() string {
 func (*CreateEntryRequest_Payload) ProtoMessage() {}
 
 func (x *CreateEntryRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[16]
+	mi := &file_entry_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1136,7 +1223,7 @@ type CreateEntryResponse_Payload struct {
 func (x *CreateEntryResponse_Payload) Reset() {
 	*x = CreateEntryResponse_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[17]
+		mi := &file_entry_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1149,7 +1236,7 @@ func (x *CreateEntryResponse_Payload) String() string {
 func (*CreateEntryResponse_Payload) ProtoMessage() {}
 
 func (x *CreateEntryResponse_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[17]
+	mi := &file_entry_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1184,7 +1271,7 @@ type UpdateEntryRequest_Payload struct {
 func (x *UpdateEntryRequest_Payload) Reset() {
 	*x = UpdateEntryRequest_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[18]
+		mi := &file_entry_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1197,7 +1284,7 @@ func (x *UpdateEntryRequest_Payload) String() string {
 func (*UpdateEntryRequest_Payload) ProtoMessage() {}
 
 func (x *UpdateEntryRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[18]
+	mi := &file_entry_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1331,7 @@ type UpdateEntryResponse_Payload struct {
 func (x *UpdateEntryResponse_Payload) Reset() {
 	*x = UpdateEntryResponse_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[19]
+		mi := &file_entry_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1257,7 +1344,7 @@ func (x *UpdateEntryResponse_Payload) String() string {
 func (*UpdateEntryResponse_Payload) ProtoMessage() {}
 
 func (x *UpdateEntryResponse_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[19]
+	mi := &file_entry_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1321,7 +1408,7 @@ type ListEntriesRequest_Payload struct {
 func (x *ListEntriesRequest_Payload) Reset() {
 	*x = ListEntriesRequest_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[20]
+		mi := &file_entry_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1334,7 +1421,7 @@ func (x *ListEntriesRequest_Payload) String() string {
 func (*ListEntriesRequest_Payload) ProtoMessage() {}
 
 func (x *ListEntriesRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[20]
+	mi := &file_entry_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1385,7 +1472,7 @@ type ListEntriesResponse_PageInfo struct {
 func (x *ListEntriesResponse_PageInfo) Reset() {
 	*x = ListEntriesResponse_PageInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[21]
+		mi := &file_entry_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1398,7 +1485,7 @@ func (x *ListEntriesResponse_PageInfo) String() string {
 func (*ListEntriesResponse_PageInfo) ProtoMessage() {}
 
 func (x *ListEntriesResponse_PageInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[21]
+	mi := &file_entry_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1457,7 +1544,7 @@ type ListEntriesResponse_Entity struct {
 func (x *ListEntriesResponse_Entity) Reset() {
 	*x = ListEntriesResponse_Entity{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[22]
+		mi := &file_entry_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1470,7 +1557,7 @@ func (x *ListEntriesResponse_Entity) String() string {
 func (*ListEntriesResponse_Entity) ProtoMessage() {}
 
 func (x *ListEntriesResponse_Entity) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[22]
+	mi := &file_entry_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1532,7 +1619,7 @@ type DeleteEntryRequest_Payload struct {
 func (x *DeleteEntryRequest_Payload) Reset() {
 	*x = DeleteEntryRequest_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[23]
+		mi := &file_entry_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1545,7 +1632,7 @@ func (x *DeleteEntryRequest_Payload) String() string {
 func (*DeleteEntryRequest_Payload) ProtoMessage() {}
 
 func (x *DeleteEntryRequest_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[23]
+	mi := &file_entry_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1568,32 +1655,31 @@ func (x *DeleteEntryRequest_Payload) GetId() string {
 	return ""
 }
 
-type InfoEntry_Payload struct {
+type InfoEntryCreated_Payload struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id   string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Text string `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 }
 
-func (x *InfoEntry_Payload) Reset() {
-	*x = InfoEntry_Payload{}
+func (x *InfoEntryCreated_Payload) Reset() {
+	*x = InfoEntryCreated_Payload{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_entry_proto_msgTypes[24]
+		mi := &file_entry_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *InfoEntry_Payload) String() string {
+func (x *InfoEntryCreated_Payload) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*InfoEntry_Payload) ProtoMessage() {}
+func (*InfoEntryCreated_Payload) ProtoMessage() {}
 
-func (x *InfoEntry_Payload) ProtoReflect() protoreflect.Message {
-	mi := &file_entry_proto_msgTypes[24]
+func (x *InfoEntryCreated_Payload) ProtoReflect() protoreflect.Message {
+	mi := &file_entry_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1604,21 +1690,140 @@ func (x *InfoEntry_Payload) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use InfoEntry_Payload.ProtoReflect.Descriptor instead.
-func (*InfoEntry_Payload) Descriptor() ([]byte, []int) {
+// Deprecated: Use InfoEntryCreated_Payload.ProtoReflect.Descriptor instead.
+func (*InfoEntryCreated_Payload) Descriptor() ([]byte, []int) {
 	return file_entry_proto_rawDescGZIP(), []int{13, 0}
 }
 
-func (x *InfoEntry_Payload) GetId() string {
+func (x *InfoEntryCreated_Payload) GetId() string {
 	if x != nil {
 		return x.Id
 	}
 	return ""
 }
 
-func (x *InfoEntry_Payload) GetText() string {
+type InfoEntryUpdated_Payload struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id        string               `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Text      string               `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
+	CreatorId string               `protobuf:"bytes,3,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
+	CreatedAt *timestamp.Timestamp `protobuf:"bytes,4,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt *timestamp.Timestamp `protobuf:"bytes,5,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+}
+
+func (x *InfoEntryUpdated_Payload) Reset() {
+	*x = InfoEntryUpdated_Payload{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entry_proto_msgTypes[27]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InfoEntryUpdated_Payload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoEntryUpdated_Payload) ProtoMessage() {}
+
+func (x *InfoEntryUpdated_Payload) ProtoReflect() protoreflect.Message {
+	mi := &file_entry_proto_msgTypes[27]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoEntryUpdated_Payload.ProtoReflect.Descriptor instead.
+func (*InfoEntryUpdated_Payload) Descriptor() ([]byte, []int) {
+	return file_entry_proto_rawDescGZIP(), []int{14, 0}
+}
+
+func (x *InfoEntryUpdated_Payload) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *InfoEntryUpdated_Payload) GetText() string {
 	if x != nil {
 		return x.Text
+	}
+	return ""
+}
+
+func (x *InfoEntryUpdated_Payload) GetCreatorId() string {
+	if x != nil {
+		return x.CreatorId
+	}
+	return ""
+}
+
+func (x *InfoEntryUpdated_Payload) GetCreatedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *InfoEntryUpdated_Payload) GetUpdatedAt() *timestamp.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type InfoEntryDeleted_Payload struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+}
+
+func (x *InfoEntryDeleted_Payload) Reset() {
+	*x = InfoEntryDeleted_Payload{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_entry_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *InfoEntryDeleted_Payload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*InfoEntryDeleted_Payload) ProtoMessage() {}
+
+func (x *InfoEntryDeleted_Payload) ProtoReflect() protoreflect.Message {
+	mi := &file_entry_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use InfoEntryDeleted_Payload.ProtoReflect.Descriptor instead.
+func (*InfoEntryDeleted_Payload) Descriptor() ([]byte, []int) {
+	return file_entry_proto_rawDescGZIP(), []int{15, 0}
+}
+
+func (x *InfoEntryDeleted_Payload) GetId() string {
+	if x != nil {
+		return x.Id
 	}
 	return ""
 }
@@ -1821,18 +2026,40 @@ var file_entry_proto_rawDesc = []byte{
 	0x73, 0x2e, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x52, 0x05, 0x65,
 	0x72, 0x72, 0x6f, 0x72, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x72, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64,
 	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x72, 0x61, 0x63, 0x65, 0x49, 0x64, 0x22,
-	0x92, 0x01, 0x0a, 0x09, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x3b, 0x0a,
-	0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x21,
-	0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x2e,
-	0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x2e, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61,
-	0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x74, 0x72,
-	0x61, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x72,
-	0x61, 0x63, 0x65, 0x49, 0x64, 0x1a, 0x2d, 0x0a, 0x07, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64,
-	0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x74, 0x65, 0x78, 0x74, 0x42, 0x13, 0x5a, 0x11, 0x64, 0x69, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61,
-	0x67, 0x65, 0x73, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x71, 0x0a, 0x10, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x43, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x12, 0x42, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73, 0x2e,
+	0x65, 0x6e, 0x74, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x43,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x2e, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x52, 0x07,
+	0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0x19, 0x0a, 0x07, 0x50, 0x61, 0x79, 0x6c, 0x6f,
+	0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
+	0x69, 0x64, 0x22, 0x9b, 0x02, 0x0a, 0x10, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x12, 0x42, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f,
+	0x61, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61,
+	0x67, 0x65, 0x73, 0x2e, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e,
+	0x74, 0x72, 0x79, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x2e, 0x50, 0x61, 0x79, 0x6c, 0x6f,
+	0x61, 0x64, 0x52, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0xc2, 0x01, 0x0a, 0x07,
+	0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x65, 0x78, 0x74, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x63,
+	0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x6f, 0x72, 0x49, 0x64, 0x12, 0x39, 0x0a, 0x0a, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a,
+	0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66,
+	0x2e, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61,
+	0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x39, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
+	0x5f, 0x61, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67,
+	0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x54, 0x69, 0x6d, 0x65,
+	0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74,
+	0x22, 0x71, 0x0a, 0x10, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x44, 0x65, 0x6c,
+	0x65, 0x74, 0x65, 0x64, 0x12, 0x42, 0x0a, 0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x28, 0x2e, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x73,
+	0x2e, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x2e, 0x49, 0x6e, 0x66, 0x6f, 0x45, 0x6e, 0x74, 0x72, 0x79,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x2e, 0x50, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x52,
+	0x07, 0x70, 0x61, 0x79, 0x6c, 0x6f, 0x61, 0x64, 0x1a, 0x19, 0x0a, 0x07, 0x50, 0x61, 0x79, 0x6c,
+	0x6f, 0x61, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x02, 0x69, 0x64, 0x42, 0x13, 0x5a, 0x11, 0x64, 0x69, 0x5f, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67,
+	0x65, 0x73, 0x2f, 0x65, 0x6e, 0x74, 0x72, 0x79, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1848,7 +2075,7 @@ func file_entry_proto_rawDescGZIP() []byte {
 }
 
 var file_entry_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_entry_proto_msgTypes = make([]protoimpl.MessageInfo, 25)
+var file_entry_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_entry_proto_goTypes = []interface{}{
 	(Error_Code)(0),                      // 0: messages.entry.Error.Code
 	(Principal_Type)(0),                  // 1: messages.entry.Principal.Type
@@ -1865,58 +2092,66 @@ var file_entry_proto_goTypes = []interface{}{
 	(*ListEntriesResponse)(nil),          // 12: messages.entry.ListEntriesResponse
 	(*DeleteEntryRequest)(nil),           // 13: messages.entry.DeleteEntryRequest
 	(*DeleteEntryResponse)(nil),          // 14: messages.entry.DeleteEntryResponse
-	(*InfoEntry)(nil),                    // 15: messages.entry.InfoEntry
-	(*GetEntryRequest_Payload)(nil),      // 16: messages.entry.GetEntryRequest.Payload
-	(*GetEntryResponse_Payload)(nil),     // 17: messages.entry.GetEntryResponse.Payload
-	(*CreateEntryRequest_Payload)(nil),   // 18: messages.entry.CreateEntryRequest.Payload
-	(*CreateEntryResponse_Payload)(nil),  // 19: messages.entry.CreateEntryResponse.Payload
-	(*UpdateEntryRequest_Payload)(nil),   // 20: messages.entry.UpdateEntryRequest.Payload
-	(*UpdateEntryResponse_Payload)(nil),  // 21: messages.entry.UpdateEntryResponse.Payload
-	(*ListEntriesRequest_Payload)(nil),   // 22: messages.entry.ListEntriesRequest.Payload
-	(*ListEntriesResponse_PageInfo)(nil), // 23: messages.entry.ListEntriesResponse.PageInfo
-	(*ListEntriesResponse_Entity)(nil),   // 24: messages.entry.ListEntriesResponse.Entity
-	(*DeleteEntryRequest_Payload)(nil),   // 25: messages.entry.DeleteEntryRequest.Payload
-	(*InfoEntry_Payload)(nil),            // 26: messages.entry.InfoEntry.Payload
-	(*timestamp.Timestamp)(nil),          // 27: google.protobuf.Timestamp
+	(*InfoEntryCreated)(nil),             // 15: messages.entry.InfoEntryCreated
+	(*InfoEntryUpdated)(nil),             // 16: messages.entry.InfoEntryUpdated
+	(*InfoEntryDeleted)(nil),             // 17: messages.entry.InfoEntryDeleted
+	(*GetEntryRequest_Payload)(nil),      // 18: messages.entry.GetEntryRequest.Payload
+	(*GetEntryResponse_Payload)(nil),     // 19: messages.entry.GetEntryResponse.Payload
+	(*CreateEntryRequest_Payload)(nil),   // 20: messages.entry.CreateEntryRequest.Payload
+	(*CreateEntryResponse_Payload)(nil),  // 21: messages.entry.CreateEntryResponse.Payload
+	(*UpdateEntryRequest_Payload)(nil),   // 22: messages.entry.UpdateEntryRequest.Payload
+	(*UpdateEntryResponse_Payload)(nil),  // 23: messages.entry.UpdateEntryResponse.Payload
+	(*ListEntriesRequest_Payload)(nil),   // 24: messages.entry.ListEntriesRequest.Payload
+	(*ListEntriesResponse_PageInfo)(nil), // 25: messages.entry.ListEntriesResponse.PageInfo
+	(*ListEntriesResponse_Entity)(nil),   // 26: messages.entry.ListEntriesResponse.Entity
+	(*DeleteEntryRequest_Payload)(nil),   // 27: messages.entry.DeleteEntryRequest.Payload
+	(*InfoEntryCreated_Payload)(nil),     // 28: messages.entry.InfoEntryCreated.Payload
+	(*InfoEntryUpdated_Payload)(nil),     // 29: messages.entry.InfoEntryUpdated.Payload
+	(*InfoEntryDeleted_Payload)(nil),     // 30: messages.entry.InfoEntryDeleted.Payload
+	(*timestamp.Timestamp)(nil),          // 31: google.protobuf.Timestamp
 }
 var file_entry_proto_depIdxs = []int32{
 	0,  // 0: messages.entry.Error.code:type_name -> messages.entry.Error.Code
 	1,  // 1: messages.entry.Principal.type:type_name -> messages.entry.Principal.Type
 	3,  // 2: messages.entry.RequestContext.principal:type_name -> messages.entry.Principal
 	4,  // 3: messages.entry.GetEntryRequest.context:type_name -> messages.entry.RequestContext
-	16, // 4: messages.entry.GetEntryRequest.payload:type_name -> messages.entry.GetEntryRequest.Payload
-	17, // 5: messages.entry.GetEntryResponse.payload:type_name -> messages.entry.GetEntryResponse.Payload
+	18, // 4: messages.entry.GetEntryRequest.payload:type_name -> messages.entry.GetEntryRequest.Payload
+	19, // 5: messages.entry.GetEntryResponse.payload:type_name -> messages.entry.GetEntryResponse.Payload
 	2,  // 6: messages.entry.GetEntryResponse.error:type_name -> messages.entry.Error
 	4,  // 7: messages.entry.CreateEntryRequest.context:type_name -> messages.entry.RequestContext
-	18, // 8: messages.entry.CreateEntryRequest.payload:type_name -> messages.entry.CreateEntryRequest.Payload
-	19, // 9: messages.entry.CreateEntryResponse.payload:type_name -> messages.entry.CreateEntryResponse.Payload
+	20, // 8: messages.entry.CreateEntryRequest.payload:type_name -> messages.entry.CreateEntryRequest.Payload
+	21, // 9: messages.entry.CreateEntryResponse.payload:type_name -> messages.entry.CreateEntryResponse.Payload
 	2,  // 10: messages.entry.CreateEntryResponse.error:type_name -> messages.entry.Error
 	4,  // 11: messages.entry.UpdateEntryRequest.context:type_name -> messages.entry.RequestContext
-	20, // 12: messages.entry.UpdateEntryRequest.payload:type_name -> messages.entry.UpdateEntryRequest.Payload
-	21, // 13: messages.entry.UpdateEntryResponse.payload:type_name -> messages.entry.UpdateEntryResponse.Payload
+	22, // 12: messages.entry.UpdateEntryRequest.payload:type_name -> messages.entry.UpdateEntryRequest.Payload
+	23, // 13: messages.entry.UpdateEntryResponse.payload:type_name -> messages.entry.UpdateEntryResponse.Payload
 	2,  // 14: messages.entry.UpdateEntryResponse.error:type_name -> messages.entry.Error
 	4,  // 15: messages.entry.ListEntriesRequest.context:type_name -> messages.entry.RequestContext
-	22, // 16: messages.entry.ListEntriesRequest.payload:type_name -> messages.entry.ListEntriesRequest.Payload
-	24, // 17: messages.entry.ListEntriesResponse.payload:type_name -> messages.entry.ListEntriesResponse.Entity
+	24, // 16: messages.entry.ListEntriesRequest.payload:type_name -> messages.entry.ListEntriesRequest.Payload
+	26, // 17: messages.entry.ListEntriesResponse.payload:type_name -> messages.entry.ListEntriesResponse.Entity
 	2,  // 18: messages.entry.ListEntriesResponse.error:type_name -> messages.entry.Error
-	23, // 19: messages.entry.ListEntriesResponse.page_info:type_name -> messages.entry.ListEntriesResponse.PageInfo
+	25, // 19: messages.entry.ListEntriesResponse.page_info:type_name -> messages.entry.ListEntriesResponse.PageInfo
 	4,  // 20: messages.entry.DeleteEntryRequest.context:type_name -> messages.entry.RequestContext
-	25, // 21: messages.entry.DeleteEntryRequest.payload:type_name -> messages.entry.DeleteEntryRequest.Payload
+	27, // 21: messages.entry.DeleteEntryRequest.payload:type_name -> messages.entry.DeleteEntryRequest.Payload
 	2,  // 22: messages.entry.DeleteEntryResponse.error:type_name -> messages.entry.Error
-	26, // 23: messages.entry.InfoEntry.payload:type_name -> messages.entry.InfoEntry.Payload
-	27, // 24: messages.entry.GetEntryResponse.Payload.created_at:type_name -> google.protobuf.Timestamp
-	27, // 25: messages.entry.GetEntryResponse.Payload.updated_at:type_name -> google.protobuf.Timestamp
-	27, // 26: messages.entry.CreateEntryRequest.Payload.created_at:type_name -> google.protobuf.Timestamp
-	27, // 27: messages.entry.CreateEntryRequest.Payload.updated_at:type_name -> google.protobuf.Timestamp
-	27, // 28: messages.entry.UpdateEntryResponse.Payload.created_at:type_name -> google.protobuf.Timestamp
-	27, // 29: messages.entry.UpdateEntryResponse.Payload.updated_at:type_name -> google.protobuf.Timestamp
-	27, // 30: messages.entry.ListEntriesResponse.Entity.created_at:type_name -> google.protobuf.Timestamp
-	27, // 31: messages.entry.ListEntriesResponse.Entity.updated_at:type_name -> google.protobuf.Timestamp
-	32, // [32:32] is the sub-list for method output_type
-	32, // [32:32] is the sub-list for method input_type
-	32, // [32:32] is the sub-list for extension type_name
-	32, // [32:32] is the sub-list for extension extendee
-	0,  // [0:32] is the sub-list for field type_name
+	28, // 23: messages.entry.InfoEntryCreated.payload:type_name -> messages.entry.InfoEntryCreated.Payload
+	29, // 24: messages.entry.InfoEntryUpdated.payload:type_name -> messages.entry.InfoEntryUpdated.Payload
+	30, // 25: messages.entry.InfoEntryDeleted.payload:type_name -> messages.entry.InfoEntryDeleted.Payload
+	31, // 26: messages.entry.GetEntryResponse.Payload.created_at:type_name -> google.protobuf.Timestamp
+	31, // 27: messages.entry.GetEntryResponse.Payload.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 28: messages.entry.CreateEntryRequest.Payload.created_at:type_name -> google.protobuf.Timestamp
+	31, // 29: messages.entry.CreateEntryRequest.Payload.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 30: messages.entry.UpdateEntryResponse.Payload.created_at:type_name -> google.protobuf.Timestamp
+	31, // 31: messages.entry.UpdateEntryResponse.Payload.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 32: messages.entry.ListEntriesResponse.Entity.created_at:type_name -> google.protobuf.Timestamp
+	31, // 33: messages.entry.ListEntriesResponse.Entity.updated_at:type_name -> google.protobuf.Timestamp
+	31, // 34: messages.entry.InfoEntryUpdated.Payload.created_at:type_name -> google.protobuf.Timestamp
+	31, // 35: messages.entry.InfoEntryUpdated.Payload.updated_at:type_name -> google.protobuf.Timestamp
+	36, // [36:36] is the sub-list for method output_type
+	36, // [36:36] is the sub-list for method input_type
+	36, // [36:36] is the sub-list for extension type_name
+	36, // [36:36] is the sub-list for extension extendee
+	0,  // [0:36] is the sub-list for field type_name
 }
 
 func init() { file_entry_proto_init() }
@@ -2082,7 +2317,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InfoEntry); i {
+			switch v := v.(*InfoEntryCreated); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2094,7 +2329,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetEntryRequest_Payload); i {
+			switch v := v.(*InfoEntryUpdated); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2106,7 +2341,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GetEntryResponse_Payload); i {
+			switch v := v.(*InfoEntryDeleted); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2118,7 +2353,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateEntryRequest_Payload); i {
+			switch v := v.(*GetEntryRequest_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2130,7 +2365,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CreateEntryResponse_Payload); i {
+			switch v := v.(*GetEntryResponse_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2142,7 +2377,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateEntryRequest_Payload); i {
+			switch v := v.(*CreateEntryRequest_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2154,7 +2389,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateEntryResponse_Payload); i {
+			switch v := v.(*CreateEntryResponse_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2166,7 +2401,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListEntriesRequest_Payload); i {
+			switch v := v.(*UpdateEntryRequest_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2178,7 +2413,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListEntriesResponse_PageInfo); i {
+			switch v := v.(*UpdateEntryResponse_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2190,7 +2425,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ListEntriesResponse_Entity); i {
+			switch v := v.(*ListEntriesRequest_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2202,7 +2437,7 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*DeleteEntryRequest_Payload); i {
+			switch v := v.(*ListEntriesResponse_PageInfo); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2214,7 +2449,55 @@ func file_entry_proto_init() {
 			}
 		}
 		file_entry_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*InfoEntry_Payload); i {
+			switch v := v.(*ListEntriesResponse_Entity); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_entry_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DeleteEntryRequest_Payload); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_entry_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InfoEntryCreated_Payload); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_entry_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InfoEntryUpdated_Payload); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_entry_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*InfoEntryDeleted_Payload); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2232,7 +2515,7 @@ func file_entry_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_entry_proto_rawDesc,
 			NumEnums:      2,
-			NumMessages:   25,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
