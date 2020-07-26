@@ -6903,6 +6903,2055 @@ $root.messages = (function() {
         return error;
     })();
 
+    messages.insights = (function() {
+
+        /**
+         * Namespace insights.
+         * @memberof messages
+         * @namespace
+         */
+        var insights = {};
+
+        insights.Error = (function() {
+
+            /**
+             * Properties of an Error.
+             * @memberof messages.insights
+             * @interface IError
+             * @property {messages.insights.Error.Code|null} [code] Error code
+             * @property {string|null} [message] Error message
+             */
+
+            /**
+             * Constructs a new Error.
+             * @memberof messages.insights
+             * @classdesc Represents an Error.
+             * @implements IError
+             * @constructor
+             * @param {messages.insights.IError=} [properties] Properties to set
+             */
+            function Error(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Error code.
+             * @member {messages.insights.Error.Code} code
+             * @memberof messages.insights.Error
+             * @instance
+             */
+            Error.prototype.code = 0;
+
+            /**
+             * Error message.
+             * @member {string} message
+             * @memberof messages.insights.Error
+             * @instance
+             */
+            Error.prototype.message = "";
+
+            /**
+             * Creates a new Error instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.Error
+             * @static
+             * @param {messages.insights.IError=} [properties] Properties to set
+             * @returns {messages.insights.Error} Error instance
+             */
+            Error.create = function create(properties) {
+                return new Error(properties);
+            };
+
+            /**
+             * Encodes the specified Error message. Does not implicitly {@link messages.insights.Error.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.Error
+             * @static
+             * @param {messages.insights.IError} message Error message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Error.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.code != null && message.hasOwnProperty("code"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
+                if (message.message != null && message.hasOwnProperty("message"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Error message, length delimited. Does not implicitly {@link messages.insights.Error.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.Error
+             * @static
+             * @param {messages.insights.IError} message Error message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Error.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an Error message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.Error
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.Error} Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Error.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.Error();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.code = reader.int32();
+                        break;
+                    case 2:
+                        message.message = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an Error message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.Error
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.Error} Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Error.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an Error message.
+             * @function verify
+             * @memberof messages.insights.Error
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Error.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.code != null && message.hasOwnProperty("code"))
+                    switch (message.code) {
+                    default:
+                        return "code: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
+                if (message.message != null && message.hasOwnProperty("message"))
+                    if (!$util.isString(message.message))
+                        return "message: string expected";
+                return null;
+            };
+
+            /**
+             * Creates an Error message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.Error
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.Error} Error
+             */
+            Error.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.Error)
+                    return object;
+                var message = new $root.messages.insights.Error();
+                switch (object.code) {
+                case "UNKNOWN":
+                case 0:
+                    message.code = 0;
+                    break;
+                case "NOT_FOUND":
+                case 1:
+                    message.code = 1;
+                    break;
+                case "VALIDATION_FAILED":
+                case 2:
+                    message.code = 2;
+                    break;
+                }
+                if (object.message != null)
+                    message.message = String(object.message);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an Error message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.Error
+             * @static
+             * @param {messages.insights.Error} message Error
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Error.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.code = options.enums === String ? "UNKNOWN" : 0;
+                    object.message = "";
+                }
+                if (message.code != null && message.hasOwnProperty("code"))
+                    object.code = options.enums === String ? $root.messages.insights.Error.Code[message.code] : message.code;
+                if (message.message != null && message.hasOwnProperty("message"))
+                    object.message = message.message;
+                return object;
+            };
+
+            /**
+             * Converts this Error to JSON.
+             * @function toJSON
+             * @memberof messages.insights.Error
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Error.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Code enum.
+             * @name messages.insights.Error.Code
+             * @enum {string}
+             * @property {number} UNKNOWN=0 UNKNOWN value
+             * @property {number} NOT_FOUND=1 NOT_FOUND value
+             * @property {number} VALIDATION_FAILED=2 VALIDATION_FAILED value
+             */
+            Error.Code = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "UNKNOWN"] = 0;
+                values[valuesById[1] = "NOT_FOUND"] = 1;
+                values[valuesById[2] = "VALIDATION_FAILED"] = 2;
+                return values;
+            })();
+
+            return Error;
+        })();
+
+        insights.Principal = (function() {
+
+            /**
+             * Properties of a Principal.
+             * @memberof messages.insights
+             * @interface IPrincipal
+             * @property {messages.insights.Principal.Type|null} [type] Principal type
+             * @property {string|null} [id] Principal id
+             */
+
+            /**
+             * Constructs a new Principal.
+             * @memberof messages.insights
+             * @classdesc Represents a Principal.
+             * @implements IPrincipal
+             * @constructor
+             * @param {messages.insights.IPrincipal=} [properties] Properties to set
+             */
+            function Principal(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * Principal type.
+             * @member {messages.insights.Principal.Type} type
+             * @memberof messages.insights.Principal
+             * @instance
+             */
+            Principal.prototype.type = 0;
+
+            /**
+             * Principal id.
+             * @member {string} id
+             * @memberof messages.insights.Principal
+             * @instance
+             */
+            Principal.prototype.id = "";
+
+            /**
+             * Creates a new Principal instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {messages.insights.IPrincipal=} [properties] Properties to set
+             * @returns {messages.insights.Principal} Principal instance
+             */
+            Principal.create = function create(properties) {
+                return new Principal(properties);
+            };
+
+            /**
+             * Encodes the specified Principal message. Does not implicitly {@link messages.insights.Principal.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {messages.insights.IPrincipal} message Principal message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Principal.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.type != null && message.hasOwnProperty("type"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.type);
+                if (message.id != null && message.hasOwnProperty("id"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.id);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified Principal message, length delimited. Does not implicitly {@link messages.insights.Principal.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {messages.insights.IPrincipal} message Principal message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            Principal.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a Principal message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.Principal} Principal
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Principal.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.Principal();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.type = reader.int32();
+                        break;
+                    case 2:
+                        message.id = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a Principal message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.Principal} Principal
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            Principal.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a Principal message.
+             * @function verify
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            Principal.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.type != null && message.hasOwnProperty("type"))
+                    switch (message.type) {
+                    default:
+                        return "type: enum value expected";
+                    case 0:
+                        break;
+                    }
+                if (message.id != null && message.hasOwnProperty("id"))
+                    if (!$util.isString(message.id))
+                        return "id: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a Principal message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.Principal} Principal
+             */
+            Principal.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.Principal)
+                    return object;
+                var message = new $root.messages.insights.Principal();
+                switch (object.type) {
+                case "USER":
+                case 0:
+                    message.type = 0;
+                    break;
+                }
+                if (object.id != null)
+                    message.id = String(object.id);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a Principal message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.Principal
+             * @static
+             * @param {messages.insights.Principal} message Principal
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            Principal.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.type = options.enums === String ? "USER" : 0;
+                    object.id = "";
+                }
+                if (message.type != null && message.hasOwnProperty("type"))
+                    object.type = options.enums === String ? $root.messages.insights.Principal.Type[message.type] : message.type;
+                if (message.id != null && message.hasOwnProperty("id"))
+                    object.id = message.id;
+                return object;
+            };
+
+            /**
+             * Converts this Principal to JSON.
+             * @function toJSON
+             * @memberof messages.insights.Principal
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            Principal.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            /**
+             * Type enum.
+             * @name messages.insights.Principal.Type
+             * @enum {string}
+             * @property {number} USER=0 USER value
+             */
+            Principal.Type = (function() {
+                var valuesById = {}, values = Object.create(valuesById);
+                values[valuesById[0] = "USER"] = 0;
+                return values;
+            })();
+
+            return Principal;
+        })();
+
+        insights.RequestContext = (function() {
+
+            /**
+             * Properties of a RequestContext.
+             * @memberof messages.insights
+             * @interface IRequestContext
+             * @property {string|null} [traceId] RequestContext traceId
+             * @property {messages.insights.IPrincipal|null} [principal] RequestContext principal
+             */
+
+            /**
+             * Constructs a new RequestContext.
+             * @memberof messages.insights
+             * @classdesc Represents a RequestContext.
+             * @implements IRequestContext
+             * @constructor
+             * @param {messages.insights.IRequestContext=} [properties] Properties to set
+             */
+            function RequestContext(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * RequestContext traceId.
+             * @member {string} traceId
+             * @memberof messages.insights.RequestContext
+             * @instance
+             */
+            RequestContext.prototype.traceId = "";
+
+            /**
+             * RequestContext principal.
+             * @member {messages.insights.IPrincipal|null|undefined} principal
+             * @memberof messages.insights.RequestContext
+             * @instance
+             */
+            RequestContext.prototype.principal = null;
+
+            /**
+             * Creates a new RequestContext instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {messages.insights.IRequestContext=} [properties] Properties to set
+             * @returns {messages.insights.RequestContext} RequestContext instance
+             */
+            RequestContext.create = function create(properties) {
+                return new RequestContext(properties);
+            };
+
+            /**
+             * Encodes the specified RequestContext message. Does not implicitly {@link messages.insights.RequestContext.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {messages.insights.IRequestContext} message RequestContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RequestContext.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.traceId);
+                if (message.principal != null && message.hasOwnProperty("principal"))
+                    $root.messages.insights.Principal.encode(message.principal, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified RequestContext message, length delimited. Does not implicitly {@link messages.insights.RequestContext.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {messages.insights.IRequestContext} message RequestContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            RequestContext.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a RequestContext message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.RequestContext} RequestContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RequestContext.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.RequestContext();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 2:
+                        message.traceId = reader.string();
+                        break;
+                    case 3:
+                        message.principal = $root.messages.insights.Principal.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a RequestContext message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.RequestContext} RequestContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            RequestContext.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a RequestContext message.
+             * @function verify
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            RequestContext.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    if (!$util.isString(message.traceId))
+                        return "traceId: string expected";
+                if (message.principal != null && message.hasOwnProperty("principal")) {
+                    var error = $root.messages.insights.Principal.verify(message.principal);
+                    if (error)
+                        return "principal." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a RequestContext message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.RequestContext} RequestContext
+             */
+            RequestContext.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.RequestContext)
+                    return object;
+                var message = new $root.messages.insights.RequestContext();
+                if (object.traceId != null)
+                    message.traceId = String(object.traceId);
+                if (object.principal != null) {
+                    if (typeof object.principal !== "object")
+                        throw TypeError(".messages.insights.RequestContext.principal: object expected");
+                    message.principal = $root.messages.insights.Principal.fromObject(object.principal);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a RequestContext message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.RequestContext
+             * @static
+             * @param {messages.insights.RequestContext} message RequestContext
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            RequestContext.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.traceId = "";
+                    object.principal = null;
+                }
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    object.traceId = message.traceId;
+                if (message.principal != null && message.hasOwnProperty("principal"))
+                    object.principal = $root.messages.insights.Principal.toObject(message.principal, options);
+                return object;
+            };
+
+            /**
+             * Converts this RequestContext to JSON.
+             * @function toJSON
+             * @memberof messages.insights.RequestContext
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            RequestContext.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return RequestContext;
+        })();
+
+        insights.IncrementDailyCounter = (function() {
+
+            /**
+             * Properties of an IncrementDailyCounter.
+             * @memberof messages.insights
+             * @interface IIncrementDailyCounter
+             * @property {messages.insights.IRequestContext|null} [context] IncrementDailyCounter context
+             * @property {messages.insights.IncrementDailyCounter.IPayload|null} [payload] IncrementDailyCounter payload
+             */
+
+            /**
+             * Constructs a new IncrementDailyCounter.
+             * @memberof messages.insights
+             * @classdesc Represents an IncrementDailyCounter.
+             * @implements IIncrementDailyCounter
+             * @constructor
+             * @param {messages.insights.IIncrementDailyCounter=} [properties] Properties to set
+             */
+            function IncrementDailyCounter(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * IncrementDailyCounter context.
+             * @member {messages.insights.IRequestContext|null|undefined} context
+             * @memberof messages.insights.IncrementDailyCounter
+             * @instance
+             */
+            IncrementDailyCounter.prototype.context = null;
+
+            /**
+             * IncrementDailyCounter payload.
+             * @member {messages.insights.IncrementDailyCounter.IPayload|null|undefined} payload
+             * @memberof messages.insights.IncrementDailyCounter
+             * @instance
+             */
+            IncrementDailyCounter.prototype.payload = null;
+
+            /**
+             * Creates a new IncrementDailyCounter instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {messages.insights.IIncrementDailyCounter=} [properties] Properties to set
+             * @returns {messages.insights.IncrementDailyCounter} IncrementDailyCounter instance
+             */
+            IncrementDailyCounter.create = function create(properties) {
+                return new IncrementDailyCounter(properties);
+            };
+
+            /**
+             * Encodes the specified IncrementDailyCounter message. Does not implicitly {@link messages.insights.IncrementDailyCounter.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {messages.insights.IIncrementDailyCounter} message IncrementDailyCounter message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IncrementDailyCounter.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.insights.RequestContext.encode(message.context, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    $root.messages.insights.IncrementDailyCounter.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified IncrementDailyCounter message, length delimited. Does not implicitly {@link messages.insights.IncrementDailyCounter.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {messages.insights.IIncrementDailyCounter} message IncrementDailyCounter message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            IncrementDailyCounter.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an IncrementDailyCounter message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.IncrementDailyCounter} IncrementDailyCounter
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IncrementDailyCounter.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.IncrementDailyCounter();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.context = $root.messages.insights.RequestContext.decode(reader, reader.uint32());
+                        break;
+                    case 2:
+                        message.payload = $root.messages.insights.IncrementDailyCounter.Payload.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an IncrementDailyCounter message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.IncrementDailyCounter} IncrementDailyCounter
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            IncrementDailyCounter.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an IncrementDailyCounter message.
+             * @function verify
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            IncrementDailyCounter.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.insights.RequestContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
+                if (message.payload != null && message.hasOwnProperty("payload")) {
+                    var error = $root.messages.insights.IncrementDailyCounter.Payload.verify(message.payload);
+                    if (error)
+                        return "payload." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates an IncrementDailyCounter message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.IncrementDailyCounter} IncrementDailyCounter
+             */
+            IncrementDailyCounter.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.IncrementDailyCounter)
+                    return object;
+                var message = new $root.messages.insights.IncrementDailyCounter();
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.insights.IncrementDailyCounter.context: object expected");
+                    message.context = $root.messages.insights.RequestContext.fromObject(object.context);
+                }
+                if (object.payload != null) {
+                    if (typeof object.payload !== "object")
+                        throw TypeError(".messages.insights.IncrementDailyCounter.payload: object expected");
+                    message.payload = $root.messages.insights.IncrementDailyCounter.Payload.fromObject(object.payload);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an IncrementDailyCounter message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.IncrementDailyCounter
+             * @static
+             * @param {messages.insights.IncrementDailyCounter} message IncrementDailyCounter
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            IncrementDailyCounter.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.context = null;
+                    object.payload = null;
+                }
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.insights.RequestContext.toObject(message.context, options);
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    object.payload = $root.messages.insights.IncrementDailyCounter.Payload.toObject(message.payload, options);
+                return object;
+            };
+
+            /**
+             * Converts this IncrementDailyCounter to JSON.
+             * @function toJSON
+             * @memberof messages.insights.IncrementDailyCounter
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            IncrementDailyCounter.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            IncrementDailyCounter.Payload = (function() {
+
+                /**
+                 * Properties of a Payload.
+                 * @memberof messages.insights.IncrementDailyCounter
+                 * @interface IPayload
+                 * @property {google.protobuf.ITimestamp|null} [day] Payload day
+                 * @property {string|null} [creatorId] Payload creatorId
+                 */
+
+                /**
+                 * Constructs a new Payload.
+                 * @memberof messages.insights.IncrementDailyCounter
+                 * @classdesc Represents a Payload.
+                 * @implements IPayload
+                 * @constructor
+                 * @param {messages.insights.IncrementDailyCounter.IPayload=} [properties] Properties to set
+                 */
+                function Payload(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * Payload day.
+                 * @member {google.protobuf.ITimestamp|null|undefined} day
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @instance
+                 */
+                Payload.prototype.day = null;
+
+                /**
+                 * Payload creatorId.
+                 * @member {string} creatorId
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @instance
+                 */
+                Payload.prototype.creatorId = "";
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @function create
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {messages.insights.IncrementDailyCounter.IPayload=} [properties] Properties to set
+                 * @returns {messages.insights.IncrementDailyCounter.Payload} Payload instance
+                 */
+                Payload.create = function create(properties) {
+                    return new Payload(properties);
+                };
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.insights.IncrementDailyCounter.Payload.verify|verify} messages.
+                 * @function encode
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {messages.insights.IncrementDailyCounter.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.day != null && message.hasOwnProperty("day"))
+                        $root.google.protobuf.Timestamp.encode(message.day, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.creatorId);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.insights.IncrementDailyCounter.Payload.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {messages.insights.IncrementDailyCounter.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {messages.insights.IncrementDailyCounter.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.IncrementDailyCounter.Payload();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.day = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            break;
+                        case 2:
+                            message.creatorId = reader.string();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {messages.insights.IncrementDailyCounter.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a Payload message.
+                 * @function verify
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Payload.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.day != null && message.hasOwnProperty("day")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.day);
+                        if (error)
+                            return "day." + error;
+                    }
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        if (!$util.isString(message.creatorId))
+                            return "creatorId: string expected";
+                    return null;
+                };
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {messages.insights.IncrementDailyCounter.Payload} Payload
+                 */
+                Payload.fromObject = function fromObject(object) {
+                    if (object instanceof $root.messages.insights.IncrementDailyCounter.Payload)
+                        return object;
+                    var message = new $root.messages.insights.IncrementDailyCounter.Payload();
+                    if (object.day != null) {
+                        if (typeof object.day !== "object")
+                            throw TypeError(".messages.insights.IncrementDailyCounter.Payload.day: object expected");
+                        message.day = $root.google.protobuf.Timestamp.fromObject(object.day);
+                    }
+                    if (object.creatorId != null)
+                        message.creatorId = String(object.creatorId);
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @static
+                 * @param {messages.insights.IncrementDailyCounter.Payload} message Payload
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Payload.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        object.day = null;
+                        object.creatorId = "";
+                    }
+                    if (message.day != null && message.hasOwnProperty("day"))
+                        object.day = $root.google.protobuf.Timestamp.toObject(message.day, options);
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        object.creatorId = message.creatorId;
+                    return object;
+                };
+
+                /**
+                 * Converts this Payload to JSON.
+                 * @function toJSON
+                 * @memberof messages.insights.IncrementDailyCounter.Payload
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Payload.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                return Payload;
+            })();
+
+            return IncrementDailyCounter;
+        })();
+
+        insights.GetVelocityRequest = (function() {
+
+            /**
+             * Properties of a GetVelocityRequest.
+             * @memberof messages.insights
+             * @interface IGetVelocityRequest
+             * @property {messages.insights.IRequestContext|null} [context] GetVelocityRequest context
+             * @property {messages.insights.GetVelocityRequest.IPayload|null} [payload] GetVelocityRequest payload
+             */
+
+            /**
+             * Constructs a new GetVelocityRequest.
+             * @memberof messages.insights
+             * @classdesc Represents a GetVelocityRequest.
+             * @implements IGetVelocityRequest
+             * @constructor
+             * @param {messages.insights.IGetVelocityRequest=} [properties] Properties to set
+             */
+            function GetVelocityRequest(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * GetVelocityRequest context.
+             * @member {messages.insights.IRequestContext|null|undefined} context
+             * @memberof messages.insights.GetVelocityRequest
+             * @instance
+             */
+            GetVelocityRequest.prototype.context = null;
+
+            /**
+             * GetVelocityRequest payload.
+             * @member {messages.insights.GetVelocityRequest.IPayload|null|undefined} payload
+             * @memberof messages.insights.GetVelocityRequest
+             * @instance
+             */
+            GetVelocityRequest.prototype.payload = null;
+
+            /**
+             * Creates a new GetVelocityRequest instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {messages.insights.IGetVelocityRequest=} [properties] Properties to set
+             * @returns {messages.insights.GetVelocityRequest} GetVelocityRequest instance
+             */
+            GetVelocityRequest.create = function create(properties) {
+                return new GetVelocityRequest(properties);
+            };
+
+            /**
+             * Encodes the specified GetVelocityRequest message. Does not implicitly {@link messages.insights.GetVelocityRequest.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {messages.insights.IGetVelocityRequest} message GetVelocityRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetVelocityRequest.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.insights.RequestContext.encode(message.context, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    $root.messages.insights.GetVelocityRequest.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GetVelocityRequest message, length delimited. Does not implicitly {@link messages.insights.GetVelocityRequest.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {messages.insights.IGetVelocityRequest} message GetVelocityRequest message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetVelocityRequest.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a GetVelocityRequest message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.GetVelocityRequest} GetVelocityRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetVelocityRequest.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.GetVelocityRequest();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.context = $root.messages.insights.RequestContext.decode(reader, reader.uint32());
+                        break;
+                    case 2:
+                        message.payload = $root.messages.insights.GetVelocityRequest.Payload.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a GetVelocityRequest message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.GetVelocityRequest} GetVelocityRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetVelocityRequest.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GetVelocityRequest message.
+             * @function verify
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GetVelocityRequest.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.insights.RequestContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
+                if (message.payload != null && message.hasOwnProperty("payload")) {
+                    var error = $root.messages.insights.GetVelocityRequest.Payload.verify(message.payload);
+                    if (error)
+                        return "payload." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a GetVelocityRequest message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.GetVelocityRequest} GetVelocityRequest
+             */
+            GetVelocityRequest.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.GetVelocityRequest)
+                    return object;
+                var message = new $root.messages.insights.GetVelocityRequest();
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.insights.GetVelocityRequest.context: object expected");
+                    message.context = $root.messages.insights.RequestContext.fromObject(object.context);
+                }
+                if (object.payload != null) {
+                    if (typeof object.payload !== "object")
+                        throw TypeError(".messages.insights.GetVelocityRequest.payload: object expected");
+                    message.payload = $root.messages.insights.GetVelocityRequest.Payload.fromObject(object.payload);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GetVelocityRequest message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.GetVelocityRequest
+             * @static
+             * @param {messages.insights.GetVelocityRequest} message GetVelocityRequest
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GetVelocityRequest.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.context = null;
+                    object.payload = null;
+                }
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.insights.RequestContext.toObject(message.context, options);
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    object.payload = $root.messages.insights.GetVelocityRequest.Payload.toObject(message.payload, options);
+                return object;
+            };
+
+            /**
+             * Converts this GetVelocityRequest to JSON.
+             * @function toJSON
+             * @memberof messages.insights.GetVelocityRequest
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GetVelocityRequest.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            GetVelocityRequest.Payload = (function() {
+
+                /**
+                 * Properties of a Payload.
+                 * @memberof messages.insights.GetVelocityRequest
+                 * @interface IPayload
+                 * @property {google.protobuf.ITimestamp|null} [start] Payload start
+                 * @property {google.protobuf.ITimestamp|null} [end] Payload end
+                 * @property {string|null} [creatorId] Payload creatorId
+                 */
+
+                /**
+                 * Constructs a new Payload.
+                 * @memberof messages.insights.GetVelocityRequest
+                 * @classdesc Represents a Payload.
+                 * @implements IPayload
+                 * @constructor
+                 * @param {messages.insights.GetVelocityRequest.IPayload=} [properties] Properties to set
+                 */
+                function Payload(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * Payload start.
+                 * @member {google.protobuf.ITimestamp|null|undefined} start
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @instance
+                 */
+                Payload.prototype.start = null;
+
+                /**
+                 * Payload end.
+                 * @member {google.protobuf.ITimestamp|null|undefined} end
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @instance
+                 */
+                Payload.prototype.end = null;
+
+                /**
+                 * Payload creatorId.
+                 * @member {string} creatorId
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @instance
+                 */
+                Payload.prototype.creatorId = "";
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @function create
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {messages.insights.GetVelocityRequest.IPayload=} [properties] Properties to set
+                 * @returns {messages.insights.GetVelocityRequest.Payload} Payload instance
+                 */
+                Payload.create = function create(properties) {
+                    return new Payload(properties);
+                };
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.insights.GetVelocityRequest.Payload.verify|verify} messages.
+                 * @function encode
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {messages.insights.GetVelocityRequest.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.start != null && message.hasOwnProperty("start"))
+                        $root.google.protobuf.Timestamp.encode(message.start, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    if (message.end != null && message.hasOwnProperty("end"))
+                        $root.google.protobuf.Timestamp.encode(message.end, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.creatorId);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.insights.GetVelocityRequest.Payload.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {messages.insights.GetVelocityRequest.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {messages.insights.GetVelocityRequest.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.GetVelocityRequest.Payload();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.start = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            break;
+                        case 2:
+                            message.end = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            break;
+                        case 3:
+                            message.creatorId = reader.string();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {messages.insights.GetVelocityRequest.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a Payload message.
+                 * @function verify
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Payload.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.start != null && message.hasOwnProperty("start")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.start);
+                        if (error)
+                            return "start." + error;
+                    }
+                    if (message.end != null && message.hasOwnProperty("end")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.end);
+                        if (error)
+                            return "end." + error;
+                    }
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        if (!$util.isString(message.creatorId))
+                            return "creatorId: string expected";
+                    return null;
+                };
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {messages.insights.GetVelocityRequest.Payload} Payload
+                 */
+                Payload.fromObject = function fromObject(object) {
+                    if (object instanceof $root.messages.insights.GetVelocityRequest.Payload)
+                        return object;
+                    var message = new $root.messages.insights.GetVelocityRequest.Payload();
+                    if (object.start != null) {
+                        if (typeof object.start !== "object")
+                            throw TypeError(".messages.insights.GetVelocityRequest.Payload.start: object expected");
+                        message.start = $root.google.protobuf.Timestamp.fromObject(object.start);
+                    }
+                    if (object.end != null) {
+                        if (typeof object.end !== "object")
+                            throw TypeError(".messages.insights.GetVelocityRequest.Payload.end: object expected");
+                        message.end = $root.google.protobuf.Timestamp.fromObject(object.end);
+                    }
+                    if (object.creatorId != null)
+                        message.creatorId = String(object.creatorId);
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @static
+                 * @param {messages.insights.GetVelocityRequest.Payload} message Payload
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Payload.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        object.start = null;
+                        object.end = null;
+                        object.creatorId = "";
+                    }
+                    if (message.start != null && message.hasOwnProperty("start"))
+                        object.start = $root.google.protobuf.Timestamp.toObject(message.start, options);
+                    if (message.end != null && message.hasOwnProperty("end"))
+                        object.end = $root.google.protobuf.Timestamp.toObject(message.end, options);
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        object.creatorId = message.creatorId;
+                    return object;
+                };
+
+                /**
+                 * Converts this Payload to JSON.
+                 * @function toJSON
+                 * @memberof messages.insights.GetVelocityRequest.Payload
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Payload.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                return Payload;
+            })();
+
+            return GetVelocityRequest;
+        })();
+
+        insights.GetVelocityResponse = (function() {
+
+            /**
+             * Properties of a GetVelocityResponse.
+             * @memberof messages.insights
+             * @interface IGetVelocityResponse
+             * @property {Array.<messages.insights.GetVelocityResponse.IDailyVelocity>|null} [payload] GetVelocityResponse payload
+             * @property {messages.insights.IError|null} [error] GetVelocityResponse error
+             */
+
+            /**
+             * Constructs a new GetVelocityResponse.
+             * @memberof messages.insights
+             * @classdesc Represents a GetVelocityResponse.
+             * @implements IGetVelocityResponse
+             * @constructor
+             * @param {messages.insights.IGetVelocityResponse=} [properties] Properties to set
+             */
+            function GetVelocityResponse(properties) {
+                this.payload = [];
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * GetVelocityResponse payload.
+             * @member {Array.<messages.insights.GetVelocityResponse.IDailyVelocity>} payload
+             * @memberof messages.insights.GetVelocityResponse
+             * @instance
+             */
+            GetVelocityResponse.prototype.payload = $util.emptyArray;
+
+            /**
+             * GetVelocityResponse error.
+             * @member {messages.insights.IError|null|undefined} error
+             * @memberof messages.insights.GetVelocityResponse
+             * @instance
+             */
+            GetVelocityResponse.prototype.error = null;
+
+            /**
+             * Creates a new GetVelocityResponse instance using the specified properties.
+             * @function create
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {messages.insights.IGetVelocityResponse=} [properties] Properties to set
+             * @returns {messages.insights.GetVelocityResponse} GetVelocityResponse instance
+             */
+            GetVelocityResponse.create = function create(properties) {
+                return new GetVelocityResponse(properties);
+            };
+
+            /**
+             * Encodes the specified GetVelocityResponse message. Does not implicitly {@link messages.insights.GetVelocityResponse.verify|verify} messages.
+             * @function encode
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {messages.insights.IGetVelocityResponse} message GetVelocityResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetVelocityResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.payload != null && message.payload.length)
+                    for (var i = 0; i < message.payload.length; ++i)
+                        $root.messages.insights.GetVelocityResponse.DailyVelocity.encode(message.payload[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.error != null && message.hasOwnProperty("error"))
+                    $root.messages.insights.Error.encode(message.error, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified GetVelocityResponse message, length delimited. Does not implicitly {@link messages.insights.GetVelocityResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {messages.insights.IGetVelocityResponse} message GetVelocityResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            GetVelocityResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a GetVelocityResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.insights.GetVelocityResponse} GetVelocityResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetVelocityResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.GetVelocityResponse();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        if (!(message.payload && message.payload.length))
+                            message.payload = [];
+                        message.payload.push($root.messages.insights.GetVelocityResponse.DailyVelocity.decode(reader, reader.uint32()));
+                        break;
+                    case 2:
+                        message.error = $root.messages.insights.Error.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a GetVelocityResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.insights.GetVelocityResponse} GetVelocityResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            GetVelocityResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a GetVelocityResponse message.
+             * @function verify
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            GetVelocityResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.payload != null && message.hasOwnProperty("payload")) {
+                    if (!Array.isArray(message.payload))
+                        return "payload: array expected";
+                    for (var i = 0; i < message.payload.length; ++i) {
+                        var error = $root.messages.insights.GetVelocityResponse.DailyVelocity.verify(message.payload[i]);
+                        if (error)
+                            return "payload." + error;
+                    }
+                }
+                if (message.error != null && message.hasOwnProperty("error")) {
+                    var error = $root.messages.insights.Error.verify(message.error);
+                    if (error)
+                        return "error." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates a GetVelocityResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.insights.GetVelocityResponse} GetVelocityResponse
+             */
+            GetVelocityResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.insights.GetVelocityResponse)
+                    return object;
+                var message = new $root.messages.insights.GetVelocityResponse();
+                if (object.payload) {
+                    if (!Array.isArray(object.payload))
+                        throw TypeError(".messages.insights.GetVelocityResponse.payload: array expected");
+                    message.payload = [];
+                    for (var i = 0; i < object.payload.length; ++i) {
+                        if (typeof object.payload[i] !== "object")
+                            throw TypeError(".messages.insights.GetVelocityResponse.payload: object expected");
+                        message.payload[i] = $root.messages.insights.GetVelocityResponse.DailyVelocity.fromObject(object.payload[i]);
+                    }
+                }
+                if (object.error != null) {
+                    if (typeof object.error !== "object")
+                        throw TypeError(".messages.insights.GetVelocityResponse.error: object expected");
+                    message.error = $root.messages.insights.Error.fromObject(object.error);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a GetVelocityResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.insights.GetVelocityResponse
+             * @static
+             * @param {messages.insights.GetVelocityResponse} message GetVelocityResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            GetVelocityResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.arrays || options.defaults)
+                    object.payload = [];
+                if (options.defaults)
+                    object.error = null;
+                if (message.payload && message.payload.length) {
+                    object.payload = [];
+                    for (var j = 0; j < message.payload.length; ++j)
+                        object.payload[j] = $root.messages.insights.GetVelocityResponse.DailyVelocity.toObject(message.payload[j], options);
+                }
+                if (message.error != null && message.hasOwnProperty("error"))
+                    object.error = $root.messages.insights.Error.toObject(message.error, options);
+                return object;
+            };
+
+            /**
+             * Converts this GetVelocityResponse to JSON.
+             * @function toJSON
+             * @memberof messages.insights.GetVelocityResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            GetVelocityResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            GetVelocityResponse.DailyVelocity = (function() {
+
+                /**
+                 * Properties of a DailyVelocity.
+                 * @memberof messages.insights.GetVelocityResponse
+                 * @interface IDailyVelocity
+                 * @property {google.protobuf.ITimestamp|null} [day] DailyVelocity day
+                 * @property {number|null} [score] DailyVelocity score
+                 */
+
+                /**
+                 * Constructs a new DailyVelocity.
+                 * @memberof messages.insights.GetVelocityResponse
+                 * @classdesc Represents a DailyVelocity.
+                 * @implements IDailyVelocity
+                 * @constructor
+                 * @param {messages.insights.GetVelocityResponse.IDailyVelocity=} [properties] Properties to set
+                 */
+                function DailyVelocity(properties) {
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * DailyVelocity day.
+                 * @member {google.protobuf.ITimestamp|null|undefined} day
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @instance
+                 */
+                DailyVelocity.prototype.day = null;
+
+                /**
+                 * DailyVelocity score.
+                 * @member {number} score
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @instance
+                 */
+                DailyVelocity.prototype.score = 0;
+
+                /**
+                 * Creates a new DailyVelocity instance using the specified properties.
+                 * @function create
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {messages.insights.GetVelocityResponse.IDailyVelocity=} [properties] Properties to set
+                 * @returns {messages.insights.GetVelocityResponse.DailyVelocity} DailyVelocity instance
+                 */
+                DailyVelocity.create = function create(properties) {
+                    return new DailyVelocity(properties);
+                };
+
+                /**
+                 * Encodes the specified DailyVelocity message. Does not implicitly {@link messages.insights.GetVelocityResponse.DailyVelocity.verify|verify} messages.
+                 * @function encode
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {messages.insights.GetVelocityResponse.IDailyVelocity} message DailyVelocity message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                DailyVelocity.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.day != null && message.hasOwnProperty("day"))
+                        $root.google.protobuf.Timestamp.encode(message.day, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    if (message.score != null && message.hasOwnProperty("score"))
+                        writer.uint32(/* id 2, wireType 0 =*/16).int32(message.score);
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified DailyVelocity message, length delimited. Does not implicitly {@link messages.insights.GetVelocityResponse.DailyVelocity.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {messages.insights.GetVelocityResponse.IDailyVelocity} message DailyVelocity message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                DailyVelocity.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a DailyVelocity message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {messages.insights.GetVelocityResponse.DailyVelocity} DailyVelocity
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                DailyVelocity.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.insights.GetVelocityResponse.DailyVelocity();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            message.day = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            break;
+                        case 2:
+                            message.score = reader.int32();
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a DailyVelocity message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {messages.insights.GetVelocityResponse.DailyVelocity} DailyVelocity
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                DailyVelocity.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a DailyVelocity message.
+                 * @function verify
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                DailyVelocity.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.day != null && message.hasOwnProperty("day")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.day);
+                        if (error)
+                            return "day." + error;
+                    }
+                    if (message.score != null && message.hasOwnProperty("score"))
+                        if (!$util.isInteger(message.score))
+                            return "score: integer expected";
+                    return null;
+                };
+
+                /**
+                 * Creates a DailyVelocity message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {messages.insights.GetVelocityResponse.DailyVelocity} DailyVelocity
+                 */
+                DailyVelocity.fromObject = function fromObject(object) {
+                    if (object instanceof $root.messages.insights.GetVelocityResponse.DailyVelocity)
+                        return object;
+                    var message = new $root.messages.insights.GetVelocityResponse.DailyVelocity();
+                    if (object.day != null) {
+                        if (typeof object.day !== "object")
+                            throw TypeError(".messages.insights.GetVelocityResponse.DailyVelocity.day: object expected");
+                        message.day = $root.google.protobuf.Timestamp.fromObject(object.day);
+                    }
+                    if (object.score != null)
+                        message.score = object.score | 0;
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a DailyVelocity message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @static
+                 * @param {messages.insights.GetVelocityResponse.DailyVelocity} message DailyVelocity
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                DailyVelocity.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.defaults) {
+                        object.day = null;
+                        object.score = 0;
+                    }
+                    if (message.day != null && message.hasOwnProperty("day"))
+                        object.day = $root.google.protobuf.Timestamp.toObject(message.day, options);
+                    if (message.score != null && message.hasOwnProperty("score"))
+                        object.score = message.score;
+                    return object;
+                };
+
+                /**
+                 * Converts this DailyVelocity to JSON.
+                 * @function toJSON
+                 * @memberof messages.insights.GetVelocityResponse.DailyVelocity
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                DailyVelocity.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                return DailyVelocity;
+            })();
+
+            return GetVelocityResponse;
+        })();
+
+        return insights;
+    })();
+
     return messages;
 })();
 

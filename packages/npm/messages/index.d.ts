@@ -3035,6 +3035,907 @@ export namespace messages {
             }
         }
     }
+
+    /** Namespace insights. */
+    namespace insights {
+
+        /** Properties of an Error. */
+        interface IError {
+
+            /** Error code */
+            code?: (messages.insights.Error.Code|null);
+
+            /** Error message */
+            message?: (string|null);
+        }
+
+        /** Represents an Error. */
+        class Error implements IError {
+
+            /**
+             * Constructs a new Error.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IError);
+
+            /** Error code. */
+            public code: messages.insights.Error.Code;
+
+            /** Error message. */
+            public message: string;
+
+            /**
+             * Creates a new Error instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Error instance
+             */
+            public static create(properties?: messages.insights.IError): messages.insights.Error;
+
+            /**
+             * Encodes the specified Error message. Does not implicitly {@link messages.insights.Error.verify|verify} messages.
+             * @param message Error message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IError, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Error message, length delimited. Does not implicitly {@link messages.insights.Error.verify|verify} messages.
+             * @param message Error message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IError, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an Error message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.Error;
+
+            /**
+             * Decodes an Error message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Error
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.Error;
+
+            /**
+             * Verifies an Error message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an Error message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Error
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.Error;
+
+            /**
+             * Creates a plain object from an Error message. Also converts values to other types if specified.
+             * @param message Error
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.Error, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Error to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace Error {
+
+            /** Code enum. */
+            enum Code {
+                UNKNOWN = 0,
+                NOT_FOUND = 1,
+                VALIDATION_FAILED = 2
+            }
+        }
+
+        /** Properties of a Principal. */
+        interface IPrincipal {
+
+            /** Principal type */
+            type?: (messages.insights.Principal.Type|null);
+
+            /** Principal id */
+            id?: (string|null);
+        }
+
+        /** Represents a Principal. */
+        class Principal implements IPrincipal {
+
+            /**
+             * Constructs a new Principal.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IPrincipal);
+
+            /** Principal type. */
+            public type: messages.insights.Principal.Type;
+
+            /** Principal id. */
+            public id: string;
+
+            /**
+             * Creates a new Principal instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Principal instance
+             */
+            public static create(properties?: messages.insights.IPrincipal): messages.insights.Principal;
+
+            /**
+             * Encodes the specified Principal message. Does not implicitly {@link messages.insights.Principal.verify|verify} messages.
+             * @param message Principal message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Principal message, length delimited. Does not implicitly {@link messages.insights.Principal.verify|verify} messages.
+             * @param message Principal message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IPrincipal, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Principal message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Principal
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.Principal;
+
+            /**
+             * Decodes a Principal message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Principal
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.Principal;
+
+            /**
+             * Verifies a Principal message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Principal message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Principal
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.Principal;
+
+            /**
+             * Creates a plain object from a Principal message. Also converts values to other types if specified.
+             * @param message Principal
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.Principal, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Principal to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace Principal {
+
+            /** Type enum. */
+            enum Type {
+                USER = 0
+            }
+        }
+
+        /** Properties of a RequestContext. */
+        interface IRequestContext {
+
+            /** RequestContext traceId */
+            traceId?: (string|null);
+
+            /** RequestContext principal */
+            principal?: (messages.insights.IPrincipal|null);
+        }
+
+        /** Represents a RequestContext. */
+        class RequestContext implements IRequestContext {
+
+            /**
+             * Constructs a new RequestContext.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IRequestContext);
+
+            /** RequestContext traceId. */
+            public traceId: string;
+
+            /** RequestContext principal. */
+            public principal?: (messages.insights.IPrincipal|null);
+
+            /**
+             * Creates a new RequestContext instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns RequestContext instance
+             */
+            public static create(properties?: messages.insights.IRequestContext): messages.insights.RequestContext;
+
+            /**
+             * Encodes the specified RequestContext message. Does not implicitly {@link messages.insights.RequestContext.verify|verify} messages.
+             * @param message RequestContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IRequestContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified RequestContext message, length delimited. Does not implicitly {@link messages.insights.RequestContext.verify|verify} messages.
+             * @param message RequestContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IRequestContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a RequestContext message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns RequestContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.RequestContext;
+
+            /**
+             * Decodes a RequestContext message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns RequestContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.RequestContext;
+
+            /**
+             * Verifies a RequestContext message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a RequestContext message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns RequestContext
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.RequestContext;
+
+            /**
+             * Creates a plain object from a RequestContext message. Also converts values to other types if specified.
+             * @param message RequestContext
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.RequestContext, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this RequestContext to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of an IncrementDailyCounter. */
+        interface IIncrementDailyCounter {
+
+            /** IncrementDailyCounter context */
+            context?: (messages.insights.IRequestContext|null);
+
+            /** IncrementDailyCounter payload */
+            payload?: (messages.insights.IncrementDailyCounter.IPayload|null);
+        }
+
+        /** Represents an IncrementDailyCounter. */
+        class IncrementDailyCounter implements IIncrementDailyCounter {
+
+            /**
+             * Constructs a new IncrementDailyCounter.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IIncrementDailyCounter);
+
+            /** IncrementDailyCounter context. */
+            public context?: (messages.insights.IRequestContext|null);
+
+            /** IncrementDailyCounter payload. */
+            public payload?: (messages.insights.IncrementDailyCounter.IPayload|null);
+
+            /**
+             * Creates a new IncrementDailyCounter instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns IncrementDailyCounter instance
+             */
+            public static create(properties?: messages.insights.IIncrementDailyCounter): messages.insights.IncrementDailyCounter;
+
+            /**
+             * Encodes the specified IncrementDailyCounter message. Does not implicitly {@link messages.insights.IncrementDailyCounter.verify|verify} messages.
+             * @param message IncrementDailyCounter message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IIncrementDailyCounter, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified IncrementDailyCounter message, length delimited. Does not implicitly {@link messages.insights.IncrementDailyCounter.verify|verify} messages.
+             * @param message IncrementDailyCounter message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IIncrementDailyCounter, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an IncrementDailyCounter message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns IncrementDailyCounter
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.IncrementDailyCounter;
+
+            /**
+             * Decodes an IncrementDailyCounter message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns IncrementDailyCounter
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.IncrementDailyCounter;
+
+            /**
+             * Verifies an IncrementDailyCounter message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an IncrementDailyCounter message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns IncrementDailyCounter
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.IncrementDailyCounter;
+
+            /**
+             * Creates a plain object from an IncrementDailyCounter message. Also converts values to other types if specified.
+             * @param message IncrementDailyCounter
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.IncrementDailyCounter, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this IncrementDailyCounter to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace IncrementDailyCounter {
+
+            /** Properties of a Payload. */
+            interface IPayload {
+
+                /** Payload day */
+                day?: (google.protobuf.ITimestamp|null);
+
+                /** Payload creatorId */
+                creatorId?: (string|null);
+            }
+
+            /** Represents a Payload. */
+            class Payload implements IPayload {
+
+                /**
+                 * Constructs a new Payload.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: messages.insights.IncrementDailyCounter.IPayload);
+
+                /** Payload day. */
+                public day?: (google.protobuf.ITimestamp|null);
+
+                /** Payload creatorId. */
+                public creatorId: string;
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Payload instance
+                 */
+                public static create(properties?: messages.insights.IncrementDailyCounter.IPayload): messages.insights.IncrementDailyCounter.Payload;
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.insights.IncrementDailyCounter.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: messages.insights.IncrementDailyCounter.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.insights.IncrementDailyCounter.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: messages.insights.IncrementDailyCounter.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.IncrementDailyCounter.Payload;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.IncrementDailyCounter.Payload;
+
+                /**
+                 * Verifies a Payload message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Payload
+                 */
+                public static fromObject(object: { [k: string]: any }): messages.insights.IncrementDailyCounter.Payload;
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @param message Payload
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: messages.insights.IncrementDailyCounter.Payload, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Payload to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+        }
+
+        /** Properties of a GetVelocityRequest. */
+        interface IGetVelocityRequest {
+
+            /** GetVelocityRequest context */
+            context?: (messages.insights.IRequestContext|null);
+
+            /** GetVelocityRequest payload */
+            payload?: (messages.insights.GetVelocityRequest.IPayload|null);
+        }
+
+        /** Represents a GetVelocityRequest. */
+        class GetVelocityRequest implements IGetVelocityRequest {
+
+            /**
+             * Constructs a new GetVelocityRequest.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IGetVelocityRequest);
+
+            /** GetVelocityRequest context. */
+            public context?: (messages.insights.IRequestContext|null);
+
+            /** GetVelocityRequest payload. */
+            public payload?: (messages.insights.GetVelocityRequest.IPayload|null);
+
+            /**
+             * Creates a new GetVelocityRequest instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GetVelocityRequest instance
+             */
+            public static create(properties?: messages.insights.IGetVelocityRequest): messages.insights.GetVelocityRequest;
+
+            /**
+             * Encodes the specified GetVelocityRequest message. Does not implicitly {@link messages.insights.GetVelocityRequest.verify|verify} messages.
+             * @param message GetVelocityRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IGetVelocityRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GetVelocityRequest message, length delimited. Does not implicitly {@link messages.insights.GetVelocityRequest.verify|verify} messages.
+             * @param message GetVelocityRequest message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IGetVelocityRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GetVelocityRequest message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GetVelocityRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.GetVelocityRequest;
+
+            /**
+             * Decodes a GetVelocityRequest message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GetVelocityRequest
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.GetVelocityRequest;
+
+            /**
+             * Verifies a GetVelocityRequest message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GetVelocityRequest message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GetVelocityRequest
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.GetVelocityRequest;
+
+            /**
+             * Creates a plain object from a GetVelocityRequest message. Also converts values to other types if specified.
+             * @param message GetVelocityRequest
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.GetVelocityRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GetVelocityRequest to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace GetVelocityRequest {
+
+            /** Properties of a Payload. */
+            interface IPayload {
+
+                /** Payload start */
+                start?: (google.protobuf.ITimestamp|null);
+
+                /** Payload end */
+                end?: (google.protobuf.ITimestamp|null);
+
+                /** Payload creatorId */
+                creatorId?: (string|null);
+            }
+
+            /** Represents a Payload. */
+            class Payload implements IPayload {
+
+                /**
+                 * Constructs a new Payload.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: messages.insights.GetVelocityRequest.IPayload);
+
+                /** Payload start. */
+                public start?: (google.protobuf.ITimestamp|null);
+
+                /** Payload end. */
+                public end?: (google.protobuf.ITimestamp|null);
+
+                /** Payload creatorId. */
+                public creatorId: string;
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Payload instance
+                 */
+                public static create(properties?: messages.insights.GetVelocityRequest.IPayload): messages.insights.GetVelocityRequest.Payload;
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.insights.GetVelocityRequest.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: messages.insights.GetVelocityRequest.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.insights.GetVelocityRequest.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: messages.insights.GetVelocityRequest.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.GetVelocityRequest.Payload;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.GetVelocityRequest.Payload;
+
+                /**
+                 * Verifies a Payload message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Payload
+                 */
+                public static fromObject(object: { [k: string]: any }): messages.insights.GetVelocityRequest.Payload;
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @param message Payload
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: messages.insights.GetVelocityRequest.Payload, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Payload to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+        }
+
+        /** Properties of a GetVelocityResponse. */
+        interface IGetVelocityResponse {
+
+            /** GetVelocityResponse payload */
+            payload?: (messages.insights.GetVelocityResponse.IDailyVelocity[]|null);
+
+            /** GetVelocityResponse error */
+            error?: (messages.insights.IError|null);
+        }
+
+        /** Represents a GetVelocityResponse. */
+        class GetVelocityResponse implements IGetVelocityResponse {
+
+            /**
+             * Constructs a new GetVelocityResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.insights.IGetVelocityResponse);
+
+            /** GetVelocityResponse payload. */
+            public payload: messages.insights.GetVelocityResponse.IDailyVelocity[];
+
+            /** GetVelocityResponse error. */
+            public error?: (messages.insights.IError|null);
+
+            /**
+             * Creates a new GetVelocityResponse instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns GetVelocityResponse instance
+             */
+            public static create(properties?: messages.insights.IGetVelocityResponse): messages.insights.GetVelocityResponse;
+
+            /**
+             * Encodes the specified GetVelocityResponse message. Does not implicitly {@link messages.insights.GetVelocityResponse.verify|verify} messages.
+             * @param message GetVelocityResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.insights.IGetVelocityResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified GetVelocityResponse message, length delimited. Does not implicitly {@link messages.insights.GetVelocityResponse.verify|verify} messages.
+             * @param message GetVelocityResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.insights.IGetVelocityResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a GetVelocityResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns GetVelocityResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.GetVelocityResponse;
+
+            /**
+             * Decodes a GetVelocityResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns GetVelocityResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.GetVelocityResponse;
+
+            /**
+             * Verifies a GetVelocityResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a GetVelocityResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns GetVelocityResponse
+             */
+            public static fromObject(object: { [k: string]: any }): messages.insights.GetVelocityResponse;
+
+            /**
+             * Creates a plain object from a GetVelocityResponse message. Also converts values to other types if specified.
+             * @param message GetVelocityResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.insights.GetVelocityResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this GetVelocityResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        namespace GetVelocityResponse {
+
+            /** Properties of a DailyVelocity. */
+            interface IDailyVelocity {
+
+                /** DailyVelocity day */
+                day?: (google.protobuf.ITimestamp|null);
+
+                /** DailyVelocity score */
+                score?: (number|null);
+            }
+
+            /** Represents a DailyVelocity. */
+            class DailyVelocity implements IDailyVelocity {
+
+                /**
+                 * Constructs a new DailyVelocity.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: messages.insights.GetVelocityResponse.IDailyVelocity);
+
+                /** DailyVelocity day. */
+                public day?: (google.protobuf.ITimestamp|null);
+
+                /** DailyVelocity score. */
+                public score: number;
+
+                /**
+                 * Creates a new DailyVelocity instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns DailyVelocity instance
+                 */
+                public static create(properties?: messages.insights.GetVelocityResponse.IDailyVelocity): messages.insights.GetVelocityResponse.DailyVelocity;
+
+                /**
+                 * Encodes the specified DailyVelocity message. Does not implicitly {@link messages.insights.GetVelocityResponse.DailyVelocity.verify|verify} messages.
+                 * @param message DailyVelocity message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: messages.insights.GetVelocityResponse.IDailyVelocity, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified DailyVelocity message, length delimited. Does not implicitly {@link messages.insights.GetVelocityResponse.DailyVelocity.verify|verify} messages.
+                 * @param message DailyVelocity message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: messages.insights.GetVelocityResponse.IDailyVelocity, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a DailyVelocity message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns DailyVelocity
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.insights.GetVelocityResponse.DailyVelocity;
+
+                /**
+                 * Decodes a DailyVelocity message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns DailyVelocity
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.insights.GetVelocityResponse.DailyVelocity;
+
+                /**
+                 * Verifies a DailyVelocity message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a DailyVelocity message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns DailyVelocity
+                 */
+                public static fromObject(object: { [k: string]: any }): messages.insights.GetVelocityResponse.DailyVelocity;
+
+                /**
+                 * Creates a plain object from a DailyVelocity message. Also converts values to other types if specified.
+                 * @param message DailyVelocity
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: messages.insights.GetVelocityResponse.DailyVelocity, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this DailyVelocity to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+        }
+    }
 }
 
 /** Namespace google. */
