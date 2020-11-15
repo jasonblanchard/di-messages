@@ -7,9 +7,9 @@
 package notebook
 
 import (
-	status "di_messages/status"
 	proto "github.com/golang/protobuf/proto"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
+	status "github.com/jasonblanchard/di-messages/packages/go/di_messages/status"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
