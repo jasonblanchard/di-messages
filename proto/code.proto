@@ -16,7 +16,7 @@ syntax = "proto3";
 
 package google.rpc;
 
-option go_package = "github.com/jasonblanchard/di-messages/packages/go/messages/code";
+option go_package = "github.com/jasonblanchard/di-messages/packages/go/code";
 option java_multiple_files = true;
 option java_outer_classname = "CodeProto";
 option java_package = "com.google.rpc";
