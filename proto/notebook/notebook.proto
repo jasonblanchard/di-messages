@@ -1,9 +1,9 @@
 syntax = "proto3";
 package messages.notebook;
-option go_package = "github.com/jasonblanchard/di-messages/packages/go/notebook";
+option go_package = "github.com/jasonblanchard/di-messages/packages/go/messages/notebook";
 
 import "google/protobuf/timestamp.proto";
-import "status.proto";
+import "notebook/status.proto";
 
 message Error {
   enum Code {
