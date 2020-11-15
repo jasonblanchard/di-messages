@@ -11,6 +11,6 @@ build_js:
 	pbts -o ${NPM_DIRECTORY}/index.d.ts ${NPM_DIRECTORY}/index.js
 
 build_go:
-	protoc -I=proto --go_opt=paths=source_relative --go_out=./packages/go ${SRC}
+	protoc -I=proto --go_opt=paths=source_relative --go_out=./packages/go/messages ${SRC}
 
 build: build_go build_js
