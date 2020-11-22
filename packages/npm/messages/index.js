@@ -34,7 +34,7 @@ $root.messages = (function() {
              * @memberof messages.notebook
              * @interface INullableTimestamp
              * @property {google.protobuf.NullValue|null} ["null"] NullableTimestamp null
-             * @property {google.protobuf.ITimestamp|null} [data] NullableTimestamp data
+             * @property {google.protobuf.ITimestamp|null} [timestamp] NullableTimestamp timestamp
              */
 
             /**
@@ -61,24 +61,24 @@ $root.messages = (function() {
             NullableTimestamp.prototype["null"] = 0;
 
             /**
-             * NullableTimestamp data.
-             * @member {google.protobuf.ITimestamp|null|undefined} data
+             * NullableTimestamp timestamp.
+             * @member {google.protobuf.ITimestamp|null|undefined} timestamp
              * @memberof messages.notebook.NullableTimestamp
              * @instance
              */
-            NullableTimestamp.prototype.data = null;
+            NullableTimestamp.prototype.timestamp = null;
 
             // OneOf field names bound to virtual getters and setters
             var $oneOfFields;
 
             /**
-             * NullableTimestamp kind.
-             * @member {"null"|"data"|undefined} kind
+             * NullableTimestamp value.
+             * @member {"null"|"timestamp"|undefined} value
              * @memberof messages.notebook.NullableTimestamp
              * @instance
              */
-            Object.defineProperty(NullableTimestamp.prototype, "kind", {
-                get: $util.oneOfGetter($oneOfFields = ["null", "data"]),
+            Object.defineProperty(NullableTimestamp.prototype, "value", {
+                get: $util.oneOfGetter($oneOfFields = ["null", "timestamp"]),
                 set: $util.oneOfSetter($oneOfFields)
             });
 
@@ -108,8 +108,8 @@ $root.messages = (function() {
                     writer = $Writer.create();
                 if (message["null"] != null && message.hasOwnProperty("null"))
                     writer.uint32(/* id 1, wireType 0 =*/8).int32(message["null"]);
-                if (message.data != null && message.hasOwnProperty("data"))
-                    $root.google.protobuf.Timestamp.encode(message.data, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.timestamp != null && message.hasOwnProperty("timestamp"))
+                    $root.google.protobuf.Timestamp.encode(message.timestamp, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
@@ -148,7 +148,7 @@ $root.messages = (function() {
                         message["null"] = reader.int32();
                         break;
                     case 2:
-                        message.data = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                        message.timestamp = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -187,7 +187,7 @@ $root.messages = (function() {
                     return "object expected";
                 var properties = {};
                 if (message["null"] != null && message.hasOwnProperty("null")) {
-                    properties.kind = 1;
+                    properties.value = 1;
                     switch (message["null"]) {
                     default:
                         return "null: enum value expected";
@@ -195,14 +195,14 @@ $root.messages = (function() {
                         break;
                     }
                 }
-                if (message.data != null && message.hasOwnProperty("data")) {
-                    if (properties.kind === 1)
-                        return "kind: multiple values";
-                    properties.kind = 1;
+                if (message.timestamp != null && message.hasOwnProperty("timestamp")) {
+                    if (properties.value === 1)
+                        return "value: multiple values";
+                    properties.value = 1;
                     {
-                        var error = $root.google.protobuf.Timestamp.verify(message.data);
+                        var error = $root.google.protobuf.Timestamp.verify(message.timestamp);
                         if (error)
-                            return "data." + error;
+                            return "timestamp." + error;
                     }
                 }
                 return null;
@@ -226,10 +226,10 @@ $root.messages = (function() {
                     message["null"] = 0;
                     break;
                 }
-                if (object.data != null) {
-                    if (typeof object.data !== "object")
-                        throw TypeError(".messages.notebook.NullableTimestamp.data: object expected");
-                    message.data = $root.google.protobuf.Timestamp.fromObject(object.data);
+                if (object.timestamp != null) {
+                    if (typeof object.timestamp !== "object")
+                        throw TypeError(".messages.notebook.NullableTimestamp.timestamp: object expected");
+                    message.timestamp = $root.google.protobuf.Timestamp.fromObject(object.timestamp);
                 }
                 return message;
             };
@@ -250,12 +250,12 @@ $root.messages = (function() {
                 if (message["null"] != null && message.hasOwnProperty("null")) {
                     object["null"] = options.enums === String ? $root.google.protobuf.NullValue[message["null"]] : message["null"];
                     if (options.oneofs)
-                        object.kind = "null";
+                        object.value = "null";
                 }
-                if (message.data != null && message.hasOwnProperty("data")) {
-                    object.data = $root.google.protobuf.Timestamp.toObject(message.data, options);
+                if (message.timestamp != null && message.hasOwnProperty("timestamp")) {
+                    object.timestamp = $root.google.protobuf.Timestamp.toObject(message.timestamp, options);
                     if (options.oneofs)
-                        object.kind = "data";
+                        object.value = "timestamp";
                 }
                 return object;
             };

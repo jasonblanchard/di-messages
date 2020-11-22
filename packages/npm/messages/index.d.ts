@@ -11,8 +11,8 @@ export namespace messages {
             /** NullableTimestamp null */
             "null"?: (google.protobuf.NullValue|null);
 
-            /** NullableTimestamp data */
-            data?: (google.protobuf.ITimestamp|null);
+            /** NullableTimestamp timestamp */
+            timestamp?: (google.protobuf.ITimestamp|null);
         }
 
         /** Represents a NullableTimestamp. */
@@ -27,11 +27,11 @@ export namespace messages {
             /** NullableTimestamp null. */
             public null: google.protobuf.NullValue;
 
-            /** NullableTimestamp data. */
-            public data?: (google.protobuf.ITimestamp|null);
+            /** NullableTimestamp timestamp. */
+            public timestamp?: (google.protobuf.ITimestamp|null);
 
-            /** NullableTimestamp kind. */
-            public kind?: ("null"|"data");
+            /** NullableTimestamp value. */
+            public value?: ("null"|"timestamp");
 
             /**
              * Creates a new NullableTimestamp instance using the specified properties.
