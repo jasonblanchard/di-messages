@@ -7,9 +7,9 @@ import "google/protobuf/timestamp.proto";
 import "notebook/status.proto";
 
 message NullableTimestamp {
-  oneof kind {
+  oneof value {
     google.protobuf.NullValue null = 1;
-    google.protobuf.Timestamp data = 2;
+    google.protobuf.Timestamp timestamp = 2;
   }
 }
 
