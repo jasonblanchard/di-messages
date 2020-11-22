@@ -2,8 +2,16 @@ syntax = "proto3";
 package messages.notebook;
 option go_package = "github.com/jasonblanchard/di-messages/packages/go/messages/notebook";
 
+import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 import "notebook/status.proto";
+
+message NullableTimestamp {
+  oneof kind {
+    google.protobuf.NullValue null = 1;
+    google.protobuf.Timestamp data = 2;
+  }
+}
 
 message Error {
   enum Code {
@@ -45,7 +53,7 @@ message ReadEntryResponse {
     string text = 2;
     string creator_id = 3;
     google.protobuf.Timestamp created_at = 4;
-    google.protobuf.Timestamp updated_at = 5;
+    NullableTimestamp updated_at = 5;
   }
 
   google.rpc.Status status = 1;
@@ -75,7 +83,6 @@ message StartNewEntryResponse {
   string trace_id = 3;
 }
 
-// TODO: Create a new event here that is more domain event-specific. di-entry can translate between that and this generic store update.
 message ChangeEntryRequest {
   message Payload {
     string id = 1;
@@ -131,8 +138,8 @@ message ListEntriesResponse {
 
   Error error = 1;
   repeated Entity payload = 2;
-  string trace_id = 3;
-  PageInfo page_info = 4;
+  PageInfo page_info = 3;
+  string trace_id = 4;
 }
 
 message DiscardEntryRequest {

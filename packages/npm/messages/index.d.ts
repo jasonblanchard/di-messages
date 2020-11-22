@@ -5,6 +5,105 @@ export namespace messages {
     /** Namespace notebook. */
     namespace notebook {
 
+        /** Properties of a NullableTimestamp. */
+        interface INullableTimestamp {
+
+            /** NullableTimestamp null */
+            "null"?: (google.protobuf.NullValue|null);
+
+            /** NullableTimestamp data */
+            data?: (google.protobuf.ITimestamp|null);
+        }
+
+        /** Represents a NullableTimestamp. */
+        class NullableTimestamp implements INullableTimestamp {
+
+            /**
+             * Constructs a new NullableTimestamp.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.notebook.INullableTimestamp);
+
+            /** NullableTimestamp null. */
+            public null: google.protobuf.NullValue;
+
+            /** NullableTimestamp data. */
+            public data?: (google.protobuf.ITimestamp|null);
+
+            /** NullableTimestamp kind. */
+            public kind?: ("null"|"data");
+
+            /**
+             * Creates a new NullableTimestamp instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns NullableTimestamp instance
+             */
+            public static create(properties?: messages.notebook.INullableTimestamp): messages.notebook.NullableTimestamp;
+
+            /**
+             * Encodes the specified NullableTimestamp message. Does not implicitly {@link messages.notebook.NullableTimestamp.verify|verify} messages.
+             * @param message NullableTimestamp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.notebook.INullableTimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified NullableTimestamp message, length delimited. Does not implicitly {@link messages.notebook.NullableTimestamp.verify|verify} messages.
+             * @param message NullableTimestamp message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.notebook.INullableTimestamp, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a NullableTimestamp message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns NullableTimestamp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.NullableTimestamp;
+
+            /**
+             * Decodes a NullableTimestamp message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns NullableTimestamp
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.NullableTimestamp;
+
+            /**
+             * Verifies a NullableTimestamp message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a NullableTimestamp message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns NullableTimestamp
+             */
+            public static fromObject(object: { [k: string]: any }): messages.notebook.NullableTimestamp;
+
+            /**
+             * Creates a plain object from a NullableTimestamp message. Also converts values to other types if specified.
+             * @param message NullableTimestamp
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.notebook.NullableTimestamp, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this NullableTimestamp to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
         /** Properties of an Error. */
         interface IError {
 
@@ -620,7 +719,7 @@ export namespace messages {
                 createdAt?: (google.protobuf.ITimestamp|null);
 
                 /** Payload updatedAt */
-                updatedAt?: (google.protobuf.ITimestamp|null);
+                updatedAt?: (messages.notebook.INullableTimestamp|null);
             }
 
             /** Represents a Payload. */
@@ -645,7 +744,7 @@ export namespace messages {
                 public createdAt?: (google.protobuf.ITimestamp|null);
 
                 /** Payload updatedAt. */
-                public updatedAt?: (google.protobuf.ITimestamp|null);
+                public updatedAt?: (messages.notebook.INullableTimestamp|null);
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -1745,11 +1844,11 @@ export namespace messages {
             /** ListEntriesResponse payload */
             payload?: (messages.notebook.ListEntriesResponse.IEntity[]|null);
 
-            /** ListEntriesResponse traceId */
-            traceId?: (string|null);
-
             /** ListEntriesResponse pageInfo */
             pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
+
+            /** ListEntriesResponse traceId */
+            traceId?: (string|null);
         }
 
         /** Represents a ListEntriesResponse. */
@@ -1767,11 +1866,11 @@ export namespace messages {
             /** ListEntriesResponse payload. */
             public payload: messages.notebook.ListEntriesResponse.IEntity[];
 
-            /** ListEntriesResponse traceId. */
-            public traceId: string;
-
             /** ListEntriesResponse pageInfo. */
             public pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
+
+            /** ListEntriesResponse traceId. */
+            public traceId: string;
 
             /**
              * Creates a new ListEntriesResponse instance using the specified properties.
@@ -2934,6 +3033,314 @@ export namespace google {
 
     /** Namespace protobuf. */
     namespace protobuf {
+
+        /** Properties of a Struct. */
+        interface IStruct {
+
+            /** Struct fields */
+            fields?: ({ [k: string]: google.protobuf.IValue }|null);
+        }
+
+        /** Represents a Struct. */
+        class Struct implements IStruct {
+
+            /**
+             * Constructs a new Struct.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IStruct);
+
+            /** Struct fields. */
+            public fields: { [k: string]: google.protobuf.IValue };
+
+            /**
+             * Creates a new Struct instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Struct instance
+             */
+            public static create(properties?: google.protobuf.IStruct): google.protobuf.Struct;
+
+            /**
+             * Encodes the specified Struct message. Does not implicitly {@link google.protobuf.Struct.verify|verify} messages.
+             * @param message Struct message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IStruct, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Struct message, length delimited. Does not implicitly {@link google.protobuf.Struct.verify|verify} messages.
+             * @param message Struct message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IStruct, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Struct message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Struct
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Struct;
+
+            /**
+             * Decodes a Struct message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Struct
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Struct;
+
+            /**
+             * Verifies a Struct message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Struct message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Struct
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Struct;
+
+            /**
+             * Creates a plain object from a Struct message. Also converts values to other types if specified.
+             * @param message Struct
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Struct, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Struct to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a Value. */
+        interface IValue {
+
+            /** Value nullValue */
+            nullValue?: (google.protobuf.NullValue|null);
+
+            /** Value numberValue */
+            numberValue?: (number|null);
+
+            /** Value stringValue */
+            stringValue?: (string|null);
+
+            /** Value boolValue */
+            boolValue?: (boolean|null);
+
+            /** Value structValue */
+            structValue?: (google.protobuf.IStruct|null);
+
+            /** Value listValue */
+            listValue?: (google.protobuf.IListValue|null);
+        }
+
+        /** Represents a Value. */
+        class Value implements IValue {
+
+            /**
+             * Constructs a new Value.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IValue);
+
+            /** Value nullValue. */
+            public nullValue: google.protobuf.NullValue;
+
+            /** Value numberValue. */
+            public numberValue: number;
+
+            /** Value stringValue. */
+            public stringValue: string;
+
+            /** Value boolValue. */
+            public boolValue: boolean;
+
+            /** Value structValue. */
+            public structValue?: (google.protobuf.IStruct|null);
+
+            /** Value listValue. */
+            public listValue?: (google.protobuf.IListValue|null);
+
+            /** Value kind. */
+            public kind?: ("nullValue"|"numberValue"|"stringValue"|"boolValue"|"structValue"|"listValue");
+
+            /**
+             * Creates a new Value instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns Value instance
+             */
+            public static create(properties?: google.protobuf.IValue): google.protobuf.Value;
+
+            /**
+             * Encodes the specified Value message. Does not implicitly {@link google.protobuf.Value.verify|verify} messages.
+             * @param message Value message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IValue, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified Value message, length delimited. Does not implicitly {@link google.protobuf.Value.verify|verify} messages.
+             * @param message Value message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IValue, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a Value message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns Value
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.Value;
+
+            /**
+             * Decodes a Value message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns Value
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.Value;
+
+            /**
+             * Verifies a Value message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a Value message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns Value
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.Value;
+
+            /**
+             * Creates a plain object from a Value message. Also converts values to other types if specified.
+             * @param message Value
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.Value, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this Value to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** NullValue enum. */
+        enum NullValue {
+            NULL_VALUE = 0
+        }
+
+        /** Properties of a ListValue. */
+        interface IListValue {
+
+            /** ListValue values */
+            values?: (google.protobuf.IValue[]|null);
+        }
+
+        /** Represents a ListValue. */
+        class ListValue implements IListValue {
+
+            /**
+             * Constructs a new ListValue.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: google.protobuf.IListValue);
+
+            /** ListValue values. */
+            public values: google.protobuf.IValue[];
+
+            /**
+             * Creates a new ListValue instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ListValue instance
+             */
+            public static create(properties?: google.protobuf.IListValue): google.protobuf.ListValue;
+
+            /**
+             * Encodes the specified ListValue message. Does not implicitly {@link google.protobuf.ListValue.verify|verify} messages.
+             * @param message ListValue message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: google.protobuf.IListValue, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ListValue message, length delimited. Does not implicitly {@link google.protobuf.ListValue.verify|verify} messages.
+             * @param message ListValue message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: google.protobuf.IListValue, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ListValue message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ListValue
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): google.protobuf.ListValue;
+
+            /**
+             * Decodes a ListValue message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ListValue
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): google.protobuf.ListValue;
+
+            /**
+             * Verifies a ListValue message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ListValue message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ListValue
+             */
+            public static fromObject(object: { [k: string]: any }): google.protobuf.ListValue;
+
+            /**
+             * Creates a plain object from a ListValue message. Also converts values to other types if specified.
+             * @param message ListValue
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: google.protobuf.ListValue, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ListValue to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
 
         /** Properties of a Timestamp. */
         interface ITimestamp {

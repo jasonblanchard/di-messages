@@ -1,7 +1,8 @@
 NPM_DIRECTORY=packages/npm/messages
 SRC=proto/notebook/notebook.proto \
 		proto/notebook/status.proto \
-		proto/code/code.proto
+		proto/code/code.proto \
+		# proto/status/status.proto
 # SRC=proto/entry.proto \
 # 		proto/error.proto \
 # 		proto/insights.proto \
