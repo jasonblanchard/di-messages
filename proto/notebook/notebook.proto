@@ -38,6 +38,11 @@ message InfoContext {
   string origin = 2;
 }
 
+message ErrorResponse {
+  google.rpc.Status status = 1;
+  ResponseContext context = 2;
+}
+
 message ReadEntryRequest {
   message Payload {
     string id = 1;

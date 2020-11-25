@@ -502,6 +502,102 @@ export namespace messages {
             public toJSON(): { [k: string]: any };
         }
 
+        /** Properties of an ErrorResponse. */
+        interface IErrorResponse {
+
+            /** ErrorResponse status */
+            status?: (google.rpc.IStatus|null);
+
+            /** ErrorResponse context */
+            context?: (messages.notebook.IResponseContext|null);
+        }
+
+        /** Represents an ErrorResponse. */
+        class ErrorResponse implements IErrorResponse {
+
+            /**
+             * Constructs a new ErrorResponse.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.notebook.IErrorResponse);
+
+            /** ErrorResponse status. */
+            public status?: (google.rpc.IStatus|null);
+
+            /** ErrorResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
+
+            /**
+             * Creates a new ErrorResponse instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ErrorResponse instance
+             */
+            public static create(properties?: messages.notebook.IErrorResponse): messages.notebook.ErrorResponse;
+
+            /**
+             * Encodes the specified ErrorResponse message. Does not implicitly {@link messages.notebook.ErrorResponse.verify|verify} messages.
+             * @param message ErrorResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.notebook.IErrorResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ErrorResponse message, length delimited. Does not implicitly {@link messages.notebook.ErrorResponse.verify|verify} messages.
+             * @param message ErrorResponse message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.notebook.IErrorResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an ErrorResponse message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ErrorResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ErrorResponse;
+
+            /**
+             * Decodes an ErrorResponse message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ErrorResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ErrorResponse;
+
+            /**
+             * Verifies an ErrorResponse message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an ErrorResponse message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ErrorResponse
+             */
+            public static fromObject(object: { [k: string]: any }): messages.notebook.ErrorResponse;
+
+            /**
+             * Creates a plain object from an ErrorResponse message. Also converts values to other types if specified.
+             * @param message ErrorResponse
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.notebook.ErrorResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ErrorResponse to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
         /** Properties of a ReadEntryRequest. */
         interface IReadEntryRequest {
 

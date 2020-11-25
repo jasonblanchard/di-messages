@@ -1161,6 +1161,226 @@ $root.messages = (function() {
             return InfoContext;
         })();
 
+        notebook.ErrorResponse = (function() {
+
+            /**
+             * Properties of an ErrorResponse.
+             * @memberof messages.notebook
+             * @interface IErrorResponse
+             * @property {google.rpc.IStatus|null} [status] ErrorResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] ErrorResponse context
+             */
+
+            /**
+             * Constructs a new ErrorResponse.
+             * @memberof messages.notebook
+             * @classdesc Represents an ErrorResponse.
+             * @implements IErrorResponse
+             * @constructor
+             * @param {messages.notebook.IErrorResponse=} [properties] Properties to set
+             */
+            function ErrorResponse(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * ErrorResponse status.
+             * @member {google.rpc.IStatus|null|undefined} status
+             * @memberof messages.notebook.ErrorResponse
+             * @instance
+             */
+            ErrorResponse.prototype.status = null;
+
+            /**
+             * ErrorResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
+             * @memberof messages.notebook.ErrorResponse
+             * @instance
+             */
+            ErrorResponse.prototype.context = null;
+
+            /**
+             * Creates a new ErrorResponse instance using the specified properties.
+             * @function create
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {messages.notebook.IErrorResponse=} [properties] Properties to set
+             * @returns {messages.notebook.ErrorResponse} ErrorResponse instance
+             */
+            ErrorResponse.create = function create(properties) {
+                return new ErrorResponse(properties);
+            };
+
+            /**
+             * Encodes the specified ErrorResponse message. Does not implicitly {@link messages.notebook.ErrorResponse.verify|verify} messages.
+             * @function encode
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {messages.notebook.IErrorResponse} message ErrorResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ErrorResponse.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.status != null && message.hasOwnProperty("status"))
+                    $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ErrorResponse message, length delimited. Does not implicitly {@link messages.notebook.ErrorResponse.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {messages.notebook.IErrorResponse} message ErrorResponse message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ErrorResponse.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an ErrorResponse message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.notebook.ErrorResponse} ErrorResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ErrorResponse.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ErrorResponse();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
+                        break;
+                    case 2:
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an ErrorResponse message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.notebook.ErrorResponse} ErrorResponse
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ErrorResponse.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an ErrorResponse message.
+             * @function verify
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ErrorResponse.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    var error = $root.google.rpc.Status.verify(message.status);
+                    if (error)
+                        return "status." + error;
+                }
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
+                return null;
+            };
+
+            /**
+             * Creates an ErrorResponse message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.notebook.ErrorResponse} ErrorResponse
+             */
+            ErrorResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.notebook.ErrorResponse)
+                    return object;
+                var message = new $root.messages.notebook.ErrorResponse();
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".messages.notebook.ErrorResponse.status: object expected");
+                    message.status = $root.google.rpc.Status.fromObject(object.status);
+                }
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.ErrorResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
+                }
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an ErrorResponse message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.notebook.ErrorResponse
+             * @static
+             * @param {messages.notebook.ErrorResponse} message ErrorResponse
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ErrorResponse.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.status = null;
+                    object.context = null;
+                }
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
+                return object;
+            };
+
+            /**
+             * Converts this ErrorResponse to JSON.
+             * @function toJSON
+             * @memberof messages.notebook.ErrorResponse
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ErrorResponse.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return ErrorResponse;
+        })();
+
         notebook.ReadEntryRequest = (function() {
 
             /**
