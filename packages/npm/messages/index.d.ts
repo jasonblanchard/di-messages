@@ -104,112 +104,6 @@ export namespace messages {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of an Error. */
-        interface IError {
-
-            /** Error code */
-            code?: (messages.notebook.Error.Code|null);
-
-            /** Error message */
-            message?: (string|null);
-        }
-
-        /** Represents an Error. */
-        class Error implements IError {
-
-            /**
-             * Constructs a new Error.
-             * @param [properties] Properties to set
-             */
-            constructor(properties?: messages.notebook.IError);
-
-            /** Error code. */
-            public code: messages.notebook.Error.Code;
-
-            /** Error message. */
-            public message: string;
-
-            /**
-             * Creates a new Error instance using the specified properties.
-             * @param [properties] Properties to set
-             * @returns Error instance
-             */
-            public static create(properties?: messages.notebook.IError): messages.notebook.Error;
-
-            /**
-             * Encodes the specified Error message. Does not implicitly {@link messages.notebook.Error.verify|verify} messages.
-             * @param message Error message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encode(message: messages.notebook.IError, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Encodes the specified Error message, length delimited. Does not implicitly {@link messages.notebook.Error.verify|verify} messages.
-             * @param message Error message or plain object to encode
-             * @param [writer] Writer to encode to
-             * @returns Writer
-             */
-            public static encodeDelimited(message: messages.notebook.IError, writer?: $protobuf.Writer): $protobuf.Writer;
-
-            /**
-             * Decodes an Error message from the specified reader or buffer.
-             * @param reader Reader or buffer to decode from
-             * @param [length] Message length if known beforehand
-             * @returns Error
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.Error;
-
-            /**
-             * Decodes an Error message from the specified reader or buffer, length delimited.
-             * @param reader Reader or buffer to decode from
-             * @returns Error
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.Error;
-
-            /**
-             * Verifies an Error message.
-             * @param message Plain object to verify
-             * @returns `null` if valid, otherwise the reason why it is not
-             */
-            public static verify(message: { [k: string]: any }): (string|null);
-
-            /**
-             * Creates an Error message from a plain object. Also converts values to their respective internal types.
-             * @param object Plain object
-             * @returns Error
-             */
-            public static fromObject(object: { [k: string]: any }): messages.notebook.Error;
-
-            /**
-             * Creates a plain object from an Error message. Also converts values to other types if specified.
-             * @param message Error
-             * @param [options] Conversion options
-             * @returns Plain object
-             */
-            public static toObject(message: messages.notebook.Error, options?: $protobuf.IConversionOptions): { [k: string]: any };
-
-            /**
-             * Converts this Error to JSON.
-             * @returns JSON object
-             */
-            public toJSON(): { [k: string]: any };
-        }
-
-        namespace Error {
-
-            /** Code enum. */
-            enum Code {
-                UNKNOWN = 0,
-                NOT_FOUND = 1,
-                VALIDATION_FAILED = 2
-            }
-        }
-
         /** Properties of a Principal. */
         interface IPrincipal {
 
@@ -322,6 +216,9 @@ export namespace messages {
 
             /** RequestContext principal */
             principal?: (messages.notebook.IPrincipal|null);
+
+            /** RequestContext origin */
+            origin?: (string|null);
         }
 
         /** Represents a RequestContext. */
@@ -338,6 +235,9 @@ export namespace messages {
 
             /** RequestContext principal. */
             public principal?: (messages.notebook.IPrincipal|null);
+
+            /** RequestContext origin. */
+            public origin: string;
 
             /**
              * Creates a new RequestContext instance using the specified properties.
@@ -405,6 +305,198 @@ export namespace messages {
 
             /**
              * Converts this RequestContext to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of a ResponseContext. */
+        interface IResponseContext {
+
+            /** ResponseContext traceId */
+            traceId?: (string|null);
+
+            /** ResponseContext origin */
+            origin?: (string|null);
+        }
+
+        /** Represents a ResponseContext. */
+        class ResponseContext implements IResponseContext {
+
+            /**
+             * Constructs a new ResponseContext.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.notebook.IResponseContext);
+
+            /** ResponseContext traceId. */
+            public traceId: string;
+
+            /** ResponseContext origin. */
+            public origin: string;
+
+            /**
+             * Creates a new ResponseContext instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns ResponseContext instance
+             */
+            public static create(properties?: messages.notebook.IResponseContext): messages.notebook.ResponseContext;
+
+            /**
+             * Encodes the specified ResponseContext message. Does not implicitly {@link messages.notebook.ResponseContext.verify|verify} messages.
+             * @param message ResponseContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.notebook.IResponseContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified ResponseContext message, length delimited. Does not implicitly {@link messages.notebook.ResponseContext.verify|verify} messages.
+             * @param message ResponseContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.notebook.IResponseContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes a ResponseContext message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns ResponseContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ResponseContext;
+
+            /**
+             * Decodes a ResponseContext message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns ResponseContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ResponseContext;
+
+            /**
+             * Verifies a ResponseContext message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates a ResponseContext message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns ResponseContext
+             */
+            public static fromObject(object: { [k: string]: any }): messages.notebook.ResponseContext;
+
+            /**
+             * Creates a plain object from a ResponseContext message. Also converts values to other types if specified.
+             * @param message ResponseContext
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.notebook.ResponseContext, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this ResponseContext to JSON.
+             * @returns JSON object
+             */
+            public toJSON(): { [k: string]: any };
+        }
+
+        /** Properties of an InfoContext. */
+        interface IInfoContext {
+
+            /** InfoContext traceId */
+            traceId?: (string|null);
+
+            /** InfoContext origin */
+            origin?: (string|null);
+        }
+
+        /** Represents an InfoContext. */
+        class InfoContext implements IInfoContext {
+
+            /**
+             * Constructs a new InfoContext.
+             * @param [properties] Properties to set
+             */
+            constructor(properties?: messages.notebook.IInfoContext);
+
+            /** InfoContext traceId. */
+            public traceId: string;
+
+            /** InfoContext origin. */
+            public origin: string;
+
+            /**
+             * Creates a new InfoContext instance using the specified properties.
+             * @param [properties] Properties to set
+             * @returns InfoContext instance
+             */
+            public static create(properties?: messages.notebook.IInfoContext): messages.notebook.InfoContext;
+
+            /**
+             * Encodes the specified InfoContext message. Does not implicitly {@link messages.notebook.InfoContext.verify|verify} messages.
+             * @param message InfoContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encode(message: messages.notebook.IInfoContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Encodes the specified InfoContext message, length delimited. Does not implicitly {@link messages.notebook.InfoContext.verify|verify} messages.
+             * @param message InfoContext message or plain object to encode
+             * @param [writer] Writer to encode to
+             * @returns Writer
+             */
+            public static encodeDelimited(message: messages.notebook.IInfoContext, writer?: $protobuf.Writer): $protobuf.Writer;
+
+            /**
+             * Decodes an InfoContext message from the specified reader or buffer.
+             * @param reader Reader or buffer to decode from
+             * @param [length] Message length if known beforehand
+             * @returns InfoContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.InfoContext;
+
+            /**
+             * Decodes an InfoContext message from the specified reader or buffer, length delimited.
+             * @param reader Reader or buffer to decode from
+             * @returns InfoContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.InfoContext;
+
+            /**
+             * Verifies an InfoContext message.
+             * @param message Plain object to verify
+             * @returns `null` if valid, otherwise the reason why it is not
+             */
+            public static verify(message: { [k: string]: any }): (string|null);
+
+            /**
+             * Creates an InfoContext message from a plain object. Also converts values to their respective internal types.
+             * @param object Plain object
+             * @returns InfoContext
+             */
+            public static fromObject(object: { [k: string]: any }): messages.notebook.InfoContext;
+
+            /**
+             * Creates a plain object from an InfoContext message. Also converts values to other types if specified.
+             * @param message InfoContext
+             * @param [options] Conversion options
+             * @returns Plain object
+             */
+            public static toObject(message: messages.notebook.InfoContext, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+            /**
+             * Converts this InfoContext to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -605,11 +697,11 @@ export namespace messages {
             /** ReadEntryResponse status */
             status?: (google.rpc.IStatus|null);
 
+            /** ReadEntryResponse context */
+            context?: (messages.notebook.IResponseContext|null);
+
             /** ReadEntryResponse payload */
             payload?: (messages.notebook.ReadEntryResponse.IPayload|null);
-
-            /** ReadEntryResponse traceId */
-            traceId?: (string|null);
         }
 
         /** Represents a ReadEntryResponse. */
@@ -624,11 +716,11 @@ export namespace messages {
             /** ReadEntryResponse status. */
             public status?: (google.rpc.IStatus|null);
 
+            /** ReadEntryResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
+
             /** ReadEntryResponse payload. */
             public payload?: (messages.notebook.ReadEntryResponse.IPayload|null);
-
-            /** ReadEntryResponse traceId. */
-            public traceId: string;
 
             /**
              * Creates a new ReadEntryResponse instance using the specified properties.
@@ -919,17 +1011,8 @@ export namespace messages {
             /** Properties of a Payload. */
             interface IPayload {
 
-                /** Payload text */
-                text?: (string|null);
-
                 /** Payload creatorId */
                 creatorId?: (string|null);
-
-                /** Payload createdAt */
-                createdAt?: (google.protobuf.ITimestamp|null);
-
-                /** Payload updatedAt */
-                updatedAt?: (google.protobuf.ITimestamp|null);
             }
 
             /** Represents a Payload. */
@@ -941,17 +1024,8 @@ export namespace messages {
                  */
                 constructor(properties?: messages.notebook.StartNewEntryRequest.IPayload);
 
-                /** Payload text. */
-                public text: string;
-
                 /** Payload creatorId. */
                 public creatorId: string;
-
-                /** Payload createdAt. */
-                public createdAt?: (google.protobuf.ITimestamp|null);
-
-                /** Payload updatedAt. */
-                public updatedAt?: (google.protobuf.ITimestamp|null);
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -1028,14 +1102,14 @@ export namespace messages {
         /** Properties of a StartNewEntryResponse. */
         interface IStartNewEntryResponse {
 
-            /** StartNewEntryResponse error */
-            error?: (messages.notebook.IError|null);
+            /** StartNewEntryResponse status */
+            status?: (google.rpc.IStatus|null);
+
+            /** StartNewEntryResponse context */
+            context?: (messages.notebook.IResponseContext|null);
 
             /** StartNewEntryResponse payload */
             payload?: (messages.notebook.StartNewEntryResponse.IPayload|null);
-
-            /** StartNewEntryResponse traceId */
-            traceId?: (string|null);
         }
 
         /** Represents a StartNewEntryResponse. */
@@ -1047,14 +1121,14 @@ export namespace messages {
              */
             constructor(properties?: messages.notebook.IStartNewEntryResponse);
 
-            /** StartNewEntryResponse error. */
-            public error?: (messages.notebook.IError|null);
+            /** StartNewEntryResponse status. */
+            public status?: (google.rpc.IStatus|null);
+
+            /** StartNewEntryResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
 
             /** StartNewEntryResponse payload. */
             public payload?: (messages.notebook.StartNewEntryResponse.IPayload|null);
-
-            /** StartNewEntryResponse traceId. */
-            public traceId: string;
 
             /**
              * Creates a new StartNewEntryResponse instance using the specified properties.
@@ -1418,14 +1492,14 @@ export namespace messages {
         /** Properties of a ChangeEntryResponse. */
         interface IChangeEntryResponse {
 
-            /** ChangeEntryResponse error */
-            error?: (messages.notebook.IError|null);
+            /** ChangeEntryResponse status */
+            status?: (google.rpc.IStatus|null);
+
+            /** ChangeEntryResponse context */
+            context?: (messages.notebook.IResponseContext|null);
 
             /** ChangeEntryResponse payload */
             payload?: (messages.notebook.ChangeEntryResponse.IPayload|null);
-
-            /** ChangeEntryResponse traceId */
-            traceId?: (string|null);
         }
 
         /** Represents a ChangeEntryResponse. */
@@ -1437,14 +1511,14 @@ export namespace messages {
              */
             constructor(properties?: messages.notebook.IChangeEntryResponse);
 
-            /** ChangeEntryResponse error. */
-            public error?: (messages.notebook.IError|null);
+            /** ChangeEntryResponse status. */
+            public status?: (google.rpc.IStatus|null);
+
+            /** ChangeEntryResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
 
             /** ChangeEntryResponse payload. */
             public payload?: (messages.notebook.ChangeEntryResponse.IPayload|null);
-
-            /** ChangeEntryResponse traceId. */
-            public traceId: string;
 
             /**
              * Creates a new ChangeEntryResponse instance using the specified properties.
@@ -1528,12 +1602,6 @@ export namespace messages {
                 /** Payload text */
                 text?: (string|null);
 
-                /** Payload creatorId */
-                creatorId?: (string|null);
-
-                /** Payload createdAt */
-                createdAt?: (google.protobuf.ITimestamp|null);
-
                 /** Payload updatedAt */
                 updatedAt?: (google.protobuf.ITimestamp|null);
             }
@@ -1552,12 +1620,6 @@ export namespace messages {
 
                 /** Payload text. */
                 public text: string;
-
-                /** Payload creatorId. */
-                public creatorId: string;
-
-                /** Payload createdAt. */
-                public createdAt?: (google.protobuf.ITimestamp|null);
 
                 /** Payload updatedAt. */
                 public updatedAt?: (google.protobuf.ITimestamp|null);
@@ -1838,17 +1900,14 @@ export namespace messages {
         /** Properties of a ListEntriesResponse. */
         interface IListEntriesResponse {
 
-            /** ListEntriesResponse error */
-            error?: (messages.notebook.IError|null);
+            /** ListEntriesResponse status */
+            status?: (google.rpc.IStatus|null);
+
+            /** ListEntriesResponse context */
+            context?: (messages.notebook.IResponseContext|null);
 
             /** ListEntriesResponse payload */
-            payload?: (messages.notebook.ListEntriesResponse.IEntity[]|null);
-
-            /** ListEntriesResponse pageInfo */
-            pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
-
-            /** ListEntriesResponse traceId */
-            traceId?: (string|null);
+            payload?: (messages.notebook.ListEntriesResponse.IPayload|null);
         }
 
         /** Represents a ListEntriesResponse. */
@@ -1860,17 +1919,14 @@ export namespace messages {
              */
             constructor(properties?: messages.notebook.IListEntriesResponse);
 
-            /** ListEntriesResponse error. */
-            public error?: (messages.notebook.IError|null);
+            /** ListEntriesResponse status. */
+            public status?: (google.rpc.IStatus|null);
+
+            /** ListEntriesResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
 
             /** ListEntriesResponse payload. */
-            public payload: messages.notebook.ListEntriesResponse.IEntity[];
-
-            /** ListEntriesResponse pageInfo. */
-            public pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
-
-            /** ListEntriesResponse traceId. */
-            public traceId: string;
+            public payload?: (messages.notebook.ListEntriesResponse.IPayload|null);
 
             /**
              * Creates a new ListEntriesResponse instance using the specified properties.
@@ -2053,115 +2109,211 @@ export namespace messages {
                 public toJSON(): { [k: string]: any };
             }
 
-            /** Properties of an Entity. */
-            interface IEntity {
+            /** Properties of an Entry. */
+            interface IEntry {
 
-                /** Entity id */
+                /** Entry id */
                 id?: (string|null);
 
-                /** Entity text */
+                /** Entry text */
                 text?: (string|null);
 
-                /** Entity creatorId */
+                /** Entry creatorId */
                 creatorId?: (string|null);
 
-                /** Entity createdAt */
+                /** Entry createdAt */
                 createdAt?: (google.protobuf.ITimestamp|null);
 
-                /** Entity updatedAt */
-                updatedAt?: (google.protobuf.ITimestamp|null);
+                /** Entry updatedAt */
+                updatedAt?: (messages.notebook.INullableTimestamp|null);
             }
 
-            /** Represents an Entity. */
-            class Entity implements IEntity {
+            /** Represents an Entry. */
+            class Entry implements IEntry {
 
                 /**
-                 * Constructs a new Entity.
+                 * Constructs a new Entry.
                  * @param [properties] Properties to set
                  */
-                constructor(properties?: messages.notebook.ListEntriesResponse.IEntity);
+                constructor(properties?: messages.notebook.ListEntriesResponse.IEntry);
 
-                /** Entity id. */
+                /** Entry id. */
                 public id: string;
 
-                /** Entity text. */
+                /** Entry text. */
                 public text: string;
 
-                /** Entity creatorId. */
+                /** Entry creatorId. */
                 public creatorId: string;
 
-                /** Entity createdAt. */
+                /** Entry createdAt. */
                 public createdAt?: (google.protobuf.ITimestamp|null);
 
-                /** Entity updatedAt. */
-                public updatedAt?: (google.protobuf.ITimestamp|null);
+                /** Entry updatedAt. */
+                public updatedAt?: (messages.notebook.INullableTimestamp|null);
 
                 /**
-                 * Creates a new Entity instance using the specified properties.
+                 * Creates a new Entry instance using the specified properties.
                  * @param [properties] Properties to set
-                 * @returns Entity instance
+                 * @returns Entry instance
                  */
-                public static create(properties?: messages.notebook.ListEntriesResponse.IEntity): messages.notebook.ListEntriesResponse.Entity;
+                public static create(properties?: messages.notebook.ListEntriesResponse.IEntry): messages.notebook.ListEntriesResponse.Entry;
 
                 /**
-                 * Encodes the specified Entity message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entity.verify|verify} messages.
-                 * @param message Entity message or plain object to encode
+                 * Encodes the specified Entry message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entry.verify|verify} messages.
+                 * @param message Entry message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encode(message: messages.notebook.ListEntriesResponse.IEntity, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encode(message: messages.notebook.ListEntriesResponse.IEntry, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Encodes the specified Entity message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entity.verify|verify} messages.
-                 * @param message Entity message or plain object to encode
+                 * Encodes the specified Entry message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entry.verify|verify} messages.
+                 * @param message Entry message or plain object to encode
                  * @param [writer] Writer to encode to
                  * @returns Writer
                  */
-                public static encodeDelimited(message: messages.notebook.ListEntriesResponse.IEntity, writer?: $protobuf.Writer): $protobuf.Writer;
+                public static encodeDelimited(message: messages.notebook.ListEntriesResponse.IEntry, writer?: $protobuf.Writer): $protobuf.Writer;
 
                 /**
-                 * Decodes an Entity message from the specified reader or buffer.
+                 * Decodes an Entry message from the specified reader or buffer.
                  * @param reader Reader or buffer to decode from
                  * @param [length] Message length if known beforehand
-                 * @returns Entity
+                 * @returns Entry
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ListEntriesResponse.Entity;
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ListEntriesResponse.Entry;
 
                 /**
-                 * Decodes an Entity message from the specified reader or buffer, length delimited.
+                 * Decodes an Entry message from the specified reader or buffer, length delimited.
                  * @param reader Reader or buffer to decode from
-                 * @returns Entity
+                 * @returns Entry
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ListEntriesResponse.Entity;
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ListEntriesResponse.Entry;
 
                 /**
-                 * Verifies an Entity message.
+                 * Verifies an Entry message.
                  * @param message Plain object to verify
                  * @returns `null` if valid, otherwise the reason why it is not
                  */
                 public static verify(message: { [k: string]: any }): (string|null);
 
                 /**
-                 * Creates an Entity message from a plain object. Also converts values to their respective internal types.
+                 * Creates an Entry message from a plain object. Also converts values to their respective internal types.
                  * @param object Plain object
-                 * @returns Entity
+                 * @returns Entry
                  */
-                public static fromObject(object: { [k: string]: any }): messages.notebook.ListEntriesResponse.Entity;
+                public static fromObject(object: { [k: string]: any }): messages.notebook.ListEntriesResponse.Entry;
 
                 /**
-                 * Creates a plain object from an Entity message. Also converts values to other types if specified.
-                 * @param message Entity
+                 * Creates a plain object from an Entry message. Also converts values to other types if specified.
+                 * @param message Entry
                  * @param [options] Conversion options
                  * @returns Plain object
                  */
-                public static toObject(message: messages.notebook.ListEntriesResponse.Entity, options?: $protobuf.IConversionOptions): { [k: string]: any };
+                public static toObject(message: messages.notebook.ListEntriesResponse.Entry, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
                 /**
-                 * Converts this Entity to JSON.
+                 * Converts this Entry to JSON.
+                 * @returns JSON object
+                 */
+                public toJSON(): { [k: string]: any };
+            }
+
+            /** Properties of a Payload. */
+            interface IPayload {
+
+                /** Payload entries */
+                entries?: (messages.notebook.ListEntriesResponse.IEntry[]|null);
+
+                /** Payload pageInfo */
+                pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
+            }
+
+            /** Represents a Payload. */
+            class Payload implements IPayload {
+
+                /**
+                 * Constructs a new Payload.
+                 * @param [properties] Properties to set
+                 */
+                constructor(properties?: messages.notebook.ListEntriesResponse.IPayload);
+
+                /** Payload entries. */
+                public entries: messages.notebook.ListEntriesResponse.IEntry[];
+
+                /** Payload pageInfo. */
+                public pageInfo?: (messages.notebook.ListEntriesResponse.IPageInfo|null);
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @param [properties] Properties to set
+                 * @returns Payload instance
+                 */
+                public static create(properties?: messages.notebook.ListEntriesResponse.IPayload): messages.notebook.ListEntriesResponse.Payload;
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encode(message: messages.notebook.ListEntriesResponse.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Payload.verify|verify} messages.
+                 * @param message Payload message or plain object to encode
+                 * @param [writer] Writer to encode to
+                 * @returns Writer
+                 */
+                public static encodeDelimited(message: messages.notebook.ListEntriesResponse.IPayload, writer?: $protobuf.Writer): $protobuf.Writer;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @param reader Reader or buffer to decode from
+                 * @param [length] Message length if known beforehand
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ListEntriesResponse.Payload;
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @param reader Reader or buffer to decode from
+                 * @returns Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ListEntriesResponse.Payload;
+
+                /**
+                 * Verifies a Payload message.
+                 * @param message Plain object to verify
+                 * @returns `null` if valid, otherwise the reason why it is not
+                 */
+                public static verify(message: { [k: string]: any }): (string|null);
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @param object Plain object
+                 * @returns Payload
+                 */
+                public static fromObject(object: { [k: string]: any }): messages.notebook.ListEntriesResponse.Payload;
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @param message Payload
+                 * @param [options] Conversion options
+                 * @returns Plain object
+                 */
+                public static toObject(message: messages.notebook.ListEntriesResponse.Payload, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+                /**
+                 * Converts this Payload to JSON.
                  * @returns JSON object
                  */
                 public toJSON(): { [k: string]: any };
@@ -2360,11 +2512,11 @@ export namespace messages {
         /** Properties of a DiscardEntryResponse. */
         interface IDiscardEntryResponse {
 
-            /** DiscardEntryResponse error */
-            error?: (messages.notebook.IError|null);
+            /** DiscardEntryResponse status */
+            status?: (google.rpc.IStatus|null);
 
-            /** DiscardEntryResponse traceId */
-            traceId?: (string|null);
+            /** DiscardEntryResponse context */
+            context?: (messages.notebook.IResponseContext|null);
         }
 
         /** Represents a DiscardEntryResponse. */
@@ -2376,11 +2528,11 @@ export namespace messages {
              */
             constructor(properties?: messages.notebook.IDiscardEntryResponse);
 
-            /** DiscardEntryResponse error. */
-            public error?: (messages.notebook.IError|null);
+            /** DiscardEntryResponse status. */
+            public status?: (google.rpc.IStatus|null);
 
-            /** DiscardEntryResponse traceId. */
-            public traceId: string;
+            /** DiscardEntryResponse context. */
+            public context?: (messages.notebook.IResponseContext|null);
 
             /**
              * Creates a new DiscardEntryResponse instance using the specified properties.
@@ -2456,6 +2608,9 @@ export namespace messages {
         /** Properties of an InfoEntryCreated. */
         interface IInfoEntryCreated {
 
+            /** InfoEntryCreated context */
+            context?: (messages.notebook.IInfoContext|null);
+
             /** InfoEntryCreated payload */
             payload?: (messages.notebook.InfoEntryCreated.IPayload|null);
         }
@@ -2468,6 +2623,9 @@ export namespace messages {
              * @param [properties] Properties to set
              */
             constructor(properties?: messages.notebook.IInfoEntryCreated);
+
+            /** InfoEntryCreated context. */
+            public context?: (messages.notebook.IInfoContext|null);
 
             /** InfoEntryCreated payload. */
             public payload?: (messages.notebook.InfoEntryCreated.IPayload|null);
@@ -2550,6 +2708,15 @@ export namespace messages {
 
                 /** Payload id */
                 id?: (string|null);
+
+                /** Payload text */
+                text?: (string|null);
+
+                /** Payload creatorId */
+                creatorId?: (string|null);
+
+                /** Payload createdAt */
+                createdAt?: (google.protobuf.ITimestamp|null);
             }
 
             /** Represents a Payload. */
@@ -2563,6 +2730,15 @@ export namespace messages {
 
                 /** Payload id. */
                 public id: string;
+
+                /** Payload text. */
+                public text: string;
+
+                /** Payload creatorId. */
+                public creatorId: string;
+
+                /** Payload createdAt. */
+                public createdAt?: (google.protobuf.ITimestamp|null);
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -2639,6 +2815,9 @@ export namespace messages {
         /** Properties of an InfoEntryUpdated. */
         interface IInfoEntryUpdated {
 
+            /** InfoEntryUpdated context */
+            context?: (messages.notebook.IInfoContext|null);
+
             /** InfoEntryUpdated payload */
             payload?: (messages.notebook.InfoEntryUpdated.IPayload|null);
         }
@@ -2651,6 +2830,9 @@ export namespace messages {
              * @param [properties] Properties to set
              */
             constructor(properties?: messages.notebook.IInfoEntryUpdated);
+
+            /** InfoEntryUpdated context. */
+            public context?: (messages.notebook.IInfoContext|null);
 
             /** InfoEntryUpdated payload. */
             public payload?: (messages.notebook.InfoEntryUpdated.IPayload|null);
@@ -2846,6 +3028,9 @@ export namespace messages {
         /** Properties of an InfoEntryDeleted. */
         interface IInfoEntryDeleted {
 
+            /** InfoEntryDeleted context */
+            context?: (messages.notebook.IInfoContext|null);
+
             /** InfoEntryDeleted payload */
             payload?: (messages.notebook.InfoEntryDeleted.IPayload|null);
         }
@@ -2858,6 +3043,9 @@ export namespace messages {
              * @param [properties] Properties to set
              */
             constructor(properties?: messages.notebook.IInfoEntryDeleted);
+
+            /** InfoEntryDeleted context. */
+            public context?: (messages.notebook.IInfoContext|null);
 
             /** InfoEntryDeleted payload. */
             public payload?: (messages.notebook.InfoEntryDeleted.IPayload|null);
@@ -2940,6 +3128,18 @@ export namespace messages {
 
                 /** Payload id */
                 id?: (string|null);
+
+                /** Payload text */
+                text?: (string|null);
+
+                /** Payload creatorId */
+                creatorId?: (string|null);
+
+                /** Payload createdAt */
+                createdAt?: (google.protobuf.ITimestamp|null);
+
+                /** Payload updatedAt */
+                updatedAt?: (messages.notebook.INullableTimestamp|null);
             }
 
             /** Represents a Payload. */
@@ -2953,6 +3153,18 @@ export namespace messages {
 
                 /** Payload id. */
                 public id: string;
+
+                /** Payload text. */
+                public text: string;
+
+                /** Payload creatorId. */
+                public creatorId: string;
+
+                /** Payload createdAt. */
+                public createdAt?: (google.protobuf.ITimestamp|null);
+
+                /** Payload updatedAt. */
+                public updatedAt?: (messages.notebook.INullableTimestamp|null);
 
                 /**
                  * Creates a new Payload instance using the specified properties.

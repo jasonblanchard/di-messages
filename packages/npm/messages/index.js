@@ -274,250 +274,6 @@ $root.messages = (function() {
             return NullableTimestamp;
         })();
 
-        notebook.Error = (function() {
-
-            /**
-             * Properties of an Error.
-             * @memberof messages.notebook
-             * @interface IError
-             * @property {messages.notebook.Error.Code|null} [code] Error code
-             * @property {string|null} [message] Error message
-             */
-
-            /**
-             * Constructs a new Error.
-             * @memberof messages.notebook
-             * @classdesc Represents an Error.
-             * @implements IError
-             * @constructor
-             * @param {messages.notebook.IError=} [properties] Properties to set
-             */
-            function Error(properties) {
-                if (properties)
-                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                        if (properties[keys[i]] != null)
-                            this[keys[i]] = properties[keys[i]];
-            }
-
-            /**
-             * Error code.
-             * @member {messages.notebook.Error.Code} code
-             * @memberof messages.notebook.Error
-             * @instance
-             */
-            Error.prototype.code = 0;
-
-            /**
-             * Error message.
-             * @member {string} message
-             * @memberof messages.notebook.Error
-             * @instance
-             */
-            Error.prototype.message = "";
-
-            /**
-             * Creates a new Error instance using the specified properties.
-             * @function create
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {messages.notebook.IError=} [properties] Properties to set
-             * @returns {messages.notebook.Error} Error instance
-             */
-            Error.create = function create(properties) {
-                return new Error(properties);
-            };
-
-            /**
-             * Encodes the specified Error message. Does not implicitly {@link messages.notebook.Error.verify|verify} messages.
-             * @function encode
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {messages.notebook.IError} message Error message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            Error.encode = function encode(message, writer) {
-                if (!writer)
-                    writer = $Writer.create();
-                if (message.code != null && message.hasOwnProperty("code"))
-                    writer.uint32(/* id 1, wireType 0 =*/8).int32(message.code);
-                if (message.message != null && message.hasOwnProperty("message"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.message);
-                return writer;
-            };
-
-            /**
-             * Encodes the specified Error message, length delimited. Does not implicitly {@link messages.notebook.Error.verify|verify} messages.
-             * @function encodeDelimited
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {messages.notebook.IError} message Error message or plain object to encode
-             * @param {$protobuf.Writer} [writer] Writer to encode to
-             * @returns {$protobuf.Writer} Writer
-             */
-            Error.encodeDelimited = function encodeDelimited(message, writer) {
-                return this.encode(message, writer).ldelim();
-            };
-
-            /**
-             * Decodes an Error message from the specified reader or buffer.
-             * @function decode
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @param {number} [length] Message length if known beforehand
-             * @returns {messages.notebook.Error} Error
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            Error.decode = function decode(reader, length) {
-                if (!(reader instanceof $Reader))
-                    reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.Error();
-                while (reader.pos < end) {
-                    var tag = reader.uint32();
-                    switch (tag >>> 3) {
-                    case 1:
-                        message.code = reader.int32();
-                        break;
-                    case 2:
-                        message.message = reader.string();
-                        break;
-                    default:
-                        reader.skipType(tag & 7);
-                        break;
-                    }
-                }
-                return message;
-            };
-
-            /**
-             * Decodes an Error message from the specified reader or buffer, length delimited.
-             * @function decodeDelimited
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {messages.notebook.Error} Error
-             * @throws {Error} If the payload is not a reader or valid buffer
-             * @throws {$protobuf.util.ProtocolError} If required fields are missing
-             */
-            Error.decodeDelimited = function decodeDelimited(reader) {
-                if (!(reader instanceof $Reader))
-                    reader = new $Reader(reader);
-                return this.decode(reader, reader.uint32());
-            };
-
-            /**
-             * Verifies an Error message.
-             * @function verify
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {Object.<string,*>} message Plain object to verify
-             * @returns {string|null} `null` if valid, otherwise the reason why it is not
-             */
-            Error.verify = function verify(message) {
-                if (typeof message !== "object" || message === null)
-                    return "object expected";
-                if (message.code != null && message.hasOwnProperty("code"))
-                    switch (message.code) {
-                    default:
-                        return "code: enum value expected";
-                    case 0:
-                    case 1:
-                    case 2:
-                        break;
-                    }
-                if (message.message != null && message.hasOwnProperty("message"))
-                    if (!$util.isString(message.message))
-                        return "message: string expected";
-                return null;
-            };
-
-            /**
-             * Creates an Error message from a plain object. Also converts values to their respective internal types.
-             * @function fromObject
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {Object.<string,*>} object Plain object
-             * @returns {messages.notebook.Error} Error
-             */
-            Error.fromObject = function fromObject(object) {
-                if (object instanceof $root.messages.notebook.Error)
-                    return object;
-                var message = new $root.messages.notebook.Error();
-                switch (object.code) {
-                case "UNKNOWN":
-                case 0:
-                    message.code = 0;
-                    break;
-                case "NOT_FOUND":
-                case 1:
-                    message.code = 1;
-                    break;
-                case "VALIDATION_FAILED":
-                case 2:
-                    message.code = 2;
-                    break;
-                }
-                if (object.message != null)
-                    message.message = String(object.message);
-                return message;
-            };
-
-            /**
-             * Creates a plain object from an Error message. Also converts values to other types if specified.
-             * @function toObject
-             * @memberof messages.notebook.Error
-             * @static
-             * @param {messages.notebook.Error} message Error
-             * @param {$protobuf.IConversionOptions} [options] Conversion options
-             * @returns {Object.<string,*>} Plain object
-             */
-            Error.toObject = function toObject(message, options) {
-                if (!options)
-                    options = {};
-                var object = {};
-                if (options.defaults) {
-                    object.code = options.enums === String ? "UNKNOWN" : 0;
-                    object.message = "";
-                }
-                if (message.code != null && message.hasOwnProperty("code"))
-                    object.code = options.enums === String ? $root.messages.notebook.Error.Code[message.code] : message.code;
-                if (message.message != null && message.hasOwnProperty("message"))
-                    object.message = message.message;
-                return object;
-            };
-
-            /**
-             * Converts this Error to JSON.
-             * @function toJSON
-             * @memberof messages.notebook.Error
-             * @instance
-             * @returns {Object.<string,*>} JSON object
-             */
-            Error.prototype.toJSON = function toJSON() {
-                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-            };
-
-            /**
-             * Code enum.
-             * @name messages.notebook.Error.Code
-             * @enum {string}
-             * @property {number} UNKNOWN=0 UNKNOWN value
-             * @property {number} NOT_FOUND=1 NOT_FOUND value
-             * @property {number} VALIDATION_FAILED=2 VALIDATION_FAILED value
-             */
-            Error.Code = (function() {
-                var valuesById = {}, values = Object.create(valuesById);
-                values[valuesById[0] = "UNKNOWN"] = 0;
-                values[valuesById[1] = "NOT_FOUND"] = 1;
-                values[valuesById[2] = "VALIDATION_FAILED"] = 2;
-                return values;
-            })();
-
-            return Error;
-        })();
-
         notebook.Principal = (function() {
 
             /**
@@ -756,6 +512,7 @@ $root.messages = (function() {
              * @interface IRequestContext
              * @property {string|null} [traceId] RequestContext traceId
              * @property {messages.notebook.IPrincipal|null} [principal] RequestContext principal
+             * @property {string|null} [origin] RequestContext origin
              */
 
             /**
@@ -790,6 +547,14 @@ $root.messages = (function() {
             RequestContext.prototype.principal = null;
 
             /**
+             * RequestContext origin.
+             * @member {string} origin
+             * @memberof messages.notebook.RequestContext
+             * @instance
+             */
+            RequestContext.prototype.origin = "";
+
+            /**
              * Creates a new RequestContext instance using the specified properties.
              * @function create
              * @memberof messages.notebook.RequestContext
@@ -817,6 +582,8 @@ $root.messages = (function() {
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.traceId);
                 if (message.principal != null && message.hasOwnProperty("principal"))
                     $root.messages.notebook.Principal.encode(message.principal, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.origin);
                 return writer;
             };
 
@@ -856,6 +623,9 @@ $root.messages = (function() {
                         break;
                     case 2:
                         message.principal = $root.messages.notebook.Principal.decode(reader, reader.uint32());
+                        break;
+                    case 3:
+                        message.origin = reader.string();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -900,6 +670,9 @@ $root.messages = (function() {
                     if (error)
                         return "principal." + error;
                 }
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    if (!$util.isString(message.origin))
+                        return "origin: string expected";
                 return null;
             };
 
@@ -922,6 +695,8 @@ $root.messages = (function() {
                         throw TypeError(".messages.notebook.RequestContext.principal: object expected");
                     message.principal = $root.messages.notebook.Principal.fromObject(object.principal);
                 }
+                if (object.origin != null)
+                    message.origin = String(object.origin);
                 return message;
             };
 
@@ -941,11 +716,14 @@ $root.messages = (function() {
                 if (options.defaults) {
                     object.traceId = "";
                     object.principal = null;
+                    object.origin = "";
                 }
                 if (message.traceId != null && message.hasOwnProperty("traceId"))
                     object.traceId = message.traceId;
                 if (message.principal != null && message.hasOwnProperty("principal"))
                     object.principal = $root.messages.notebook.Principal.toObject(message.principal, options);
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    object.origin = message.origin;
                 return object;
             };
 
@@ -961,6 +739,426 @@ $root.messages = (function() {
             };
 
             return RequestContext;
+        })();
+
+        notebook.ResponseContext = (function() {
+
+            /**
+             * Properties of a ResponseContext.
+             * @memberof messages.notebook
+             * @interface IResponseContext
+             * @property {string|null} [traceId] ResponseContext traceId
+             * @property {string|null} [origin] ResponseContext origin
+             */
+
+            /**
+             * Constructs a new ResponseContext.
+             * @memberof messages.notebook
+             * @classdesc Represents a ResponseContext.
+             * @implements IResponseContext
+             * @constructor
+             * @param {messages.notebook.IResponseContext=} [properties] Properties to set
+             */
+            function ResponseContext(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * ResponseContext traceId.
+             * @member {string} traceId
+             * @memberof messages.notebook.ResponseContext
+             * @instance
+             */
+            ResponseContext.prototype.traceId = "";
+
+            /**
+             * ResponseContext origin.
+             * @member {string} origin
+             * @memberof messages.notebook.ResponseContext
+             * @instance
+             */
+            ResponseContext.prototype.origin = "";
+
+            /**
+             * Creates a new ResponseContext instance using the specified properties.
+             * @function create
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {messages.notebook.IResponseContext=} [properties] Properties to set
+             * @returns {messages.notebook.ResponseContext} ResponseContext instance
+             */
+            ResponseContext.create = function create(properties) {
+                return new ResponseContext(properties);
+            };
+
+            /**
+             * Encodes the specified ResponseContext message. Does not implicitly {@link messages.notebook.ResponseContext.verify|verify} messages.
+             * @function encode
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {messages.notebook.IResponseContext} message ResponseContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ResponseContext.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.traceId);
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.origin);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified ResponseContext message, length delimited. Does not implicitly {@link messages.notebook.ResponseContext.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {messages.notebook.IResponseContext} message ResponseContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            ResponseContext.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes a ResponseContext message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.notebook.ResponseContext} ResponseContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ResponseContext.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ResponseContext();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.traceId = reader.string();
+                        break;
+                    case 2:
+                        message.origin = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes a ResponseContext message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.notebook.ResponseContext} ResponseContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            ResponseContext.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies a ResponseContext message.
+             * @function verify
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            ResponseContext.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    if (!$util.isString(message.traceId))
+                        return "traceId: string expected";
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    if (!$util.isString(message.origin))
+                        return "origin: string expected";
+                return null;
+            };
+
+            /**
+             * Creates a ResponseContext message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.notebook.ResponseContext} ResponseContext
+             */
+            ResponseContext.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.notebook.ResponseContext)
+                    return object;
+                var message = new $root.messages.notebook.ResponseContext();
+                if (object.traceId != null)
+                    message.traceId = String(object.traceId);
+                if (object.origin != null)
+                    message.origin = String(object.origin);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from a ResponseContext message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.notebook.ResponseContext
+             * @static
+             * @param {messages.notebook.ResponseContext} message ResponseContext
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            ResponseContext.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.traceId = "";
+                    object.origin = "";
+                }
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    object.traceId = message.traceId;
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    object.origin = message.origin;
+                return object;
+            };
+
+            /**
+             * Converts this ResponseContext to JSON.
+             * @function toJSON
+             * @memberof messages.notebook.ResponseContext
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            ResponseContext.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return ResponseContext;
+        })();
+
+        notebook.InfoContext = (function() {
+
+            /**
+             * Properties of an InfoContext.
+             * @memberof messages.notebook
+             * @interface IInfoContext
+             * @property {string|null} [traceId] InfoContext traceId
+             * @property {string|null} [origin] InfoContext origin
+             */
+
+            /**
+             * Constructs a new InfoContext.
+             * @memberof messages.notebook
+             * @classdesc Represents an InfoContext.
+             * @implements IInfoContext
+             * @constructor
+             * @param {messages.notebook.IInfoContext=} [properties] Properties to set
+             */
+            function InfoContext(properties) {
+                if (properties)
+                    for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                        if (properties[keys[i]] != null)
+                            this[keys[i]] = properties[keys[i]];
+            }
+
+            /**
+             * InfoContext traceId.
+             * @member {string} traceId
+             * @memberof messages.notebook.InfoContext
+             * @instance
+             */
+            InfoContext.prototype.traceId = "";
+
+            /**
+             * InfoContext origin.
+             * @member {string} origin
+             * @memberof messages.notebook.InfoContext
+             * @instance
+             */
+            InfoContext.prototype.origin = "";
+
+            /**
+             * Creates a new InfoContext instance using the specified properties.
+             * @function create
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {messages.notebook.IInfoContext=} [properties] Properties to set
+             * @returns {messages.notebook.InfoContext} InfoContext instance
+             */
+            InfoContext.create = function create(properties) {
+                return new InfoContext(properties);
+            };
+
+            /**
+             * Encodes the specified InfoContext message. Does not implicitly {@link messages.notebook.InfoContext.verify|verify} messages.
+             * @function encode
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {messages.notebook.IInfoContext} message InfoContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            InfoContext.encode = function encode(message, writer) {
+                if (!writer)
+                    writer = $Writer.create();
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.traceId);
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.origin);
+                return writer;
+            };
+
+            /**
+             * Encodes the specified InfoContext message, length delimited. Does not implicitly {@link messages.notebook.InfoContext.verify|verify} messages.
+             * @function encodeDelimited
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {messages.notebook.IInfoContext} message InfoContext message or plain object to encode
+             * @param {$protobuf.Writer} [writer] Writer to encode to
+             * @returns {$protobuf.Writer} Writer
+             */
+            InfoContext.encodeDelimited = function encodeDelimited(message, writer) {
+                return this.encode(message, writer).ldelim();
+            };
+
+            /**
+             * Decodes an InfoContext message from the specified reader or buffer.
+             * @function decode
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @param {number} [length] Message length if known beforehand
+             * @returns {messages.notebook.InfoContext} InfoContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            InfoContext.decode = function decode(reader, length) {
+                if (!(reader instanceof $Reader))
+                    reader = $Reader.create(reader);
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.InfoContext();
+                while (reader.pos < end) {
+                    var tag = reader.uint32();
+                    switch (tag >>> 3) {
+                    case 1:
+                        message.traceId = reader.string();
+                        break;
+                    case 2:
+                        message.origin = reader.string();
+                        break;
+                    default:
+                        reader.skipType(tag & 7);
+                        break;
+                    }
+                }
+                return message;
+            };
+
+            /**
+             * Decodes an InfoContext message from the specified reader or buffer, length delimited.
+             * @function decodeDelimited
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+             * @returns {messages.notebook.InfoContext} InfoContext
+             * @throws {Error} If the payload is not a reader or valid buffer
+             * @throws {$protobuf.util.ProtocolError} If required fields are missing
+             */
+            InfoContext.decodeDelimited = function decodeDelimited(reader) {
+                if (!(reader instanceof $Reader))
+                    reader = new $Reader(reader);
+                return this.decode(reader, reader.uint32());
+            };
+
+            /**
+             * Verifies an InfoContext message.
+             * @function verify
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {Object.<string,*>} message Plain object to verify
+             * @returns {string|null} `null` if valid, otherwise the reason why it is not
+             */
+            InfoContext.verify = function verify(message) {
+                if (typeof message !== "object" || message === null)
+                    return "object expected";
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    if (!$util.isString(message.traceId))
+                        return "traceId: string expected";
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    if (!$util.isString(message.origin))
+                        return "origin: string expected";
+                return null;
+            };
+
+            /**
+             * Creates an InfoContext message from a plain object. Also converts values to their respective internal types.
+             * @function fromObject
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {Object.<string,*>} object Plain object
+             * @returns {messages.notebook.InfoContext} InfoContext
+             */
+            InfoContext.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.notebook.InfoContext)
+                    return object;
+                var message = new $root.messages.notebook.InfoContext();
+                if (object.traceId != null)
+                    message.traceId = String(object.traceId);
+                if (object.origin != null)
+                    message.origin = String(object.origin);
+                return message;
+            };
+
+            /**
+             * Creates a plain object from an InfoContext message. Also converts values to other types if specified.
+             * @function toObject
+             * @memberof messages.notebook.InfoContext
+             * @static
+             * @param {messages.notebook.InfoContext} message InfoContext
+             * @param {$protobuf.IConversionOptions} [options] Conversion options
+             * @returns {Object.<string,*>} Plain object
+             */
+            InfoContext.toObject = function toObject(message, options) {
+                if (!options)
+                    options = {};
+                var object = {};
+                if (options.defaults) {
+                    object.traceId = "";
+                    object.origin = "";
+                }
+                if (message.traceId != null && message.hasOwnProperty("traceId"))
+                    object.traceId = message.traceId;
+                if (message.origin != null && message.hasOwnProperty("origin"))
+                    object.origin = message.origin;
+                return object;
+            };
+
+            /**
+             * Converts this InfoContext to JSON.
+             * @function toJSON
+             * @memberof messages.notebook.InfoContext
+             * @instance
+             * @returns {Object.<string,*>} JSON object
+             */
+            InfoContext.prototype.toJSON = function toJSON() {
+                return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+            };
+
+            return InfoContext;
         })();
 
         notebook.ReadEntryRequest = (function() {
@@ -1377,8 +1575,8 @@ $root.messages = (function() {
              * @memberof messages.notebook
              * @interface IReadEntryResponse
              * @property {google.rpc.IStatus|null} [status] ReadEntryResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] ReadEntryResponse context
              * @property {messages.notebook.ReadEntryResponse.IPayload|null} [payload] ReadEntryResponse payload
-             * @property {string|null} [traceId] ReadEntryResponse traceId
              */
 
             /**
@@ -1405,20 +1603,20 @@ $root.messages = (function() {
             ReadEntryResponse.prototype.status = null;
 
             /**
+             * ReadEntryResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
+             * @memberof messages.notebook.ReadEntryResponse
+             * @instance
+             */
+            ReadEntryResponse.prototype.context = null;
+
+            /**
              * ReadEntryResponse payload.
              * @member {messages.notebook.ReadEntryResponse.IPayload|null|undefined} payload
              * @memberof messages.notebook.ReadEntryResponse
              * @instance
              */
             ReadEntryResponse.prototype.payload = null;
-
-            /**
-             * ReadEntryResponse traceId.
-             * @member {string} traceId
-             * @memberof messages.notebook.ReadEntryResponse
-             * @instance
-             */
-            ReadEntryResponse.prototype.traceId = "";
 
             /**
              * Creates a new ReadEntryResponse instance using the specified properties.
@@ -1446,10 +1644,10 @@ $root.messages = (function() {
                     writer = $Writer.create();
                 if (message.status != null && message.hasOwnProperty("status"))
                     $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.ReadEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.traceId);
+                    $root.messages.notebook.ReadEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
@@ -1488,10 +1686,10 @@ $root.messages = (function() {
                         message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
                         break;
                     case 2:
-                        message.payload = $root.messages.notebook.ReadEntryResponse.Payload.decode(reader, reader.uint32());
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
                         break;
                     case 3:
-                        message.traceId = reader.string();
+                        message.payload = $root.messages.notebook.ReadEntryResponse.Payload.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -1533,14 +1731,16 @@ $root.messages = (function() {
                     if (error)
                         return "status." + error;
                 }
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.ReadEntryResponse.Payload.verify(message.payload);
                     if (error)
                         return "payload." + error;
                 }
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    if (!$util.isString(message.traceId))
-                        return "traceId: string expected";
                 return null;
             };
 
@@ -1561,13 +1761,16 @@ $root.messages = (function() {
                         throw TypeError(".messages.notebook.ReadEntryResponse.status: object expected");
                     message.status = $root.google.rpc.Status.fromObject(object.status);
                 }
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.ReadEntryResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
+                }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.ReadEntryResponse.payload: object expected");
                     message.payload = $root.messages.notebook.ReadEntryResponse.Payload.fromObject(object.payload);
                 }
-                if (object.traceId != null)
-                    message.traceId = String(object.traceId);
                 return message;
             };
 
@@ -1586,15 +1789,15 @@ $root.messages = (function() {
                 var object = {};
                 if (options.defaults) {
                     object.status = null;
+                    object.context = null;
                     object.payload = null;
-                    object.traceId = "";
                 }
                 if (message.status != null && message.hasOwnProperty("status"))
                     object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.ReadEntryResponse.Payload.toObject(message.payload, options);
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    object.traceId = message.traceId;
                 return object;
             };
 
@@ -2121,10 +2324,7 @@ $root.messages = (function() {
                  * Properties of a Payload.
                  * @memberof messages.notebook.StartNewEntryRequest
                  * @interface IPayload
-                 * @property {string|null} [text] Payload text
                  * @property {string|null} [creatorId] Payload creatorId
-                 * @property {google.protobuf.ITimestamp|null} [createdAt] Payload createdAt
-                 * @property {google.protobuf.ITimestamp|null} [updatedAt] Payload updatedAt
                  */
 
                 /**
@@ -2143,36 +2343,12 @@ $root.messages = (function() {
                 }
 
                 /**
-                 * Payload text.
-                 * @member {string} text
-                 * @memberof messages.notebook.StartNewEntryRequest.Payload
-                 * @instance
-                 */
-                Payload.prototype.text = "";
-
-                /**
                  * Payload creatorId.
                  * @member {string} creatorId
                  * @memberof messages.notebook.StartNewEntryRequest.Payload
                  * @instance
                  */
                 Payload.prototype.creatorId = "";
-
-                /**
-                 * Payload createdAt.
-                 * @member {google.protobuf.ITimestamp|null|undefined} createdAt
-                 * @memberof messages.notebook.StartNewEntryRequest.Payload
-                 * @instance
-                 */
-                Payload.prototype.createdAt = null;
-
-                /**
-                 * Payload updatedAt.
-                 * @member {google.protobuf.ITimestamp|null|undefined} updatedAt
-                 * @memberof messages.notebook.StartNewEntryRequest.Payload
-                 * @instance
-                 */
-                Payload.prototype.updatedAt = null;
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -2198,14 +2374,8 @@ $root.messages = (function() {
                 Payload.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    if (message.text != null && message.hasOwnProperty("text"))
-                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.text);
                     if (message.creatorId != null && message.hasOwnProperty("creatorId"))
-                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.creatorId);
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
-                        $root.google.protobuf.Timestamp.encode(message.createdAt, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
-                        $root.google.protobuf.Timestamp.encode(message.updatedAt, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                        writer.uint32(/* id 1, wireType 2 =*/10).string(message.creatorId);
                     return writer;
                 };
 
@@ -2241,16 +2411,7 @@ $root.messages = (function() {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
                         case 1:
-                            message.text = reader.string();
-                            break;
-                        case 2:
                             message.creatorId = reader.string();
-                            break;
-                        case 3:
-                            message.createdAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                            break;
-                        case 4:
-                            message.updatedAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -2287,22 +2448,9 @@ $root.messages = (function() {
                 Payload.verify = function verify(message) {
                     if (typeof message !== "object" || message === null)
                         return "object expected";
-                    if (message.text != null && message.hasOwnProperty("text"))
-                        if (!$util.isString(message.text))
-                            return "text: string expected";
                     if (message.creatorId != null && message.hasOwnProperty("creatorId"))
                         if (!$util.isString(message.creatorId))
                             return "creatorId: string expected";
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt")) {
-                        var error = $root.google.protobuf.Timestamp.verify(message.createdAt);
-                        if (error)
-                            return "createdAt." + error;
-                    }
-                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt")) {
-                        var error = $root.google.protobuf.Timestamp.verify(message.updatedAt);
-                        if (error)
-                            return "updatedAt." + error;
-                    }
                     return null;
                 };
 
@@ -2318,20 +2466,8 @@ $root.messages = (function() {
                     if (object instanceof $root.messages.notebook.StartNewEntryRequest.Payload)
                         return object;
                     var message = new $root.messages.notebook.StartNewEntryRequest.Payload();
-                    if (object.text != null)
-                        message.text = String(object.text);
                     if (object.creatorId != null)
                         message.creatorId = String(object.creatorId);
-                    if (object.createdAt != null) {
-                        if (typeof object.createdAt !== "object")
-                            throw TypeError(".messages.notebook.StartNewEntryRequest.Payload.createdAt: object expected");
-                        message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
-                    }
-                    if (object.updatedAt != null) {
-                        if (typeof object.updatedAt !== "object")
-                            throw TypeError(".messages.notebook.StartNewEntryRequest.Payload.updatedAt: object expected");
-                        message.updatedAt = $root.google.protobuf.Timestamp.fromObject(object.updatedAt);
-                    }
                     return message;
                 };
 
@@ -2348,20 +2484,10 @@ $root.messages = (function() {
                     if (!options)
                         options = {};
                     var object = {};
-                    if (options.defaults) {
-                        object.text = "";
+                    if (options.defaults)
                         object.creatorId = "";
-                        object.createdAt = null;
-                        object.updatedAt = null;
-                    }
-                    if (message.text != null && message.hasOwnProperty("text"))
-                        object.text = message.text;
                     if (message.creatorId != null && message.hasOwnProperty("creatorId"))
                         object.creatorId = message.creatorId;
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
-                        object.createdAt = $root.google.protobuf.Timestamp.toObject(message.createdAt, options);
-                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
-                        object.updatedAt = $root.google.protobuf.Timestamp.toObject(message.updatedAt, options);
                     return object;
                 };
 
@@ -2388,9 +2514,9 @@ $root.messages = (function() {
              * Properties of a StartNewEntryResponse.
              * @memberof messages.notebook
              * @interface IStartNewEntryResponse
-             * @property {messages.notebook.IError|null} [error] StartNewEntryResponse error
+             * @property {google.rpc.IStatus|null} [status] StartNewEntryResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] StartNewEntryResponse context
              * @property {messages.notebook.StartNewEntryResponse.IPayload|null} [payload] StartNewEntryResponse payload
-             * @property {string|null} [traceId] StartNewEntryResponse traceId
              */
 
             /**
@@ -2409,12 +2535,20 @@ $root.messages = (function() {
             }
 
             /**
-             * StartNewEntryResponse error.
-             * @member {messages.notebook.IError|null|undefined} error
+             * StartNewEntryResponse status.
+             * @member {google.rpc.IStatus|null|undefined} status
              * @memberof messages.notebook.StartNewEntryResponse
              * @instance
              */
-            StartNewEntryResponse.prototype.error = null;
+            StartNewEntryResponse.prototype.status = null;
+
+            /**
+             * StartNewEntryResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
+             * @memberof messages.notebook.StartNewEntryResponse
+             * @instance
+             */
+            StartNewEntryResponse.prototype.context = null;
 
             /**
              * StartNewEntryResponse payload.
@@ -2423,14 +2557,6 @@ $root.messages = (function() {
              * @instance
              */
             StartNewEntryResponse.prototype.payload = null;
-
-            /**
-             * StartNewEntryResponse traceId.
-             * @member {string} traceId
-             * @memberof messages.notebook.StartNewEntryResponse
-             * @instance
-             */
-            StartNewEntryResponse.prototype.traceId = "";
 
             /**
              * Creates a new StartNewEntryResponse instance using the specified properties.
@@ -2456,12 +2582,12 @@ $root.messages = (function() {
             StartNewEntryResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.error != null && message.hasOwnProperty("error"))
-                    $root.messages.notebook.Error.encode(message.error, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.status != null && message.hasOwnProperty("status"))
+                    $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.StartNewEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.traceId);
+                    $root.messages.notebook.StartNewEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
@@ -2497,13 +2623,13 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.error = $root.messages.notebook.Error.decode(reader, reader.uint32());
+                        message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
                         break;
                     case 2:
-                        message.payload = $root.messages.notebook.StartNewEntryResponse.Payload.decode(reader, reader.uint32());
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
                         break;
                     case 3:
-                        message.traceId = reader.string();
+                        message.payload = $root.messages.notebook.StartNewEntryResponse.Payload.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -2540,19 +2666,21 @@ $root.messages = (function() {
             StartNewEntryResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.error != null && message.hasOwnProperty("error")) {
-                    var error = $root.messages.notebook.Error.verify(message.error);
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    var error = $root.google.rpc.Status.verify(message.status);
                     if (error)
-                        return "error." + error;
+                        return "status." + error;
+                }
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
                 }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.StartNewEntryResponse.Payload.verify(message.payload);
                     if (error)
                         return "payload." + error;
                 }
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    if (!$util.isString(message.traceId))
-                        return "traceId: string expected";
                 return null;
             };
 
@@ -2568,18 +2696,21 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.StartNewEntryResponse)
                     return object;
                 var message = new $root.messages.notebook.StartNewEntryResponse();
-                if (object.error != null) {
-                    if (typeof object.error !== "object")
-                        throw TypeError(".messages.notebook.StartNewEntryResponse.error: object expected");
-                    message.error = $root.messages.notebook.Error.fromObject(object.error);
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".messages.notebook.StartNewEntryResponse.status: object expected");
+                    message.status = $root.google.rpc.Status.fromObject(object.status);
+                }
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.StartNewEntryResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
                 }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.StartNewEntryResponse.payload: object expected");
                     message.payload = $root.messages.notebook.StartNewEntryResponse.Payload.fromObject(object.payload);
                 }
-                if (object.traceId != null)
-                    message.traceId = String(object.traceId);
                 return message;
             };
 
@@ -2597,16 +2728,16 @@ $root.messages = (function() {
                     options = {};
                 var object = {};
                 if (options.defaults) {
-                    object.error = null;
+                    object.status = null;
+                    object.context = null;
                     object.payload = null;
-                    object.traceId = "";
                 }
-                if (message.error != null && message.hasOwnProperty("error"))
-                    object.error = $root.messages.notebook.Error.toObject(message.error, options);
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.StartNewEntryResponse.Payload.toObject(message.payload, options);
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    object.traceId = message.traceId;
                 return object;
             };
 
@@ -3247,9 +3378,9 @@ $root.messages = (function() {
              * Properties of a ChangeEntryResponse.
              * @memberof messages.notebook
              * @interface IChangeEntryResponse
-             * @property {messages.notebook.IError|null} [error] ChangeEntryResponse error
+             * @property {google.rpc.IStatus|null} [status] ChangeEntryResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] ChangeEntryResponse context
              * @property {messages.notebook.ChangeEntryResponse.IPayload|null} [payload] ChangeEntryResponse payload
-             * @property {string|null} [traceId] ChangeEntryResponse traceId
              */
 
             /**
@@ -3268,12 +3399,20 @@ $root.messages = (function() {
             }
 
             /**
-             * ChangeEntryResponse error.
-             * @member {messages.notebook.IError|null|undefined} error
+             * ChangeEntryResponse status.
+             * @member {google.rpc.IStatus|null|undefined} status
              * @memberof messages.notebook.ChangeEntryResponse
              * @instance
              */
-            ChangeEntryResponse.prototype.error = null;
+            ChangeEntryResponse.prototype.status = null;
+
+            /**
+             * ChangeEntryResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
+             * @memberof messages.notebook.ChangeEntryResponse
+             * @instance
+             */
+            ChangeEntryResponse.prototype.context = null;
 
             /**
              * ChangeEntryResponse payload.
@@ -3282,14 +3421,6 @@ $root.messages = (function() {
              * @instance
              */
             ChangeEntryResponse.prototype.payload = null;
-
-            /**
-             * ChangeEntryResponse traceId.
-             * @member {string} traceId
-             * @memberof messages.notebook.ChangeEntryResponse
-             * @instance
-             */
-            ChangeEntryResponse.prototype.traceId = "";
 
             /**
              * Creates a new ChangeEntryResponse instance using the specified properties.
@@ -3315,12 +3446,12 @@ $root.messages = (function() {
             ChangeEntryResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.error != null && message.hasOwnProperty("error"))
-                    $root.messages.notebook.Error.encode(message.error, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.status != null && message.hasOwnProperty("status"))
+                    $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.ChangeEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.traceId);
+                    $root.messages.notebook.ChangeEntryResponse.Payload.encode(message.payload, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
@@ -3356,13 +3487,13 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.error = $root.messages.notebook.Error.decode(reader, reader.uint32());
+                        message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
                         break;
                     case 2:
-                        message.payload = $root.messages.notebook.ChangeEntryResponse.Payload.decode(reader, reader.uint32());
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
                         break;
                     case 3:
-                        message.traceId = reader.string();
+                        message.payload = $root.messages.notebook.ChangeEntryResponse.Payload.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -3399,19 +3530,21 @@ $root.messages = (function() {
             ChangeEntryResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.error != null && message.hasOwnProperty("error")) {
-                    var error = $root.messages.notebook.Error.verify(message.error);
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    var error = $root.google.rpc.Status.verify(message.status);
                     if (error)
-                        return "error." + error;
+                        return "status." + error;
+                }
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
                 }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.ChangeEntryResponse.Payload.verify(message.payload);
                     if (error)
                         return "payload." + error;
                 }
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    if (!$util.isString(message.traceId))
-                        return "traceId: string expected";
                 return null;
             };
 
@@ -3427,18 +3560,21 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.ChangeEntryResponse)
                     return object;
                 var message = new $root.messages.notebook.ChangeEntryResponse();
-                if (object.error != null) {
-                    if (typeof object.error !== "object")
-                        throw TypeError(".messages.notebook.ChangeEntryResponse.error: object expected");
-                    message.error = $root.messages.notebook.Error.fromObject(object.error);
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".messages.notebook.ChangeEntryResponse.status: object expected");
+                    message.status = $root.google.rpc.Status.fromObject(object.status);
+                }
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.ChangeEntryResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
                 }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.ChangeEntryResponse.payload: object expected");
                     message.payload = $root.messages.notebook.ChangeEntryResponse.Payload.fromObject(object.payload);
                 }
-                if (object.traceId != null)
-                    message.traceId = String(object.traceId);
                 return message;
             };
 
@@ -3456,16 +3592,16 @@ $root.messages = (function() {
                     options = {};
                 var object = {};
                 if (options.defaults) {
-                    object.error = null;
+                    object.status = null;
+                    object.context = null;
                     object.payload = null;
-                    object.traceId = "";
                 }
-                if (message.error != null && message.hasOwnProperty("error"))
-                    object.error = $root.messages.notebook.Error.toObject(message.error, options);
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.ChangeEntryResponse.Payload.toObject(message.payload, options);
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    object.traceId = message.traceId;
                 return object;
             };
 
@@ -3488,8 +3624,6 @@ $root.messages = (function() {
                  * @interface IPayload
                  * @property {string|null} [id] Payload id
                  * @property {string|null} [text] Payload text
-                 * @property {string|null} [creatorId] Payload creatorId
-                 * @property {google.protobuf.ITimestamp|null} [createdAt] Payload createdAt
                  * @property {google.protobuf.ITimestamp|null} [updatedAt] Payload updatedAt
                  */
 
@@ -3523,22 +3657,6 @@ $root.messages = (function() {
                  * @instance
                  */
                 Payload.prototype.text = "";
-
-                /**
-                 * Payload creatorId.
-                 * @member {string} creatorId
-                 * @memberof messages.notebook.ChangeEntryResponse.Payload
-                 * @instance
-                 */
-                Payload.prototype.creatorId = "";
-
-                /**
-                 * Payload createdAt.
-                 * @member {google.protobuf.ITimestamp|null|undefined} createdAt
-                 * @memberof messages.notebook.ChangeEntryResponse.Payload
-                 * @instance
-                 */
-                Payload.prototype.createdAt = null;
 
                 /**
                  * Payload updatedAt.
@@ -3576,12 +3694,8 @@ $root.messages = (function() {
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
                     if (message.text != null && message.hasOwnProperty("text"))
                         writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
-                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
-                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.creatorId);
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
-                        $root.google.protobuf.Timestamp.encode(message.createdAt, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
-                        $root.google.protobuf.Timestamp.encode(message.updatedAt, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        $root.google.protobuf.Timestamp.encode(message.updatedAt, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                     return writer;
                 };
 
@@ -3623,12 +3737,6 @@ $root.messages = (function() {
                             message.text = reader.string();
                             break;
                         case 3:
-                            message.creatorId = reader.string();
-                            break;
-                        case 4:
-                            message.createdAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
-                            break;
-                        case 5:
                             message.updatedAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                             break;
                         default:
@@ -3672,14 +3780,6 @@ $root.messages = (function() {
                     if (message.text != null && message.hasOwnProperty("text"))
                         if (!$util.isString(message.text))
                             return "text: string expected";
-                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
-                        if (!$util.isString(message.creatorId))
-                            return "creatorId: string expected";
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt")) {
-                        var error = $root.google.protobuf.Timestamp.verify(message.createdAt);
-                        if (error)
-                            return "createdAt." + error;
-                    }
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt")) {
                         var error = $root.google.protobuf.Timestamp.verify(message.updatedAt);
                         if (error)
@@ -3704,13 +3804,6 @@ $root.messages = (function() {
                         message.id = String(object.id);
                     if (object.text != null)
                         message.text = String(object.text);
-                    if (object.creatorId != null)
-                        message.creatorId = String(object.creatorId);
-                    if (object.createdAt != null) {
-                        if (typeof object.createdAt !== "object")
-                            throw TypeError(".messages.notebook.ChangeEntryResponse.Payload.createdAt: object expected");
-                        message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
-                    }
                     if (object.updatedAt != null) {
                         if (typeof object.updatedAt !== "object")
                             throw TypeError(".messages.notebook.ChangeEntryResponse.Payload.updatedAt: object expected");
@@ -3735,18 +3828,12 @@ $root.messages = (function() {
                     if (options.defaults) {
                         object.id = "";
                         object.text = "";
-                        object.creatorId = "";
-                        object.createdAt = null;
                         object.updatedAt = null;
                     }
                     if (message.id != null && message.hasOwnProperty("id"))
                         object.id = message.id;
                     if (message.text != null && message.hasOwnProperty("text"))
                         object.text = message.text;
-                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
-                        object.creatorId = message.creatorId;
-                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
-                        object.createdAt = $root.google.protobuf.Timestamp.toObject(message.createdAt, options);
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
                         object.updatedAt = $root.google.protobuf.Timestamp.toObject(message.updatedAt, options);
                     return object;
@@ -4227,10 +4314,9 @@ $root.messages = (function() {
              * Properties of a ListEntriesResponse.
              * @memberof messages.notebook
              * @interface IListEntriesResponse
-             * @property {messages.notebook.IError|null} [error] ListEntriesResponse error
-             * @property {Array.<messages.notebook.ListEntriesResponse.IEntity>|null} [payload] ListEntriesResponse payload
-             * @property {messages.notebook.ListEntriesResponse.IPageInfo|null} [pageInfo] ListEntriesResponse pageInfo
-             * @property {string|null} [traceId] ListEntriesResponse traceId
+             * @property {google.rpc.IStatus|null} [status] ListEntriesResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] ListEntriesResponse context
+             * @property {messages.notebook.ListEntriesResponse.IPayload|null} [payload] ListEntriesResponse payload
              */
 
             /**
@@ -4242,7 +4328,6 @@ $root.messages = (function() {
              * @param {messages.notebook.IListEntriesResponse=} [properties] Properties to set
              */
             function ListEntriesResponse(properties) {
-                this.payload = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -4250,36 +4335,28 @@ $root.messages = (function() {
             }
 
             /**
-             * ListEntriesResponse error.
-             * @member {messages.notebook.IError|null|undefined} error
+             * ListEntriesResponse status.
+             * @member {google.rpc.IStatus|null|undefined} status
              * @memberof messages.notebook.ListEntriesResponse
              * @instance
              */
-            ListEntriesResponse.prototype.error = null;
+            ListEntriesResponse.prototype.status = null;
+
+            /**
+             * ListEntriesResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
+             * @memberof messages.notebook.ListEntriesResponse
+             * @instance
+             */
+            ListEntriesResponse.prototype.context = null;
 
             /**
              * ListEntriesResponse payload.
-             * @member {Array.<messages.notebook.ListEntriesResponse.IEntity>} payload
+             * @member {messages.notebook.ListEntriesResponse.IPayload|null|undefined} payload
              * @memberof messages.notebook.ListEntriesResponse
              * @instance
              */
-            ListEntriesResponse.prototype.payload = $util.emptyArray;
-
-            /**
-             * ListEntriesResponse pageInfo.
-             * @member {messages.notebook.ListEntriesResponse.IPageInfo|null|undefined} pageInfo
-             * @memberof messages.notebook.ListEntriesResponse
-             * @instance
-             */
-            ListEntriesResponse.prototype.pageInfo = null;
-
-            /**
-             * ListEntriesResponse traceId.
-             * @member {string} traceId
-             * @memberof messages.notebook.ListEntriesResponse
-             * @instance
-             */
-            ListEntriesResponse.prototype.traceId = "";
+            ListEntriesResponse.prototype.payload = null;
 
             /**
              * Creates a new ListEntriesResponse instance using the specified properties.
@@ -4305,15 +4382,12 @@ $root.messages = (function() {
             ListEntriesResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.error != null && message.hasOwnProperty("error"))
-                    $root.messages.notebook.Error.encode(message.error, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-                if (message.payload != null && message.payload.length)
-                    for (var i = 0; i < message.payload.length; ++i)
-                        $root.messages.notebook.ListEntriesResponse.Entity.encode(message.payload[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.pageInfo != null && message.hasOwnProperty("pageInfo"))
-                    $root.messages.notebook.ListEntriesResponse.PageInfo.encode(message.pageInfo, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    writer.uint32(/* id 4, wireType 2 =*/34).string(message.traceId);
+                if (message.status != null && message.hasOwnProperty("status"))
+                    $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    $root.messages.notebook.ListEntriesResponse.Payload.encode(message.payload, writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
                 return writer;
             };
 
@@ -4349,18 +4423,13 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.error = $root.messages.notebook.Error.decode(reader, reader.uint32());
+                        message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
                         break;
                     case 2:
-                        if (!(message.payload && message.payload.length))
-                            message.payload = [];
-                        message.payload.push($root.messages.notebook.ListEntriesResponse.Entity.decode(reader, reader.uint32()));
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
                         break;
                     case 3:
-                        message.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.decode(reader, reader.uint32());
-                        break;
-                    case 4:
-                        message.traceId = reader.string();
+                        message.payload = $root.messages.notebook.ListEntriesResponse.Payload.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -4397,28 +4466,21 @@ $root.messages = (function() {
             ListEntriesResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.error != null && message.hasOwnProperty("error")) {
-                    var error = $root.messages.notebook.Error.verify(message.error);
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    var error = $root.google.rpc.Status.verify(message.status);
                     if (error)
-                        return "error." + error;
+                        return "status." + error;
+                }
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
                 }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
-                    if (!Array.isArray(message.payload))
-                        return "payload: array expected";
-                    for (var i = 0; i < message.payload.length; ++i) {
-                        var error = $root.messages.notebook.ListEntriesResponse.Entity.verify(message.payload[i]);
-                        if (error)
-                            return "payload." + error;
-                    }
-                }
-                if (message.pageInfo != null && message.hasOwnProperty("pageInfo")) {
-                    var error = $root.messages.notebook.ListEntriesResponse.PageInfo.verify(message.pageInfo);
+                    var error = $root.messages.notebook.ListEntriesResponse.Payload.verify(message.payload);
                     if (error)
-                        return "pageInfo." + error;
+                        return "payload." + error;
                 }
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    if (!$util.isString(message.traceId))
-                        return "traceId: string expected";
                 return null;
             };
 
@@ -4434,28 +4496,21 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.ListEntriesResponse)
                     return object;
                 var message = new $root.messages.notebook.ListEntriesResponse();
-                if (object.error != null) {
-                    if (typeof object.error !== "object")
-                        throw TypeError(".messages.notebook.ListEntriesResponse.error: object expected");
-                    message.error = $root.messages.notebook.Error.fromObject(object.error);
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".messages.notebook.ListEntriesResponse.status: object expected");
+                    message.status = $root.google.rpc.Status.fromObject(object.status);
                 }
-                if (object.payload) {
-                    if (!Array.isArray(object.payload))
-                        throw TypeError(".messages.notebook.ListEntriesResponse.payload: array expected");
-                    message.payload = [];
-                    for (var i = 0; i < object.payload.length; ++i) {
-                        if (typeof object.payload[i] !== "object")
-                            throw TypeError(".messages.notebook.ListEntriesResponse.payload: object expected");
-                        message.payload[i] = $root.messages.notebook.ListEntriesResponse.Entity.fromObject(object.payload[i]);
-                    }
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.ListEntriesResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
                 }
-                if (object.pageInfo != null) {
-                    if (typeof object.pageInfo !== "object")
-                        throw TypeError(".messages.notebook.ListEntriesResponse.pageInfo: object expected");
-                    message.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.fromObject(object.pageInfo);
+                if (object.payload != null) {
+                    if (typeof object.payload !== "object")
+                        throw TypeError(".messages.notebook.ListEntriesResponse.payload: object expected");
+                    message.payload = $root.messages.notebook.ListEntriesResponse.Payload.fromObject(object.payload);
                 }
-                if (object.traceId != null)
-                    message.traceId = String(object.traceId);
                 return message;
             };
 
@@ -4472,24 +4527,17 @@ $root.messages = (function() {
                 if (!options)
                     options = {};
                 var object = {};
-                if (options.arrays || options.defaults)
-                    object.payload = [];
                 if (options.defaults) {
-                    object.error = null;
-                    object.pageInfo = null;
-                    object.traceId = "";
+                    object.status = null;
+                    object.context = null;
+                    object.payload = null;
                 }
-                if (message.error != null && message.hasOwnProperty("error"))
-                    object.error = $root.messages.notebook.Error.toObject(message.error, options);
-                if (message.payload && message.payload.length) {
-                    object.payload = [];
-                    for (var j = 0; j < message.payload.length; ++j)
-                        object.payload[j] = $root.messages.notebook.ListEntriesResponse.Entity.toObject(message.payload[j], options);
-                }
-                if (message.pageInfo != null && message.hasOwnProperty("pageInfo"))
-                    object.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.toObject(message.pageInfo, options);
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    object.traceId = message.traceId;
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
+                if (message.payload != null && message.hasOwnProperty("payload"))
+                    object.payload = $root.messages.notebook.ListEntriesResponse.Payload.toObject(message.payload, options);
                 return object;
             };
 
@@ -4758,28 +4806,28 @@ $root.messages = (function() {
                 return PageInfo;
             })();
 
-            ListEntriesResponse.Entity = (function() {
+            ListEntriesResponse.Entry = (function() {
 
                 /**
-                 * Properties of an Entity.
+                 * Properties of an Entry.
                  * @memberof messages.notebook.ListEntriesResponse
-                 * @interface IEntity
-                 * @property {string|null} [id] Entity id
-                 * @property {string|null} [text] Entity text
-                 * @property {string|null} [creatorId] Entity creatorId
-                 * @property {google.protobuf.ITimestamp|null} [createdAt] Entity createdAt
-                 * @property {google.protobuf.ITimestamp|null} [updatedAt] Entity updatedAt
+                 * @interface IEntry
+                 * @property {string|null} [id] Entry id
+                 * @property {string|null} [text] Entry text
+                 * @property {string|null} [creatorId] Entry creatorId
+                 * @property {google.protobuf.ITimestamp|null} [createdAt] Entry createdAt
+                 * @property {messages.notebook.INullableTimestamp|null} [updatedAt] Entry updatedAt
                  */
 
                 /**
-                 * Constructs a new Entity.
+                 * Constructs a new Entry.
                  * @memberof messages.notebook.ListEntriesResponse
-                 * @classdesc Represents an Entity.
-                 * @implements IEntity
+                 * @classdesc Represents an Entry.
+                 * @implements IEntry
                  * @constructor
-                 * @param {messages.notebook.ListEntriesResponse.IEntity=} [properties] Properties to set
+                 * @param {messages.notebook.ListEntriesResponse.IEntry=} [properties] Properties to set
                  */
-                function Entity(properties) {
+                function Entry(properties) {
                     if (properties)
                         for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                             if (properties[keys[i]] != null)
@@ -4787,67 +4835,67 @@ $root.messages = (function() {
                 }
 
                 /**
-                 * Entity id.
+                 * Entry id.
                  * @member {string} id
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  */
-                Entity.prototype.id = "";
+                Entry.prototype.id = "";
 
                 /**
-                 * Entity text.
+                 * Entry text.
                  * @member {string} text
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  */
-                Entity.prototype.text = "";
+                Entry.prototype.text = "";
 
                 /**
-                 * Entity creatorId.
+                 * Entry creatorId.
                  * @member {string} creatorId
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  */
-                Entity.prototype.creatorId = "";
+                Entry.prototype.creatorId = "";
 
                 /**
-                 * Entity createdAt.
+                 * Entry createdAt.
                  * @member {google.protobuf.ITimestamp|null|undefined} createdAt
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  */
-                Entity.prototype.createdAt = null;
+                Entry.prototype.createdAt = null;
 
                 /**
-                 * Entity updatedAt.
-                 * @member {google.protobuf.ITimestamp|null|undefined} updatedAt
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * Entry updatedAt.
+                 * @member {messages.notebook.INullableTimestamp|null|undefined} updatedAt
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  */
-                Entity.prototype.updatedAt = null;
+                Entry.prototype.updatedAt = null;
 
                 /**
-                 * Creates a new Entity instance using the specified properties.
+                 * Creates a new Entry instance using the specified properties.
                  * @function create
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
-                 * @param {messages.notebook.ListEntriesResponse.IEntity=} [properties] Properties to set
-                 * @returns {messages.notebook.ListEntriesResponse.Entity} Entity instance
+                 * @param {messages.notebook.ListEntriesResponse.IEntry=} [properties] Properties to set
+                 * @returns {messages.notebook.ListEntriesResponse.Entry} Entry instance
                  */
-                Entity.create = function create(properties) {
-                    return new Entity(properties);
+                Entry.create = function create(properties) {
+                    return new Entry(properties);
                 };
 
                 /**
-                 * Encodes the specified Entity message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entity.verify|verify} messages.
+                 * Encodes the specified Entry message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entry.verify|verify} messages.
                  * @function encode
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
-                 * @param {messages.notebook.ListEntriesResponse.IEntity} message Entity message or plain object to encode
+                 * @param {messages.notebook.ListEntriesResponse.IEntry} message Entry message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Entity.encode = function encode(message, writer) {
+                Entry.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
                     if (message.id != null && message.hasOwnProperty("id"))
@@ -4859,38 +4907,38 @@ $root.messages = (function() {
                     if (message.createdAt != null && message.hasOwnProperty("createdAt"))
                         $root.google.protobuf.Timestamp.encode(message.createdAt, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
-                        $root.google.protobuf.Timestamp.encode(message.updatedAt, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                        $root.messages.notebook.NullableTimestamp.encode(message.updatedAt, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                     return writer;
                 };
 
                 /**
-                 * Encodes the specified Entity message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entity.verify|verify} messages.
+                 * Encodes the specified Entry message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Entry.verify|verify} messages.
                  * @function encodeDelimited
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
-                 * @param {messages.notebook.ListEntriesResponse.IEntity} message Entity message or plain object to encode
+                 * @param {messages.notebook.ListEntriesResponse.IEntry} message Entry message or plain object to encode
                  * @param {$protobuf.Writer} [writer] Writer to encode to
                  * @returns {$protobuf.Writer} Writer
                  */
-                Entity.encodeDelimited = function encodeDelimited(message, writer) {
+                Entry.encodeDelimited = function encodeDelimited(message, writer) {
                     return this.encode(message, writer).ldelim();
                 };
 
                 /**
-                 * Decodes an Entity message from the specified reader or buffer.
+                 * Decodes an Entry message from the specified reader or buffer.
                  * @function decode
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
                  * @param {number} [length] Message length if known beforehand
-                 * @returns {messages.notebook.ListEntriesResponse.Entity} Entity
+                 * @returns {messages.notebook.ListEntriesResponse.Entry} Entry
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Entity.decode = function decode(reader, length) {
+                Entry.decode = function decode(reader, length) {
                     if (!(reader instanceof $Reader))
                         reader = $Reader.create(reader);
-                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ListEntriesResponse.Entity();
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ListEntriesResponse.Entry();
                     while (reader.pos < end) {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
@@ -4907,7 +4955,7 @@ $root.messages = (function() {
                             message.createdAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                             break;
                         case 5:
-                            message.updatedAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            message.updatedAt = $root.messages.notebook.NullableTimestamp.decode(reader, reader.uint32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -4918,30 +4966,30 @@ $root.messages = (function() {
                 };
 
                 /**
-                 * Decodes an Entity message from the specified reader or buffer, length delimited.
+                 * Decodes an Entry message from the specified reader or buffer, length delimited.
                  * @function decodeDelimited
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
                  * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-                 * @returns {messages.notebook.ListEntriesResponse.Entity} Entity
+                 * @returns {messages.notebook.ListEntriesResponse.Entry} Entry
                  * @throws {Error} If the payload is not a reader or valid buffer
                  * @throws {$protobuf.util.ProtocolError} If required fields are missing
                  */
-                Entity.decodeDelimited = function decodeDelimited(reader) {
+                Entry.decodeDelimited = function decodeDelimited(reader) {
                     if (!(reader instanceof $Reader))
                         reader = new $Reader(reader);
                     return this.decode(reader, reader.uint32());
                 };
 
                 /**
-                 * Verifies an Entity message.
+                 * Verifies an Entry message.
                  * @function verify
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
                  * @param {Object.<string,*>} message Plain object to verify
                  * @returns {string|null} `null` if valid, otherwise the reason why it is not
                  */
-                Entity.verify = function verify(message) {
+                Entry.verify = function verify(message) {
                     if (typeof message !== "object" || message === null)
                         return "object expected";
                     if (message.id != null && message.hasOwnProperty("id"))
@@ -4959,7 +5007,7 @@ $root.messages = (function() {
                             return "createdAt." + error;
                     }
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt")) {
-                        var error = $root.google.protobuf.Timestamp.verify(message.updatedAt);
+                        var error = $root.messages.notebook.NullableTimestamp.verify(message.updatedAt);
                         if (error)
                             return "updatedAt." + error;
                     }
@@ -4967,17 +5015,17 @@ $root.messages = (function() {
                 };
 
                 /**
-                 * Creates an Entity message from a plain object. Also converts values to their respective internal types.
+                 * Creates an Entry message from a plain object. Also converts values to their respective internal types.
                  * @function fromObject
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
                  * @param {Object.<string,*>} object Plain object
-                 * @returns {messages.notebook.ListEntriesResponse.Entity} Entity
+                 * @returns {messages.notebook.ListEntriesResponse.Entry} Entry
                  */
-                Entity.fromObject = function fromObject(object) {
-                    if (object instanceof $root.messages.notebook.ListEntriesResponse.Entity)
+                Entry.fromObject = function fromObject(object) {
+                    if (object instanceof $root.messages.notebook.ListEntriesResponse.Entry)
                         return object;
-                    var message = new $root.messages.notebook.ListEntriesResponse.Entity();
+                    var message = new $root.messages.notebook.ListEntriesResponse.Entry();
                     if (object.id != null)
                         message.id = String(object.id);
                     if (object.text != null)
@@ -4986,27 +5034,27 @@ $root.messages = (function() {
                         message.creatorId = String(object.creatorId);
                     if (object.createdAt != null) {
                         if (typeof object.createdAt !== "object")
-                            throw TypeError(".messages.notebook.ListEntriesResponse.Entity.createdAt: object expected");
+                            throw TypeError(".messages.notebook.ListEntriesResponse.Entry.createdAt: object expected");
                         message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
                     }
                     if (object.updatedAt != null) {
                         if (typeof object.updatedAt !== "object")
-                            throw TypeError(".messages.notebook.ListEntriesResponse.Entity.updatedAt: object expected");
-                        message.updatedAt = $root.google.protobuf.Timestamp.fromObject(object.updatedAt);
+                            throw TypeError(".messages.notebook.ListEntriesResponse.Entry.updatedAt: object expected");
+                        message.updatedAt = $root.messages.notebook.NullableTimestamp.fromObject(object.updatedAt);
                     }
                     return message;
                 };
 
                 /**
-                 * Creates a plain object from an Entity message. Also converts values to other types if specified.
+                 * Creates a plain object from an Entry message. Also converts values to other types if specified.
                  * @function toObject
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @static
-                 * @param {messages.notebook.ListEntriesResponse.Entity} message Entity
+                 * @param {messages.notebook.ListEntriesResponse.Entry} message Entry
                  * @param {$protobuf.IConversionOptions} [options] Conversion options
                  * @returns {Object.<string,*>} Plain object
                  */
-                Entity.toObject = function toObject(message, options) {
+                Entry.toObject = function toObject(message, options) {
                     if (!options)
                         options = {};
                     var object = {};
@@ -5026,22 +5074,258 @@ $root.messages = (function() {
                     if (message.createdAt != null && message.hasOwnProperty("createdAt"))
                         object.createdAt = $root.google.protobuf.Timestamp.toObject(message.createdAt, options);
                     if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
-                        object.updatedAt = $root.google.protobuf.Timestamp.toObject(message.updatedAt, options);
+                        object.updatedAt = $root.messages.notebook.NullableTimestamp.toObject(message.updatedAt, options);
                     return object;
                 };
 
                 /**
-                 * Converts this Entity to JSON.
+                 * Converts this Entry to JSON.
                  * @function toJSON
-                 * @memberof messages.notebook.ListEntriesResponse.Entity
+                 * @memberof messages.notebook.ListEntriesResponse.Entry
                  * @instance
                  * @returns {Object.<string,*>} JSON object
                  */
-                Entity.prototype.toJSON = function toJSON() {
+                Entry.prototype.toJSON = function toJSON() {
                     return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
                 };
 
-                return Entity;
+                return Entry;
+            })();
+
+            ListEntriesResponse.Payload = (function() {
+
+                /**
+                 * Properties of a Payload.
+                 * @memberof messages.notebook.ListEntriesResponse
+                 * @interface IPayload
+                 * @property {Array.<messages.notebook.ListEntriesResponse.IEntry>|null} [entries] Payload entries
+                 * @property {messages.notebook.ListEntriesResponse.IPageInfo|null} [pageInfo] Payload pageInfo
+                 */
+
+                /**
+                 * Constructs a new Payload.
+                 * @memberof messages.notebook.ListEntriesResponse
+                 * @classdesc Represents a Payload.
+                 * @implements IPayload
+                 * @constructor
+                 * @param {messages.notebook.ListEntriesResponse.IPayload=} [properties] Properties to set
+                 */
+                function Payload(properties) {
+                    this.entries = [];
+                    if (properties)
+                        for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                            if (properties[keys[i]] != null)
+                                this[keys[i]] = properties[keys[i]];
+                }
+
+                /**
+                 * Payload entries.
+                 * @member {Array.<messages.notebook.ListEntriesResponse.IEntry>} entries
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @instance
+                 */
+                Payload.prototype.entries = $util.emptyArray;
+
+                /**
+                 * Payload pageInfo.
+                 * @member {messages.notebook.ListEntriesResponse.IPageInfo|null|undefined} pageInfo
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @instance
+                 */
+                Payload.prototype.pageInfo = null;
+
+                /**
+                 * Creates a new Payload instance using the specified properties.
+                 * @function create
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {messages.notebook.ListEntriesResponse.IPayload=} [properties] Properties to set
+                 * @returns {messages.notebook.ListEntriesResponse.Payload} Payload instance
+                 */
+                Payload.create = function create(properties) {
+                    return new Payload(properties);
+                };
+
+                /**
+                 * Encodes the specified Payload message. Does not implicitly {@link messages.notebook.ListEntriesResponse.Payload.verify|verify} messages.
+                 * @function encode
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {messages.notebook.ListEntriesResponse.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encode = function encode(message, writer) {
+                    if (!writer)
+                        writer = $Writer.create();
+                    if (message.entries != null && message.entries.length)
+                        for (var i = 0; i < message.entries.length; ++i)
+                            $root.messages.notebook.ListEntriesResponse.Entry.encode(message.entries[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    if (message.pageInfo != null && message.hasOwnProperty("pageInfo"))
+                        $root.messages.notebook.ListEntriesResponse.PageInfo.encode(message.pageInfo, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+                    return writer;
+                };
+
+                /**
+                 * Encodes the specified Payload message, length delimited. Does not implicitly {@link messages.notebook.ListEntriesResponse.Payload.verify|verify} messages.
+                 * @function encodeDelimited
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {messages.notebook.ListEntriesResponse.IPayload} message Payload message or plain object to encode
+                 * @param {$protobuf.Writer} [writer] Writer to encode to
+                 * @returns {$protobuf.Writer} Writer
+                 */
+                Payload.encodeDelimited = function encodeDelimited(message, writer) {
+                    return this.encode(message, writer).ldelim();
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer.
+                 * @function decode
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @param {number} [length] Message length if known beforehand
+                 * @returns {messages.notebook.ListEntriesResponse.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decode = function decode(reader, length) {
+                    if (!(reader instanceof $Reader))
+                        reader = $Reader.create(reader);
+                    var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ListEntriesResponse.Payload();
+                    while (reader.pos < end) {
+                        var tag = reader.uint32();
+                        switch (tag >>> 3) {
+                        case 1:
+                            if (!(message.entries && message.entries.length))
+                                message.entries = [];
+                            message.entries.push($root.messages.notebook.ListEntriesResponse.Entry.decode(reader, reader.uint32()));
+                            break;
+                        case 2:
+                            message.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.decode(reader, reader.uint32());
+                            break;
+                        default:
+                            reader.skipType(tag & 7);
+                            break;
+                        }
+                    }
+                    return message;
+                };
+
+                /**
+                 * Decodes a Payload message from the specified reader or buffer, length delimited.
+                 * @function decodeDelimited
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+                 * @returns {messages.notebook.ListEntriesResponse.Payload} Payload
+                 * @throws {Error} If the payload is not a reader or valid buffer
+                 * @throws {$protobuf.util.ProtocolError} If required fields are missing
+                 */
+                Payload.decodeDelimited = function decodeDelimited(reader) {
+                    if (!(reader instanceof $Reader))
+                        reader = new $Reader(reader);
+                    return this.decode(reader, reader.uint32());
+                };
+
+                /**
+                 * Verifies a Payload message.
+                 * @function verify
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {Object.<string,*>} message Plain object to verify
+                 * @returns {string|null} `null` if valid, otherwise the reason why it is not
+                 */
+                Payload.verify = function verify(message) {
+                    if (typeof message !== "object" || message === null)
+                        return "object expected";
+                    if (message.entries != null && message.hasOwnProperty("entries")) {
+                        if (!Array.isArray(message.entries))
+                            return "entries: array expected";
+                        for (var i = 0; i < message.entries.length; ++i) {
+                            var error = $root.messages.notebook.ListEntriesResponse.Entry.verify(message.entries[i]);
+                            if (error)
+                                return "entries." + error;
+                        }
+                    }
+                    if (message.pageInfo != null && message.hasOwnProperty("pageInfo")) {
+                        var error = $root.messages.notebook.ListEntriesResponse.PageInfo.verify(message.pageInfo);
+                        if (error)
+                            return "pageInfo." + error;
+                    }
+                    return null;
+                };
+
+                /**
+                 * Creates a Payload message from a plain object. Also converts values to their respective internal types.
+                 * @function fromObject
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {Object.<string,*>} object Plain object
+                 * @returns {messages.notebook.ListEntriesResponse.Payload} Payload
+                 */
+                Payload.fromObject = function fromObject(object) {
+                    if (object instanceof $root.messages.notebook.ListEntriesResponse.Payload)
+                        return object;
+                    var message = new $root.messages.notebook.ListEntriesResponse.Payload();
+                    if (object.entries) {
+                        if (!Array.isArray(object.entries))
+                            throw TypeError(".messages.notebook.ListEntriesResponse.Payload.entries: array expected");
+                        message.entries = [];
+                        for (var i = 0; i < object.entries.length; ++i) {
+                            if (typeof object.entries[i] !== "object")
+                                throw TypeError(".messages.notebook.ListEntriesResponse.Payload.entries: object expected");
+                            message.entries[i] = $root.messages.notebook.ListEntriesResponse.Entry.fromObject(object.entries[i]);
+                        }
+                    }
+                    if (object.pageInfo != null) {
+                        if (typeof object.pageInfo !== "object")
+                            throw TypeError(".messages.notebook.ListEntriesResponse.Payload.pageInfo: object expected");
+                        message.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.fromObject(object.pageInfo);
+                    }
+                    return message;
+                };
+
+                /**
+                 * Creates a plain object from a Payload message. Also converts values to other types if specified.
+                 * @function toObject
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @static
+                 * @param {messages.notebook.ListEntriesResponse.Payload} message Payload
+                 * @param {$protobuf.IConversionOptions} [options] Conversion options
+                 * @returns {Object.<string,*>} Plain object
+                 */
+                Payload.toObject = function toObject(message, options) {
+                    if (!options)
+                        options = {};
+                    var object = {};
+                    if (options.arrays || options.defaults)
+                        object.entries = [];
+                    if (options.defaults)
+                        object.pageInfo = null;
+                    if (message.entries && message.entries.length) {
+                        object.entries = [];
+                        for (var j = 0; j < message.entries.length; ++j)
+                            object.entries[j] = $root.messages.notebook.ListEntriesResponse.Entry.toObject(message.entries[j], options);
+                    }
+                    if (message.pageInfo != null && message.hasOwnProperty("pageInfo"))
+                        object.pageInfo = $root.messages.notebook.ListEntriesResponse.PageInfo.toObject(message.pageInfo, options);
+                    return object;
+                };
+
+                /**
+                 * Converts this Payload to JSON.
+                 * @function toJSON
+                 * @memberof messages.notebook.ListEntriesResponse.Payload
+                 * @instance
+                 * @returns {Object.<string,*>} JSON object
+                 */
+                Payload.prototype.toJSON = function toJSON() {
+                    return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+                };
+
+                return Payload;
             })();
 
             return ListEntriesResponse;
@@ -5460,8 +5744,8 @@ $root.messages = (function() {
              * Properties of a DiscardEntryResponse.
              * @memberof messages.notebook
              * @interface IDiscardEntryResponse
-             * @property {messages.notebook.IError|null} [error] DiscardEntryResponse error
-             * @property {string|null} [traceId] DiscardEntryResponse traceId
+             * @property {google.rpc.IStatus|null} [status] DiscardEntryResponse status
+             * @property {messages.notebook.IResponseContext|null} [context] DiscardEntryResponse context
              */
 
             /**
@@ -5480,20 +5764,20 @@ $root.messages = (function() {
             }
 
             /**
-             * DiscardEntryResponse error.
-             * @member {messages.notebook.IError|null|undefined} error
+             * DiscardEntryResponse status.
+             * @member {google.rpc.IStatus|null|undefined} status
              * @memberof messages.notebook.DiscardEntryResponse
              * @instance
              */
-            DiscardEntryResponse.prototype.error = null;
+            DiscardEntryResponse.prototype.status = null;
 
             /**
-             * DiscardEntryResponse traceId.
-             * @member {string} traceId
+             * DiscardEntryResponse context.
+             * @member {messages.notebook.IResponseContext|null|undefined} context
              * @memberof messages.notebook.DiscardEntryResponse
              * @instance
              */
-            DiscardEntryResponse.prototype.traceId = "";
+            DiscardEntryResponse.prototype.context = null;
 
             /**
              * Creates a new DiscardEntryResponse instance using the specified properties.
@@ -5519,10 +5803,10 @@ $root.messages = (function() {
             DiscardEntryResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.error != null && message.hasOwnProperty("error"))
-                    $root.messages.notebook.Error.encode(message.error, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.traceId);
+                if (message.status != null && message.hasOwnProperty("status"))
+                    $root.google.rpc.Status.encode(message.status, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.ResponseContext.encode(message.context, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
@@ -5558,10 +5842,10 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.error = $root.messages.notebook.Error.decode(reader, reader.uint32());
+                        message.status = $root.google.rpc.Status.decode(reader, reader.uint32());
                         break;
                     case 2:
-                        message.traceId = reader.string();
+                        message.context = $root.messages.notebook.ResponseContext.decode(reader, reader.uint32());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -5598,14 +5882,16 @@ $root.messages = (function() {
             DiscardEntryResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.error != null && message.hasOwnProperty("error")) {
-                    var error = $root.messages.notebook.Error.verify(message.error);
+                if (message.status != null && message.hasOwnProperty("status")) {
+                    var error = $root.google.rpc.Status.verify(message.status);
                     if (error)
-                        return "error." + error;
+                        return "status." + error;
                 }
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    if (!$util.isString(message.traceId))
-                        return "traceId: string expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.ResponseContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
                 return null;
             };
 
@@ -5621,13 +5907,16 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.DiscardEntryResponse)
                     return object;
                 var message = new $root.messages.notebook.DiscardEntryResponse();
-                if (object.error != null) {
-                    if (typeof object.error !== "object")
-                        throw TypeError(".messages.notebook.DiscardEntryResponse.error: object expected");
-                    message.error = $root.messages.notebook.Error.fromObject(object.error);
+                if (object.status != null) {
+                    if (typeof object.status !== "object")
+                        throw TypeError(".messages.notebook.DiscardEntryResponse.status: object expected");
+                    message.status = $root.google.rpc.Status.fromObject(object.status);
                 }
-                if (object.traceId != null)
-                    message.traceId = String(object.traceId);
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.DiscardEntryResponse.context: object expected");
+                    message.context = $root.messages.notebook.ResponseContext.fromObject(object.context);
+                }
                 return message;
             };
 
@@ -5645,13 +5934,13 @@ $root.messages = (function() {
                     options = {};
                 var object = {};
                 if (options.defaults) {
-                    object.error = null;
-                    object.traceId = "";
+                    object.status = null;
+                    object.context = null;
                 }
-                if (message.error != null && message.hasOwnProperty("error"))
-                    object.error = $root.messages.notebook.Error.toObject(message.error, options);
-                if (message.traceId != null && message.hasOwnProperty("traceId"))
-                    object.traceId = message.traceId;
+                if (message.status != null && message.hasOwnProperty("status"))
+                    object.status = $root.google.rpc.Status.toObject(message.status, options);
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.ResponseContext.toObject(message.context, options);
                 return object;
             };
 
@@ -5675,6 +5964,7 @@ $root.messages = (function() {
              * Properties of an InfoEntryCreated.
              * @memberof messages.notebook
              * @interface IInfoEntryCreated
+             * @property {messages.notebook.IInfoContext|null} [context] InfoEntryCreated context
              * @property {messages.notebook.InfoEntryCreated.IPayload|null} [payload] InfoEntryCreated payload
              */
 
@@ -5692,6 +5982,14 @@ $root.messages = (function() {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
+            /**
+             * InfoEntryCreated context.
+             * @member {messages.notebook.IInfoContext|null|undefined} context
+             * @memberof messages.notebook.InfoEntryCreated
+             * @instance
+             */
+            InfoEntryCreated.prototype.context = null;
 
             /**
              * InfoEntryCreated payload.
@@ -5725,8 +6023,10 @@ $root.messages = (function() {
             InfoEntryCreated.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.InfoContext.encode(message.context, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.InfoEntryCreated.Payload.encode(message.payload, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.messages.notebook.InfoEntryCreated.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
@@ -5762,6 +6062,9 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
+                        message.context = $root.messages.notebook.InfoContext.decode(reader, reader.uint32());
+                        break;
+                    case 2:
                         message.payload = $root.messages.notebook.InfoEntryCreated.Payload.decode(reader, reader.uint32());
                         break;
                     default:
@@ -5799,6 +6102,11 @@ $root.messages = (function() {
             InfoEntryCreated.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.InfoContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.InfoEntryCreated.Payload.verify(message.payload);
                     if (error)
@@ -5819,6 +6127,11 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.InfoEntryCreated)
                     return object;
                 var message = new $root.messages.notebook.InfoEntryCreated();
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.InfoEntryCreated.context: object expected");
+                    message.context = $root.messages.notebook.InfoContext.fromObject(object.context);
+                }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.InfoEntryCreated.payload: object expected");
@@ -5840,8 +6153,12 @@ $root.messages = (function() {
                 if (!options)
                     options = {};
                 var object = {};
-                if (options.defaults)
+                if (options.defaults) {
+                    object.context = null;
                     object.payload = null;
+                }
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.InfoContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.InfoEntryCreated.Payload.toObject(message.payload, options);
                 return object;
@@ -5865,6 +6182,9 @@ $root.messages = (function() {
                  * @memberof messages.notebook.InfoEntryCreated
                  * @interface IPayload
                  * @property {string|null} [id] Payload id
+                 * @property {string|null} [text] Payload text
+                 * @property {string|null} [creatorId] Payload creatorId
+                 * @property {google.protobuf.ITimestamp|null} [createdAt] Payload createdAt
                  */
 
                 /**
@@ -5889,6 +6209,30 @@ $root.messages = (function() {
                  * @instance
                  */
                 Payload.prototype.id = "";
+
+                /**
+                 * Payload text.
+                 * @member {string} text
+                 * @memberof messages.notebook.InfoEntryCreated.Payload
+                 * @instance
+                 */
+                Payload.prototype.text = "";
+
+                /**
+                 * Payload creatorId.
+                 * @member {string} creatorId
+                 * @memberof messages.notebook.InfoEntryCreated.Payload
+                 * @instance
+                 */
+                Payload.prototype.creatorId = "";
+
+                /**
+                 * Payload createdAt.
+                 * @member {google.protobuf.ITimestamp|null|undefined} createdAt
+                 * @memberof messages.notebook.InfoEntryCreated.Payload
+                 * @instance
+                 */
+                Payload.prototype.createdAt = null;
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -5916,6 +6260,12 @@ $root.messages = (function() {
                         writer = $Writer.create();
                     if (message.id != null && message.hasOwnProperty("id"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.creatorId);
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
+                        $root.google.protobuf.Timestamp.encode(message.createdAt, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
                     return writer;
                 };
 
@@ -5952,6 +6302,15 @@ $root.messages = (function() {
                         switch (tag >>> 3) {
                         case 1:
                             message.id = reader.string();
+                            break;
+                        case 2:
+                            message.text = reader.string();
+                            break;
+                        case 3:
+                            message.creatorId = reader.string();
+                            break;
+                        case 4:
+                            message.createdAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -5991,6 +6350,17 @@ $root.messages = (function() {
                     if (message.id != null && message.hasOwnProperty("id"))
                         if (!$util.isString(message.id))
                             return "id: string expected";
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        if (!$util.isString(message.text))
+                            return "text: string expected";
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        if (!$util.isString(message.creatorId))
+                            return "creatorId: string expected";
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.createdAt);
+                        if (error)
+                            return "createdAt." + error;
+                    }
                     return null;
                 };
 
@@ -6008,6 +6378,15 @@ $root.messages = (function() {
                     var message = new $root.messages.notebook.InfoEntryCreated.Payload();
                     if (object.id != null)
                         message.id = String(object.id);
+                    if (object.text != null)
+                        message.text = String(object.text);
+                    if (object.creatorId != null)
+                        message.creatorId = String(object.creatorId);
+                    if (object.createdAt != null) {
+                        if (typeof object.createdAt !== "object")
+                            throw TypeError(".messages.notebook.InfoEntryCreated.Payload.createdAt: object expected");
+                        message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
+                    }
                     return message;
                 };
 
@@ -6024,10 +6403,20 @@ $root.messages = (function() {
                     if (!options)
                         options = {};
                     var object = {};
-                    if (options.defaults)
+                    if (options.defaults) {
                         object.id = "";
+                        object.text = "";
+                        object.creatorId = "";
+                        object.createdAt = null;
+                    }
                     if (message.id != null && message.hasOwnProperty("id"))
                         object.id = message.id;
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        object.text = message.text;
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        object.creatorId = message.creatorId;
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
+                        object.createdAt = $root.google.protobuf.Timestamp.toObject(message.createdAt, options);
                     return object;
                 };
 
@@ -6054,6 +6443,7 @@ $root.messages = (function() {
              * Properties of an InfoEntryUpdated.
              * @memberof messages.notebook
              * @interface IInfoEntryUpdated
+             * @property {messages.notebook.IInfoContext|null} [context] InfoEntryUpdated context
              * @property {messages.notebook.InfoEntryUpdated.IPayload|null} [payload] InfoEntryUpdated payload
              */
 
@@ -6071,6 +6461,14 @@ $root.messages = (function() {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
+            /**
+             * InfoEntryUpdated context.
+             * @member {messages.notebook.IInfoContext|null|undefined} context
+             * @memberof messages.notebook.InfoEntryUpdated
+             * @instance
+             */
+            InfoEntryUpdated.prototype.context = null;
 
             /**
              * InfoEntryUpdated payload.
@@ -6104,8 +6502,10 @@ $root.messages = (function() {
             InfoEntryUpdated.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.InfoContext.encode(message.context, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.InfoEntryUpdated.Payload.encode(message.payload, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.messages.notebook.InfoEntryUpdated.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
@@ -6141,6 +6541,9 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
+                        message.context = $root.messages.notebook.InfoContext.decode(reader, reader.uint32());
+                        break;
+                    case 2:
                         message.payload = $root.messages.notebook.InfoEntryUpdated.Payload.decode(reader, reader.uint32());
                         break;
                     default:
@@ -6178,6 +6581,11 @@ $root.messages = (function() {
             InfoEntryUpdated.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.InfoContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.InfoEntryUpdated.Payload.verify(message.payload);
                     if (error)
@@ -6198,6 +6606,11 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.InfoEntryUpdated)
                     return object;
                 var message = new $root.messages.notebook.InfoEntryUpdated();
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.InfoEntryUpdated.context: object expected");
+                    message.context = $root.messages.notebook.InfoContext.fromObject(object.context);
+                }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.InfoEntryUpdated.payload: object expected");
@@ -6219,8 +6632,12 @@ $root.messages = (function() {
                 if (!options)
                     options = {};
                 var object = {};
-                if (options.defaults)
+                if (options.defaults) {
+                    object.context = null;
                     object.payload = null;
+                }
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.InfoContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.InfoEntryUpdated.Payload.toObject(message.payload, options);
                 return object;
@@ -6532,6 +6949,7 @@ $root.messages = (function() {
              * Properties of an InfoEntryDeleted.
              * @memberof messages.notebook
              * @interface IInfoEntryDeleted
+             * @property {messages.notebook.IInfoContext|null} [context] InfoEntryDeleted context
              * @property {messages.notebook.InfoEntryDeleted.IPayload|null} [payload] InfoEntryDeleted payload
              */
 
@@ -6549,6 +6967,14 @@ $root.messages = (function() {
                         if (properties[keys[i]] != null)
                             this[keys[i]] = properties[keys[i]];
             }
+
+            /**
+             * InfoEntryDeleted context.
+             * @member {messages.notebook.IInfoContext|null|undefined} context
+             * @memberof messages.notebook.InfoEntryDeleted
+             * @instance
+             */
+            InfoEntryDeleted.prototype.context = null;
 
             /**
              * InfoEntryDeleted payload.
@@ -6582,8 +7008,10 @@ $root.messages = (function() {
             InfoEntryDeleted.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
+                if (message.context != null && message.hasOwnProperty("context"))
+                    $root.messages.notebook.InfoContext.encode(message.context, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
                 if (message.payload != null && message.hasOwnProperty("payload"))
-                    $root.messages.notebook.InfoEntryDeleted.Payload.encode(message.payload, writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+                    $root.messages.notebook.InfoEntryDeleted.Payload.encode(message.payload, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
                 return writer;
             };
 
@@ -6619,6 +7047,9 @@ $root.messages = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
+                        message.context = $root.messages.notebook.InfoContext.decode(reader, reader.uint32());
+                        break;
+                    case 2:
                         message.payload = $root.messages.notebook.InfoEntryDeleted.Payload.decode(reader, reader.uint32());
                         break;
                     default:
@@ -6656,6 +7087,11 @@ $root.messages = (function() {
             InfoEntryDeleted.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
+                if (message.context != null && message.hasOwnProperty("context")) {
+                    var error = $root.messages.notebook.InfoContext.verify(message.context);
+                    if (error)
+                        return "context." + error;
+                }
                 if (message.payload != null && message.hasOwnProperty("payload")) {
                     var error = $root.messages.notebook.InfoEntryDeleted.Payload.verify(message.payload);
                     if (error)
@@ -6676,6 +7112,11 @@ $root.messages = (function() {
                 if (object instanceof $root.messages.notebook.InfoEntryDeleted)
                     return object;
                 var message = new $root.messages.notebook.InfoEntryDeleted();
+                if (object.context != null) {
+                    if (typeof object.context !== "object")
+                        throw TypeError(".messages.notebook.InfoEntryDeleted.context: object expected");
+                    message.context = $root.messages.notebook.InfoContext.fromObject(object.context);
+                }
                 if (object.payload != null) {
                     if (typeof object.payload !== "object")
                         throw TypeError(".messages.notebook.InfoEntryDeleted.payload: object expected");
@@ -6697,8 +7138,12 @@ $root.messages = (function() {
                 if (!options)
                     options = {};
                 var object = {};
-                if (options.defaults)
+                if (options.defaults) {
+                    object.context = null;
                     object.payload = null;
+                }
+                if (message.context != null && message.hasOwnProperty("context"))
+                    object.context = $root.messages.notebook.InfoContext.toObject(message.context, options);
                 if (message.payload != null && message.hasOwnProperty("payload"))
                     object.payload = $root.messages.notebook.InfoEntryDeleted.Payload.toObject(message.payload, options);
                 return object;
@@ -6722,6 +7167,10 @@ $root.messages = (function() {
                  * @memberof messages.notebook.InfoEntryDeleted
                  * @interface IPayload
                  * @property {string|null} [id] Payload id
+                 * @property {string|null} [text] Payload text
+                 * @property {string|null} [creatorId] Payload creatorId
+                 * @property {google.protobuf.ITimestamp|null} [createdAt] Payload createdAt
+                 * @property {messages.notebook.INullableTimestamp|null} [updatedAt] Payload updatedAt
                  */
 
                 /**
@@ -6746,6 +7195,38 @@ $root.messages = (function() {
                  * @instance
                  */
                 Payload.prototype.id = "";
+
+                /**
+                 * Payload text.
+                 * @member {string} text
+                 * @memberof messages.notebook.InfoEntryDeleted.Payload
+                 * @instance
+                 */
+                Payload.prototype.text = "";
+
+                /**
+                 * Payload creatorId.
+                 * @member {string} creatorId
+                 * @memberof messages.notebook.InfoEntryDeleted.Payload
+                 * @instance
+                 */
+                Payload.prototype.creatorId = "";
+
+                /**
+                 * Payload createdAt.
+                 * @member {google.protobuf.ITimestamp|null|undefined} createdAt
+                 * @memberof messages.notebook.InfoEntryDeleted.Payload
+                 * @instance
+                 */
+                Payload.prototype.createdAt = null;
+
+                /**
+                 * Payload updatedAt.
+                 * @member {messages.notebook.INullableTimestamp|null|undefined} updatedAt
+                 * @memberof messages.notebook.InfoEntryDeleted.Payload
+                 * @instance
+                 */
+                Payload.prototype.updatedAt = null;
 
                 /**
                  * Creates a new Payload instance using the specified properties.
@@ -6773,6 +7254,14 @@ $root.messages = (function() {
                         writer = $Writer.create();
                     if (message.id != null && message.hasOwnProperty("id"))
                         writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.text);
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.creatorId);
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
+                        $root.google.protobuf.Timestamp.encode(message.createdAt, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
+                        $root.messages.notebook.NullableTimestamp.encode(message.updatedAt, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                     return writer;
                 };
 
@@ -6809,6 +7298,18 @@ $root.messages = (function() {
                         switch (tag >>> 3) {
                         case 1:
                             message.id = reader.string();
+                            break;
+                        case 2:
+                            message.text = reader.string();
+                            break;
+                        case 3:
+                            message.creatorId = reader.string();
+                            break;
+                        case 4:
+                            message.createdAt = $root.google.protobuf.Timestamp.decode(reader, reader.uint32());
+                            break;
+                        case 5:
+                            message.updatedAt = $root.messages.notebook.NullableTimestamp.decode(reader, reader.uint32());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -6848,6 +7349,22 @@ $root.messages = (function() {
                     if (message.id != null && message.hasOwnProperty("id"))
                         if (!$util.isString(message.id))
                             return "id: string expected";
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        if (!$util.isString(message.text))
+                            return "text: string expected";
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        if (!$util.isString(message.creatorId))
+                            return "creatorId: string expected";
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt")) {
+                        var error = $root.google.protobuf.Timestamp.verify(message.createdAt);
+                        if (error)
+                            return "createdAt." + error;
+                    }
+                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt")) {
+                        var error = $root.messages.notebook.NullableTimestamp.verify(message.updatedAt);
+                        if (error)
+                            return "updatedAt." + error;
+                    }
                     return null;
                 };
 
@@ -6865,6 +7382,20 @@ $root.messages = (function() {
                     var message = new $root.messages.notebook.InfoEntryDeleted.Payload();
                     if (object.id != null)
                         message.id = String(object.id);
+                    if (object.text != null)
+                        message.text = String(object.text);
+                    if (object.creatorId != null)
+                        message.creatorId = String(object.creatorId);
+                    if (object.createdAt != null) {
+                        if (typeof object.createdAt !== "object")
+                            throw TypeError(".messages.notebook.InfoEntryDeleted.Payload.createdAt: object expected");
+                        message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
+                    }
+                    if (object.updatedAt != null) {
+                        if (typeof object.updatedAt !== "object")
+                            throw TypeError(".messages.notebook.InfoEntryDeleted.Payload.updatedAt: object expected");
+                        message.updatedAt = $root.messages.notebook.NullableTimestamp.fromObject(object.updatedAt);
+                    }
                     return message;
                 };
 
@@ -6881,10 +7412,23 @@ $root.messages = (function() {
                     if (!options)
                         options = {};
                     var object = {};
-                    if (options.defaults)
+                    if (options.defaults) {
                         object.id = "";
+                        object.text = "";
+                        object.creatorId = "";
+                        object.createdAt = null;
+                        object.updatedAt = null;
+                    }
                     if (message.id != null && message.hasOwnProperty("id"))
                         object.id = message.id;
+                    if (message.text != null && message.hasOwnProperty("text"))
+                        object.text = message.text;
+                    if (message.creatorId != null && message.hasOwnProperty("creatorId"))
+                        object.creatorId = message.creatorId;
+                    if (message.createdAt != null && message.hasOwnProperty("createdAt"))
+                        object.createdAt = $root.google.protobuf.Timestamp.toObject(message.createdAt, options);
+                    if (message.updatedAt != null && message.hasOwnProperty("updatedAt"))
+                        object.updatedAt = $root.messages.notebook.NullableTimestamp.toObject(message.updatedAt, options);
                     return object;
                 };
 
