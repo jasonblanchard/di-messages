@@ -62,7 +62,7 @@ type UnsafeNotebookServer interface {
 }
 
 func RegisterNotebookServer(s grpc.ServiceRegistrar, srv NotebookServer) {
-	s.RegisterService(&Notebook_ServiceDesc, srv)
+	s.RegisterService(&_Notebook_serviceDesc, srv)
 }
 
 func _Notebook_ReadEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -83,10 +83,7 @@ func _Notebook_ReadEntry_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
-// Notebook_ServiceDesc is the grpc.ServiceDesc for Notebook service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var Notebook_ServiceDesc = grpc.ServiceDesc{
+var _Notebook_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "messages.notebook.Notebook",
 	HandlerType: (*NotebookServer)(nil),
 	Methods: []grpc.MethodDesc{
