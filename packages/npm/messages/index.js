@@ -16548,28 +16548,28 @@ $root.messages = (function() {
             return ReadEntryGRPCRequest;
         })();
 
-        notebook.ReadEntryGRPCRresponse = (function() {
+        notebook.ReadEntryGRPCResponse = (function() {
 
             /**
-             * Properties of a ReadEntryGRPCRresponse.
+             * Properties of a ReadEntryGRPCResponse.
              * @memberof messages.notebook
-             * @interface IReadEntryGRPCRresponse
-             * @property {string|null} [id] ReadEntryGRPCRresponse id
-             * @property {string|null} [text] ReadEntryGRPCRresponse text
-             * @property {string|null} [creatorId] ReadEntryGRPCRresponse creatorId
-             * @property {google.protobuf.ITimestamp|null} [createdAt] ReadEntryGRPCRresponse createdAt
-             * @property {messages.notebook.INullableTimestamp|null} [updatedAt] ReadEntryGRPCRresponse updatedAt
+             * @interface IReadEntryGRPCResponse
+             * @property {string|null} [id] ReadEntryGRPCResponse id
+             * @property {string|null} [text] ReadEntryGRPCResponse text
+             * @property {string|null} [creatorId] ReadEntryGRPCResponse creatorId
+             * @property {google.protobuf.ITimestamp|null} [createdAt] ReadEntryGRPCResponse createdAt
+             * @property {messages.notebook.INullableTimestamp|null} [updatedAt] ReadEntryGRPCResponse updatedAt
              */
 
             /**
-             * Constructs a new ReadEntryGRPCRresponse.
+             * Constructs a new ReadEntryGRPCResponse.
              * @memberof messages.notebook
-             * @classdesc Represents a ReadEntryGRPCRresponse.
-             * @implements IReadEntryGRPCRresponse
+             * @classdesc Represents a ReadEntryGRPCResponse.
+             * @implements IReadEntryGRPCResponse
              * @constructor
-             * @param {messages.notebook.IReadEntryGRPCRresponse=} [properties] Properties to set
+             * @param {messages.notebook.IReadEntryGRPCResponse=} [properties] Properties to set
              */
-            function ReadEntryGRPCRresponse(properties) {
+            function ReadEntryGRPCResponse(properties) {
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -16577,67 +16577,67 @@ $root.messages = (function() {
             }
 
             /**
-             * ReadEntryGRPCRresponse id.
+             * ReadEntryGRPCResponse id.
              * @member {string} id
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              */
-            ReadEntryGRPCRresponse.prototype.id = "";
+            ReadEntryGRPCResponse.prototype.id = "";
 
             /**
-             * ReadEntryGRPCRresponse text.
+             * ReadEntryGRPCResponse text.
              * @member {string} text
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              */
-            ReadEntryGRPCRresponse.prototype.text = "";
+            ReadEntryGRPCResponse.prototype.text = "";
 
             /**
-             * ReadEntryGRPCRresponse creatorId.
+             * ReadEntryGRPCResponse creatorId.
              * @member {string} creatorId
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              */
-            ReadEntryGRPCRresponse.prototype.creatorId = "";
+            ReadEntryGRPCResponse.prototype.creatorId = "";
 
             /**
-             * ReadEntryGRPCRresponse createdAt.
+             * ReadEntryGRPCResponse createdAt.
              * @member {google.protobuf.ITimestamp|null|undefined} createdAt
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              */
-            ReadEntryGRPCRresponse.prototype.createdAt = null;
+            ReadEntryGRPCResponse.prototype.createdAt = null;
 
             /**
-             * ReadEntryGRPCRresponse updatedAt.
+             * ReadEntryGRPCResponse updatedAt.
              * @member {messages.notebook.INullableTimestamp|null|undefined} updatedAt
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              */
-            ReadEntryGRPCRresponse.prototype.updatedAt = null;
+            ReadEntryGRPCResponse.prototype.updatedAt = null;
 
             /**
-             * Creates a new ReadEntryGRPCRresponse instance using the specified properties.
+             * Creates a new ReadEntryGRPCResponse instance using the specified properties.
              * @function create
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
-             * @param {messages.notebook.IReadEntryGRPCRresponse=} [properties] Properties to set
-             * @returns {messages.notebook.ReadEntryGRPCRresponse} ReadEntryGRPCRresponse instance
+             * @param {messages.notebook.IReadEntryGRPCResponse=} [properties] Properties to set
+             * @returns {messages.notebook.ReadEntryGRPCResponse} ReadEntryGRPCResponse instance
              */
-            ReadEntryGRPCRresponse.create = function create(properties) {
-                return new ReadEntryGRPCRresponse(properties);
+            ReadEntryGRPCResponse.create = function create(properties) {
+                return new ReadEntryGRPCResponse(properties);
             };
 
             /**
-             * Encodes the specified ReadEntryGRPCRresponse message. Does not implicitly {@link messages.notebook.ReadEntryGRPCRresponse.verify|verify} messages.
+             * Encodes the specified ReadEntryGRPCResponse message. Does not implicitly {@link messages.notebook.ReadEntryGRPCResponse.verify|verify} messages.
              * @function encode
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
-             * @param {messages.notebook.IReadEntryGRPCRresponse} message ReadEntryGRPCRresponse message or plain object to encode
+             * @param {messages.notebook.IReadEntryGRPCResponse} message ReadEntryGRPCResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
-            ReadEntryGRPCRresponse.encode = function encode(message, writer) {
+            ReadEntryGRPCResponse.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
                 if (message.id != null && message.hasOwnProperty("id"))
@@ -16654,33 +16654,33 @@ $root.messages = (function() {
             };
 
             /**
-             * Encodes the specified ReadEntryGRPCRresponse message, length delimited. Does not implicitly {@link messages.notebook.ReadEntryGRPCRresponse.verify|verify} messages.
+             * Encodes the specified ReadEntryGRPCResponse message, length delimited. Does not implicitly {@link messages.notebook.ReadEntryGRPCResponse.verify|verify} messages.
              * @function encodeDelimited
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
-             * @param {messages.notebook.IReadEntryGRPCRresponse} message ReadEntryGRPCRresponse message or plain object to encode
+             * @param {messages.notebook.IReadEntryGRPCResponse} message ReadEntryGRPCResponse message or plain object to encode
              * @param {$protobuf.Writer} [writer] Writer to encode to
              * @returns {$protobuf.Writer} Writer
              */
-            ReadEntryGRPCRresponse.encodeDelimited = function encodeDelimited(message, writer) {
+            ReadEntryGRPCResponse.encodeDelimited = function encodeDelimited(message, writer) {
                 return this.encode(message, writer).ldelim();
             };
 
             /**
-             * Decodes a ReadEntryGRPCRresponse message from the specified reader or buffer.
+             * Decodes a ReadEntryGRPCResponse message from the specified reader or buffer.
              * @function decode
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
              * @param {number} [length] Message length if known beforehand
-             * @returns {messages.notebook.ReadEntryGRPCRresponse} ReadEntryGRPCRresponse
+             * @returns {messages.notebook.ReadEntryGRPCResponse} ReadEntryGRPCResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ReadEntryGRPCRresponse.decode = function decode(reader, length) {
+            ReadEntryGRPCResponse.decode = function decode(reader, length) {
                 if (!(reader instanceof $Reader))
                     reader = $Reader.create(reader);
-                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ReadEntryGRPCRresponse();
+                var end = length === undefined ? reader.len : reader.pos + length, message = new $root.messages.notebook.ReadEntryGRPCResponse();
                 while (reader.pos < end) {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
@@ -16708,30 +16708,30 @@ $root.messages = (function() {
             };
 
             /**
-             * Decodes a ReadEntryGRPCRresponse message from the specified reader or buffer, length delimited.
+             * Decodes a ReadEntryGRPCResponse message from the specified reader or buffer, length delimited.
              * @function decodeDelimited
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
              * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-             * @returns {messages.notebook.ReadEntryGRPCRresponse} ReadEntryGRPCRresponse
+             * @returns {messages.notebook.ReadEntryGRPCResponse} ReadEntryGRPCResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            ReadEntryGRPCRresponse.decodeDelimited = function decodeDelimited(reader) {
+            ReadEntryGRPCResponse.decodeDelimited = function decodeDelimited(reader) {
                 if (!(reader instanceof $Reader))
                     reader = new $Reader(reader);
                 return this.decode(reader, reader.uint32());
             };
 
             /**
-             * Verifies a ReadEntryGRPCRresponse message.
+             * Verifies a ReadEntryGRPCResponse message.
              * @function verify
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
              * @param {Object.<string,*>} message Plain object to verify
              * @returns {string|null} `null` if valid, otherwise the reason why it is not
              */
-            ReadEntryGRPCRresponse.verify = function verify(message) {
+            ReadEntryGRPCResponse.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
                 if (message.id != null && message.hasOwnProperty("id"))
@@ -16757,17 +16757,17 @@ $root.messages = (function() {
             };
 
             /**
-             * Creates a ReadEntryGRPCRresponse message from a plain object. Also converts values to their respective internal types.
+             * Creates a ReadEntryGRPCResponse message from a plain object. Also converts values to their respective internal types.
              * @function fromObject
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
              * @param {Object.<string,*>} object Plain object
-             * @returns {messages.notebook.ReadEntryGRPCRresponse} ReadEntryGRPCRresponse
+             * @returns {messages.notebook.ReadEntryGRPCResponse} ReadEntryGRPCResponse
              */
-            ReadEntryGRPCRresponse.fromObject = function fromObject(object) {
-                if (object instanceof $root.messages.notebook.ReadEntryGRPCRresponse)
+            ReadEntryGRPCResponse.fromObject = function fromObject(object) {
+                if (object instanceof $root.messages.notebook.ReadEntryGRPCResponse)
                     return object;
-                var message = new $root.messages.notebook.ReadEntryGRPCRresponse();
+                var message = new $root.messages.notebook.ReadEntryGRPCResponse();
                 if (object.id != null)
                     message.id = String(object.id);
                 if (object.text != null)
@@ -16776,27 +16776,27 @@ $root.messages = (function() {
                     message.creatorId = String(object.creatorId);
                 if (object.createdAt != null) {
                     if (typeof object.createdAt !== "object")
-                        throw TypeError(".messages.notebook.ReadEntryGRPCRresponse.createdAt: object expected");
+                        throw TypeError(".messages.notebook.ReadEntryGRPCResponse.createdAt: object expected");
                     message.createdAt = $root.google.protobuf.Timestamp.fromObject(object.createdAt);
                 }
                 if (object.updatedAt != null) {
                     if (typeof object.updatedAt !== "object")
-                        throw TypeError(".messages.notebook.ReadEntryGRPCRresponse.updatedAt: object expected");
+                        throw TypeError(".messages.notebook.ReadEntryGRPCResponse.updatedAt: object expected");
                     message.updatedAt = $root.messages.notebook.NullableTimestamp.fromObject(object.updatedAt);
                 }
                 return message;
             };
 
             /**
-             * Creates a plain object from a ReadEntryGRPCRresponse message. Also converts values to other types if specified.
+             * Creates a plain object from a ReadEntryGRPCResponse message. Also converts values to other types if specified.
              * @function toObject
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @static
-             * @param {messages.notebook.ReadEntryGRPCRresponse} message ReadEntryGRPCRresponse
+             * @param {messages.notebook.ReadEntryGRPCResponse} message ReadEntryGRPCResponse
              * @param {$protobuf.IConversionOptions} [options] Conversion options
              * @returns {Object.<string,*>} Plain object
              */
-            ReadEntryGRPCRresponse.toObject = function toObject(message, options) {
+            ReadEntryGRPCResponse.toObject = function toObject(message, options) {
                 if (!options)
                     options = {};
                 var object = {};
@@ -16821,17 +16821,17 @@ $root.messages = (function() {
             };
 
             /**
-             * Converts this ReadEntryGRPCRresponse to JSON.
+             * Converts this ReadEntryGRPCResponse to JSON.
              * @function toJSON
-             * @memberof messages.notebook.ReadEntryGRPCRresponse
+             * @memberof messages.notebook.ReadEntryGRPCResponse
              * @instance
              * @returns {Object.<string,*>} JSON object
              */
-            ReadEntryGRPCRresponse.prototype.toJSON = function toJSON() {
+            ReadEntryGRPCResponse.prototype.toJSON = function toJSON() {
                 return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
             };
 
-            return ReadEntryGRPCRresponse;
+            return ReadEntryGRPCResponse;
         })();
 
         notebook.Notebook = (function() {
@@ -16872,7 +16872,7 @@ $root.messages = (function() {
              * @typedef ReadEntryCallback
              * @type {function}
              * @param {Error|null} error Error, if any
-             * @param {messages.notebook.ReadEntryGRPCRresponse} [response] ReadEntryGRPCRresponse
+             * @param {messages.notebook.ReadEntryGRPCResponse} [response] ReadEntryGRPCResponse
              */
 
             /**
@@ -16881,12 +16881,12 @@ $root.messages = (function() {
              * @memberof messages.notebook.Notebook
              * @instance
              * @param {messages.notebook.IReadEntryGRPCRequest} request ReadEntryGRPCRequest message or plain object
-             * @param {messages.notebook.Notebook.ReadEntryCallback} callback Node-style callback called with the error, if any, and ReadEntryGRPCRresponse
+             * @param {messages.notebook.Notebook.ReadEntryCallback} callback Node-style callback called with the error, if any, and ReadEntryGRPCResponse
              * @returns {undefined}
              * @variation 1
              */
             Object.defineProperty(Notebook.prototype.readEntry = function readEntry(request, callback) {
-                return this.rpcCall(readEntry, $root.messages.notebook.ReadEntryGRPCRequest, $root.messages.notebook.ReadEntryGRPCRresponse, request, callback);
+                return this.rpcCall(readEntry, $root.messages.notebook.ReadEntryGRPCRequest, $root.messages.notebook.ReadEntryGRPCResponse, request, callback);
             }, "name", { value: "ReadEntry" });
 
             /**
@@ -16895,7 +16895,7 @@ $root.messages = (function() {
              * @memberof messages.notebook.Notebook
              * @instance
              * @param {messages.notebook.IReadEntryGRPCRequest} request ReadEntryGRPCRequest message or plain object
-             * @returns {Promise<messages.notebook.ReadEntryGRPCRresponse>} Promise
+             * @returns {Promise<messages.notebook.ReadEntryGRPCResponse>} Promise
              * @variation 2
              */
 

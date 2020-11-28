@@ -17,7 +17,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type NotebookClient interface {
-	ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCRresponse, error)
+	ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCResponse, error)
 }
 
 type notebookClient struct {
@@ -28,8 +28,8 @@ func NewNotebookClient(cc grpc.ClientConnInterface) NotebookClient {
 	return &notebookClient{cc}
 }
 
-func (c *notebookClient) ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCRresponse, error) {
-	out := new(ReadEntryGRPCRresponse)
+func (c *notebookClient) ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCResponse, error) {
+	out := new(ReadEntryGRPCResponse)
 	err := c.cc.Invoke(ctx, "/messages.notebook.Notebook/ReadEntry", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -41,7 +41,7 @@ func (c *notebookClient) ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest
 // All implementations must embed UnimplementedNotebookServer
 // for forward compatibility
 type NotebookServer interface {
-	ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCRresponse, error)
+	ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error)
 	mustEmbedUnimplementedNotebookServer()
 }
 
@@ -49,7 +49,7 @@ type NotebookServer interface {
 type UnimplementedNotebookServer struct {
 }
 
-func (UnimplementedNotebookServer) ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCRresponse, error) {
+func (UnimplementedNotebookServer) ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadEntry not implemented")
 }
 func (UnimplementedNotebookServer) mustEmbedUnimplementedNotebookServer() {}

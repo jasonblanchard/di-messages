@@ -7251,115 +7251,115 @@ export namespace messages {
             public toJSON(): { [k: string]: any };
         }
 
-        /** Properties of a ReadEntryGRPCRresponse. */
-        interface IReadEntryGRPCRresponse {
+        /** Properties of a ReadEntryGRPCResponse. */
+        interface IReadEntryGRPCResponse {
 
-            /** ReadEntryGRPCRresponse id */
+            /** ReadEntryGRPCResponse id */
             id?: (string|null);
 
-            /** ReadEntryGRPCRresponse text */
+            /** ReadEntryGRPCResponse text */
             text?: (string|null);
 
-            /** ReadEntryGRPCRresponse creatorId */
+            /** ReadEntryGRPCResponse creatorId */
             creatorId?: (string|null);
 
-            /** ReadEntryGRPCRresponse createdAt */
+            /** ReadEntryGRPCResponse createdAt */
             createdAt?: (google.protobuf.ITimestamp|null);
 
-            /** ReadEntryGRPCRresponse updatedAt */
+            /** ReadEntryGRPCResponse updatedAt */
             updatedAt?: (messages.notebook.INullableTimestamp|null);
         }
 
-        /** Represents a ReadEntryGRPCRresponse. */
-        class ReadEntryGRPCRresponse implements IReadEntryGRPCRresponse {
+        /** Represents a ReadEntryGRPCResponse. */
+        class ReadEntryGRPCResponse implements IReadEntryGRPCResponse {
 
             /**
-             * Constructs a new ReadEntryGRPCRresponse.
+             * Constructs a new ReadEntryGRPCResponse.
              * @param [properties] Properties to set
              */
-            constructor(properties?: messages.notebook.IReadEntryGRPCRresponse);
+            constructor(properties?: messages.notebook.IReadEntryGRPCResponse);
 
-            /** ReadEntryGRPCRresponse id. */
+            /** ReadEntryGRPCResponse id. */
             public id: string;
 
-            /** ReadEntryGRPCRresponse text. */
+            /** ReadEntryGRPCResponse text. */
             public text: string;
 
-            /** ReadEntryGRPCRresponse creatorId. */
+            /** ReadEntryGRPCResponse creatorId. */
             public creatorId: string;
 
-            /** ReadEntryGRPCRresponse createdAt. */
+            /** ReadEntryGRPCResponse createdAt. */
             public createdAt?: (google.protobuf.ITimestamp|null);
 
-            /** ReadEntryGRPCRresponse updatedAt. */
+            /** ReadEntryGRPCResponse updatedAt. */
             public updatedAt?: (messages.notebook.INullableTimestamp|null);
 
             /**
-             * Creates a new ReadEntryGRPCRresponse instance using the specified properties.
+             * Creates a new ReadEntryGRPCResponse instance using the specified properties.
              * @param [properties] Properties to set
-             * @returns ReadEntryGRPCRresponse instance
+             * @returns ReadEntryGRPCResponse instance
              */
-            public static create(properties?: messages.notebook.IReadEntryGRPCRresponse): messages.notebook.ReadEntryGRPCRresponse;
+            public static create(properties?: messages.notebook.IReadEntryGRPCResponse): messages.notebook.ReadEntryGRPCResponse;
 
             /**
-             * Encodes the specified ReadEntryGRPCRresponse message. Does not implicitly {@link messages.notebook.ReadEntryGRPCRresponse.verify|verify} messages.
-             * @param message ReadEntryGRPCRresponse message or plain object to encode
+             * Encodes the specified ReadEntryGRPCResponse message. Does not implicitly {@link messages.notebook.ReadEntryGRPCResponse.verify|verify} messages.
+             * @param message ReadEntryGRPCResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encode(message: messages.notebook.IReadEntryGRPCRresponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encode(message: messages.notebook.IReadEntryGRPCResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Encodes the specified ReadEntryGRPCRresponse message, length delimited. Does not implicitly {@link messages.notebook.ReadEntryGRPCRresponse.verify|verify} messages.
-             * @param message ReadEntryGRPCRresponse message or plain object to encode
+             * Encodes the specified ReadEntryGRPCResponse message, length delimited. Does not implicitly {@link messages.notebook.ReadEntryGRPCResponse.verify|verify} messages.
+             * @param message ReadEntryGRPCResponse message or plain object to encode
              * @param [writer] Writer to encode to
              * @returns Writer
              */
-            public static encodeDelimited(message: messages.notebook.IReadEntryGRPCRresponse, writer?: $protobuf.Writer): $protobuf.Writer;
+            public static encodeDelimited(message: messages.notebook.IReadEntryGRPCResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
             /**
-             * Decodes a ReadEntryGRPCRresponse message from the specified reader or buffer.
+             * Decodes a ReadEntryGRPCResponse message from the specified reader or buffer.
              * @param reader Reader or buffer to decode from
              * @param [length] Message length if known beforehand
-             * @returns ReadEntryGRPCRresponse
+             * @returns ReadEntryGRPCResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ReadEntryGRPCRresponse;
+            public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): messages.notebook.ReadEntryGRPCResponse;
 
             /**
-             * Decodes a ReadEntryGRPCRresponse message from the specified reader or buffer, length delimited.
+             * Decodes a ReadEntryGRPCResponse message from the specified reader or buffer, length delimited.
              * @param reader Reader or buffer to decode from
-             * @returns ReadEntryGRPCRresponse
+             * @returns ReadEntryGRPCResponse
              * @throws {Error} If the payload is not a reader or valid buffer
              * @throws {$protobuf.util.ProtocolError} If required fields are missing
              */
-            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ReadEntryGRPCRresponse;
+            public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): messages.notebook.ReadEntryGRPCResponse;
 
             /**
-             * Verifies a ReadEntryGRPCRresponse message.
+             * Verifies a ReadEntryGRPCResponse message.
              * @param message Plain object to verify
              * @returns `null` if valid, otherwise the reason why it is not
              */
             public static verify(message: { [k: string]: any }): (string|null);
 
             /**
-             * Creates a ReadEntryGRPCRresponse message from a plain object. Also converts values to their respective internal types.
+             * Creates a ReadEntryGRPCResponse message from a plain object. Also converts values to their respective internal types.
              * @param object Plain object
-             * @returns ReadEntryGRPCRresponse
+             * @returns ReadEntryGRPCResponse
              */
-            public static fromObject(object: { [k: string]: any }): messages.notebook.ReadEntryGRPCRresponse;
+            public static fromObject(object: { [k: string]: any }): messages.notebook.ReadEntryGRPCResponse;
 
             /**
-             * Creates a plain object from a ReadEntryGRPCRresponse message. Also converts values to other types if specified.
-             * @param message ReadEntryGRPCRresponse
+             * Creates a plain object from a ReadEntryGRPCResponse message. Also converts values to other types if specified.
+             * @param message ReadEntryGRPCResponse
              * @param [options] Conversion options
              * @returns Plain object
              */
-            public static toObject(message: messages.notebook.ReadEntryGRPCRresponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+            public static toObject(message: messages.notebook.ReadEntryGRPCResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
             /**
-             * Converts this ReadEntryGRPCRresponse to JSON.
+             * Converts this ReadEntryGRPCResponse to JSON.
              * @returns JSON object
              */
             public toJSON(): { [k: string]: any };
@@ -7388,7 +7388,7 @@ export namespace messages {
             /**
              * Calls ReadEntry.
              * @param request ReadEntryGRPCRequest message or plain object
-             * @param callback Node-style callback called with the error, if any, and ReadEntryGRPCRresponse
+             * @param callback Node-style callback called with the error, if any, and ReadEntryGRPCResponse
              */
             public readEntry(request: messages.notebook.IReadEntryGRPCRequest, callback: messages.notebook.Notebook.ReadEntryCallback): void;
 
@@ -7397,7 +7397,7 @@ export namespace messages {
              * @param request ReadEntryGRPCRequest message or plain object
              * @returns Promise
              */
-            public readEntry(request: messages.notebook.IReadEntryGRPCRequest): Promise<messages.notebook.ReadEntryGRPCRresponse>;
+            public readEntry(request: messages.notebook.IReadEntryGRPCRequest): Promise<messages.notebook.ReadEntryGRPCResponse>;
         }
 
         namespace Notebook {
@@ -7405,9 +7405,9 @@ export namespace messages {
             /**
              * Callback as used by {@link messages.notebook.Notebook#readEntry}.
              * @param error Error, if any
-             * @param [response] ReadEntryGRPCRresponse
+             * @param [response] ReadEntryGRPCResponse
              */
-            type ReadEntryCallback = (error: (Error|null), response?: messages.notebook.ReadEntryGRPCRresponse) => void;
+            type ReadEntryCallback = (error: (Error|null), response?: messages.notebook.ReadEntryGRPCResponse) => void;
         }
     }
 }

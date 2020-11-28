@@ -200,7 +200,7 @@ message ReadEntryGRPCRequest {
   string id = 1;
 }
 
-message ReadEntryGRPCRresponse {
+message ReadEntryGRPCResponse {
   string id = 1;
   string text = 2;
   string creator_id = 3;
@@ -209,5 +209,5 @@ message ReadEntryGRPCRresponse {
 }
 
 service Notebook {
-  rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCRresponse) {}
+  rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {}
 }
