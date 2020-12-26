@@ -196,16 +196,31 @@ message InfoEntryDeleted {
   Payload payload = 2;
 }
 
+// ====== GRPC =======
+
+message GRPCRequestContext {
+  Principal principal = 2;
+}
+
 message ReadEntryGRPCRequest {
-  string id = 1;
+  message Payload {
+    string id = 1;
+  }
+
+  GRPCRequestContext RequestContext = 1;
+  Payload payload = 2;
 }
 
 message ReadEntryGRPCResponse {
-  string id = 1;
-  string text = 2;
-  string creator_id = 3;
-  google.protobuf.Timestamp created_at = 4;
-  NullableTimestamp updated_at = 5;
+  message Payload {
+    string id = 1;
+    string text = 2;
+    string creator_id = 3;
+    google.protobuf.Timestamp created_at = 4;
+    google.protobuf.Timestamp updated_at = 5;
+  }
+
+  Payload payload = 1;
 }
 
 service Notebook {
