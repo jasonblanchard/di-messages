@@ -39,7 +39,7 @@ message InfoContext {
 }
 
 message ErrorResponse {
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
 }
 
@@ -61,7 +61,7 @@ message ReadEntryResponse {
     NullableTimestamp updated_at = 5;
   }
 
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
   Payload payload = 3;
 }
@@ -80,7 +80,7 @@ message StartNewEntryResponse {
     string id = 1;
   }
 
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
   Payload payload = 3;
 }
@@ -102,7 +102,7 @@ message ChangeEntryResponse {
     google.protobuf.Timestamp updated_at = 3;
   }
 
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
   Payload payload = 3;
 }
@@ -139,7 +139,7 @@ message ListEntriesResponse {
     PageInfo page_info = 2;
   }
 
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
   Payload payload = 3;
 }
@@ -154,7 +154,7 @@ message DiscardEntryRequest {
 }
 
 message DiscardEntryResponse {
-  google.rpc.Status status = 1;
+  Status status = 1;
   ResponseContext context = 2;
 }
 

@@ -19,4 +19,4 @@ build_js:
 build_go:
 	protoc -I=proto --go_opt=paths=source_relative --go_out=./packages/go/messages --go-grpc_opt=paths=source_relative --go-grpc_out=./packages/go/messages ${SRC}
 
-build: build_go build_js
+build: build_go

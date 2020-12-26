@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-package google.rpc;
+package messages.notebook;
 
 import "google/protobuf/any.proto";
 
