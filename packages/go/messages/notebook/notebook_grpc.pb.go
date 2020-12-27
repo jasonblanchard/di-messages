@@ -18,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type NotebookClient interface {
 	ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest, opts ...grpc.CallOption) (*ReadEntryGRPCResponse, error)
+	StartNewEntry(ctx context.Context, in *StartNewEntryGRPCRequest, opts ...grpc.CallOption) (*StartNewEntryGRPCResponse, error)
 }
 
 type notebookClient struct {
@@ -37,11 +38,21 @@ func (c *notebookClient) ReadEntry(ctx context.Context, in *ReadEntryGRPCRequest
 	return out, nil
 }
 
+func (c *notebookClient) StartNewEntry(ctx context.Context, in *StartNewEntryGRPCRequest, opts ...grpc.CallOption) (*StartNewEntryGRPCResponse, error) {
+	out := new(StartNewEntryGRPCResponse)
+	err := c.cc.Invoke(ctx, "/messages.notebook.Notebook/StartNewEntry", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // NotebookServer is the server API for Notebook service.
 // All implementations must embed UnimplementedNotebookServer
 // for forward compatibility
 type NotebookServer interface {
 	ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error)
+	StartNewEntry(context.Context, *StartNewEntryGRPCRequest) (*StartNewEntryGRPCResponse, error)
 	mustEmbedUnimplementedNotebookServer()
 }
 
@@ -51,6 +62,9 @@ type UnimplementedNotebookServer struct {
 
 func (UnimplementedNotebookServer) ReadEntry(context.Context, *ReadEntryGRPCRequest) (*ReadEntryGRPCResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReadEntry not implemented")
+}
+func (UnimplementedNotebookServer) StartNewEntry(context.Context, *StartNewEntryGRPCRequest) (*StartNewEntryGRPCResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StartNewEntry not implemented")
 }
 func (UnimplementedNotebookServer) mustEmbedUnimplementedNotebookServer() {}
 
@@ -83,6 +97,24 @@ func _Notebook_ReadEntry_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Notebook_StartNewEntry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(StartNewEntryGRPCRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotebookServer).StartNewEntry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/messages.notebook.Notebook/StartNewEntry",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotebookServer).StartNewEntry(ctx, req.(*StartNewEntryGRPCRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Notebook_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "messages.notebook.Notebook",
 	HandlerType: (*NotebookServer)(nil),
@@ -90,6 +122,10 @@ var _Notebook_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReadEntry",
 			Handler:    _Notebook_ReadEntry_Handler,
+		},
+		{
+			MethodName: "StartNewEntry",
+			Handler:    _Notebook_StartNewEntry_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

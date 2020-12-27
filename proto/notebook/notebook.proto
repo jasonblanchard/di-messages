@@ -198,16 +198,12 @@ message InfoEntryDeleted {
 
 // ====== GRPC =======
 
-message GRPCRequestContext {
-  Principal principal = 2;
-}
-
 message ReadEntryGRPCRequest {
   message Payload {
     string id = 1;
   }
 
-  GRPCRequestContext RequestContext = 1;
+  Principal principal = 1;
   Payload payload = 2;
 }
 
@@ -223,6 +219,24 @@ message ReadEntryGRPCResponse {
   Payload payload = 1;
 }
 
+message StartNewEntryGRPCRequest {
+  message Payload {
+    string creator_id = 1;
+  }
+
+  Principal principal = 1;
+  Payload payload = 2;
+}
+
+message StartNewEntryGRPCResponse {
+  message Payload {
+    string id = 1;
+  }
+
+  Payload payload = 1;
+}
+
 service Notebook {
   rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {}
+  rpc StartNewEntry(StartNewEntryGRPCRequest) returns (StartNewEntryGRPCResponse) {}
 }
