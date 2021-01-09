@@ -15,7 +15,54 @@
   "produces": [
     "application/json"
   ],
-  "paths": {},
+  "paths": {
+    "/entry": {
+      "get": {
+        "operationId": "Notebook_ReadEntry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/messagesnotebookReadEntryGRPCResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/googlerpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "principal.type",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "USER"
+            ],
+            "default": "USER"
+          },
+          {
+            "name": "principal.id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "payload.id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Notebook"
+        ]
+      }
+    }
+  },
   "definitions": {
     "googlerpcStatus": {
       "type": "object",

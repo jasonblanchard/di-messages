@@ -5,6 +5,7 @@ option go_package = "github.com/jasonblanchard/di-messages/packages/go/messages/
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 import "notebook/status.proto";
+import "google/api/annotations.proto";
 
 message NullableTimestamp {
   oneof value {
@@ -237,6 +238,10 @@ message StartNewEntryGRPCResponse {
 }
 
 service Notebook {
-  rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {}
+  rpc ReadEntry(ReadEntryGRPCRequest) returns (ReadEntryGRPCResponse) {
+    option (google.api.http) = {
+      get: "/entry"
+    };
+  }
   rpc StartNewEntry(StartNewEntryGRPCRequest) returns (StartNewEntryGRPCResponse) {}
 }

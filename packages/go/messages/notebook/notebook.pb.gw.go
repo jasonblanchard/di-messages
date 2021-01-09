@@ -31,15 +31,18 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
+var (
+	filter_Notebook_ReadEntry_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
 func request_Notebook_ReadEntry_0(ctx context.Context, marshaler runtime.Marshaler, client NotebookClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ReadEntryGRPCRequest
 	var metadata runtime.ServerMetadata
 
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notebook_ReadEntry_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -52,11 +55,10 @@ func local_request_Notebook_ReadEntry_0(ctx context.Context, marshaler runtime.M
 	var protoReq ReadEntryGRPCRequest
 	var metadata runtime.ServerMetadata
 
-	newReader, berr := utilities.IOReaderFactory(req.Body)
-	if berr != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", berr)
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
-	if err := marshaler.NewDecoder(newReader()).Decode(&protoReq); err != nil && err != io.EOF {
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_Notebook_ReadEntry_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
@@ -105,7 +107,7 @@ func local_request_Notebook_StartNewEntry_0(ctx context.Context, marshaler runti
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterNotebookHandlerFromEndpoint instead.
 func RegisterNotebookHandlerServer(ctx context.Context, mux *runtime.ServeMux, server NotebookServer) error {
 
-	mux.Handle("POST", pattern_Notebook_ReadEntry_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Notebook_ReadEntry_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -192,7 +194,7 @@ func RegisterNotebookHandler(ctx context.Context, mux *runtime.ServeMux, conn *g
 // "NotebookClient" to call the correct interceptors.
 func RegisterNotebookHandlerClient(ctx context.Context, mux *runtime.ServeMux, client NotebookClient) error {
 
-	mux.Handle("POST", pattern_Notebook_ReadEntry_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_Notebook_ReadEntry_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -236,7 +238,7 @@ func RegisterNotebookHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 }
 
 var (
-	pattern_Notebook_ReadEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"messages.notebook.Notebook", "ReadEntry"}, ""))
+	pattern_Notebook_ReadEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0}, []string{"entry"}, ""))
 
 	pattern_Notebook_StartNewEntry_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"messages.notebook.Notebook", "StartNewEntry"}, ""))
 )
